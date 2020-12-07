@@ -1,10 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Aula.Lib.Aula01
 {
-    class Exemplo01
+    public class Exemplo01
     {
+        public static decimal CalcularMarkup(decimal PC, decimal PV)
+        {
+            if (PC == 0)
+            {
+                return 0;
+            }
+
+            decimal mk = PV / PC;
+
+            return mk;
+        }
+
+
+
     }
 }

@@ -17,6 +17,20 @@ namespace Aula.Lib.Aula01
         }
 
 
+        public static decimal CalculaLucro(decimal pc, decimal pv)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static decimal CalculaPV_MK(decimal pc, decimal mk)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static decimal CalculaPV_LC(decimal pc, decimal lc)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

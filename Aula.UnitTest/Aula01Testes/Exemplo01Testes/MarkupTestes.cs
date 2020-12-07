@@ -8,6 +8,7 @@ namespace Aula.UnitTest.Aula01Testes.Exemplo01Testes
         [Fact]
         public void TesteMarkupExemploDoSite()
         {
+            //https://fia.com.br/blog/markup/
             decimal mk = Exemplo01.CalcularMarkup(45M, 91.83M);
 
             Assert.Equal(2.04M, mk, 2);

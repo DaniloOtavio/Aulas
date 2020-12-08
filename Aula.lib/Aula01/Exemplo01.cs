@@ -6,11 +6,8 @@ namespace Aula.Lib.Aula01
     {
         public static decimal CalcularMarkup(decimal PC, decimal PV)
         {
-            if (PC == 0)
-            {
-                return 0;
-            }
-
+            if (PC == 0) { return 0; }
+            
             decimal mk = PV / PC;
 
             return mk;
@@ -20,7 +17,6 @@ namespace Aula.Lib.Aula01
         public static decimal CalculaLucro(decimal pc, decimal pv)
         {
             throw new NotImplementedException();
-            
         }
 
         public static decimal CalculaPV_MK(decimal pc, decimal mk)

@@ -16,7 +16,11 @@ namespace Aula.Lib.Aula01
 
         public static decimal CalculaLucro(decimal pc, decimal pv)
         {
-            throw new NotImplementedException();
+            if (pv == 0) { return 0; }
+
+            decimal mk = pv - pc;
+
+            return mk;
         }
 
         public static decimal CalculaPV_MK(decimal pc, decimal mk)

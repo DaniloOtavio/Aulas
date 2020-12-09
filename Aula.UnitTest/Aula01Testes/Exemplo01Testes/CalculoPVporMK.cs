@@ -29,7 +29,7 @@ namespace Aula.UnitTest.Aula01Testes.Exemplo01Testes
             //https://fia.com.br/blog/markup/
             decimal mk = Exemplo01.CalculaPV_MK(45M, 2.04M);
 
-            Assert.Equal(91.83M, mk);
+            Assert.Equal(91.8M, mk);
         }
         [Fact]
         public void CalculoExemploProprio()

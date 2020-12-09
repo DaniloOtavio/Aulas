@@ -25,7 +25,11 @@ namespace Aula.Lib.Aula01
 
         public static decimal CalculaPV_MK(decimal pc, decimal mk)
         {
-            throw new NotImplementedException();
+            if (pc==0 && mk == 0) { return 0; }
+            
+            decimal PV = pc * mk;
+
+            return PV;
         }
 
         public static decimal CalculaPV_LC(decimal pc, decimal lc)

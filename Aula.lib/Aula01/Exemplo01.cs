@@ -20,7 +20,7 @@ namespace Aula.Lib.Aula01
             if (pv < pc) { return 0; }
 
             decimal LC = pv - pc;
-
+            
             return LC;
         }
 

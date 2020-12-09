@@ -34,7 +34,12 @@ namespace Aula.Lib.Aula01
 
         public static decimal CalculaPV_LC(decimal pc, decimal lc)
         {
-            throw new NotImplementedException();
+            if (lc == 0) { return pc; }
+            if (pc == 0) { return lc; }
+            
+            decimal LC = pc + lc;
+             
+            return LC;
         }
 
     }

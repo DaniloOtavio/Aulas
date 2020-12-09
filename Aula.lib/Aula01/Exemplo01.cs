@@ -18,9 +18,9 @@ namespace Aula.Lib.Aula01
         {
             if (pv == 0) { return 0; }
 
-            decimal mk = pv - pc;
+            decimal LC = pv - pc;
 
-            return mk;
+            return LC;
         }
 
         public static decimal CalculaPV_MK(decimal pc, decimal mk)

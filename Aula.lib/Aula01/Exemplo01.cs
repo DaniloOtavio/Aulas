@@ -33,7 +33,9 @@ namespace Aula.Lib.Aula01
 
         public static decimal CalculaPV_MLC(decimal pc, decimal mlc)
         {
-            throw new NotImplementedException();                       
+            decimal pv = pc + (pc * mlc / 100);
+
+            return pv;
         }
 
     }

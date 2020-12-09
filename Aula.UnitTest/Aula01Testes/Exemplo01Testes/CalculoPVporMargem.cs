@@ -15,7 +15,7 @@ namespace Aula.UnitTest.Aula01Testes.Exemplo01Testes
         {
             decimal LC = Exemplo01.CalculaPV_LC(150M, 0M);
 
-            Assert.Equal(0, LC);
+            Assert.Equal(150, LC);
         }
         [Fact]
         public void CalculaPCZero()

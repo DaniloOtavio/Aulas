@@ -17,6 +17,7 @@ namespace Aula.Lib.Aula01
         public static decimal CalculaLucro(decimal pc, decimal pv)
         {
             if (pv == 0) { return 0; }
+            if (pv < pc) { return 0; }
 
             decimal LC = pv - pc;
 
@@ -25,8 +26,6 @@ namespace Aula.Lib.Aula01
 
         public static decimal CalculaPV_MK(decimal pc, decimal mk)
         {
-            if (pc==0 && mk == 0) { return 0; }
-            
             decimal PV = pc * mk;
 
             return PV;
@@ -37,9 +36,9 @@ namespace Aula.Lib.Aula01
             if (lc == 0) { return pc; }
             if (pc == 0) { return lc; }
             
-            decimal LC = pc + lc;
+            decimal PV = pc + lc;
              
-            return LC;
+            return PV;
         }
 
     }

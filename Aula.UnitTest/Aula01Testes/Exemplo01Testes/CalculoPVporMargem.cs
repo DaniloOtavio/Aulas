@@ -22,7 +22,7 @@ namespace Aula.UnitTest.Aula01Testes.Exemplo01Testes
         {
             decimal LC = Exemplo01.CalculaPV_LC(0M, 30M);
 
-            Assert.Equal(0, LC);
+            Assert.Equal(30, LC);
         }
         [Fact]
         public void CalculaTesteProprio()

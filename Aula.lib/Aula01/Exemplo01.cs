@@ -31,14 +31,9 @@ namespace Aula.Lib.Aula01
             return PV;
         }
 
-        public static decimal CalculaPV_LC(decimal pc, decimal lc)
+        public static decimal CalculaPV_MLC(decimal pc, decimal mlc)
         {
-            if (lc == 0) return pc;
-            if (pc == 0) return lc;
-            
-            decimal PV = pc + lc;
-             
-            return PV;
+            throw new NotImplementedException();                       
         }
 
     }

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aula.Lib</name>
+    </assembly>
+    <members>
+        <member name="M:Aula.Lib.Aula01.Exemplo01.CalcularMarkup(System.Decimal,System.Decimal)">
+            <summary>
+            CalculaMarkup
+            </summary>
+            <param name="PC">Preço de Custo</param>
+            <param name="PV">Preço de Venda</param>
+            <returns>Retorna o Markup calculado</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula01.Exemplo01.CalculaPV_MK_Doc(System.Decimal,System.Decimal)">
+            <summary>
+            Calcular Preço de Venda com Base em Markup
+            </summary>
+            <param name="pc">Preço de Custo</param>
+            <param name="mkup">Markup</param>
+            <returns>Retorna o preço de venda do produto com base no preço de custo e markup informados</returns>
+        </member>
+    </members>
+</doc>

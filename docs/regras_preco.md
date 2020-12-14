@@ -10,6 +10,15 @@
 * Ao ser informado um preço de venda zero serão retornados markup e margens de lucro zeradas.
 * Cálculo do Preço de venda poderá ser feito aplicando a margem de lucro, markup ou inserindo manualmente.
 
+* Cálculo PV via Margem de Lucro
+```
+PV = PC * (1 + MLC% / 100)
+```
+
+* Cálculo PV via Margem de Lucro
+```
+PV = PC * (100 - PC)
+```
 ---
 
 ## Lucro
@@ -22,10 +31,9 @@
 ## Margem de Lucro
 
 * Ao ser informado um preço de custo zero e preço de venda maior que zero, a margem de lucro automaticamente será de 100%.
-* Cálculo de Margem de Lucro: Lucro / Receita
 
 ---
 
 ## Markup
 * Ao ser informado um preço de custo ou venda zerado, o markup será igualmente zero.
-* Cálculo de Markup: 100/[100 - Preço de Custo]
+* Cálculo de Markup: 100/(100 - Preço de Custo)

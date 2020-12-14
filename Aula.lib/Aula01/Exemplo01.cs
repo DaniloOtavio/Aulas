@@ -37,10 +37,11 @@ namespace Aula.Lib.Aula01
             return PV;
         }
 
+
         public static decimal CalculaPV_MLC(decimal pc, decimal mlc)
         {
-            if (pc == 0 && mlc == 0) return 0;
-            decimal PV = pc + (pc * (mlc / 100));
+
+            decimal PV = pc * (1 + (mlc / 100));
             
             return PV;
         }

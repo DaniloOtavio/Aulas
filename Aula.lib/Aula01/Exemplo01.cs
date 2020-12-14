@@ -2,7 +2,7 @@
 
 namespace Aula.Lib.Aula01
 {
-    public class Exemplo01
+    public static class Exemplo01
     {
         /// <summary>
         /// CalculaMarkup
@@ -18,7 +18,6 @@ namespace Aula.Lib.Aula01
 
             return mk;
         }
-
 
         public static decimal CalculaLucro(decimal pc, decimal pv)
         {

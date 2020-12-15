@@ -29,7 +29,7 @@ namespace Aula.Lib.Aula02.View
             }
             set
             {
-                Venda = Exemplo01.CalculaPV_MK(Custo, value);
+                Venda = Exemplo01.CalcularPV_Markup(Custo, value);
             }
         }
 

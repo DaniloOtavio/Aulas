@@ -8,12 +8,12 @@ using Aula.Lib.Aula01;
 
 namespace Aula.UnitTest.Aula01Testes.Exemplo01Testes
 {
-    public class CalculoPVporMargem
+    public class CalcularPVporMargemDeLucro
     {
         [Fact]
         public void CalculaPVMLCProprio()
         {
-            decimal pv = Exemplo01.CalculaPV_MLC(50M, 25M);
+            decimal pv = Exemplo01.CalcularPV_MargemDeLucro(50M, 25M);
 
             Assert.Equal(62.5M, pv);
         }
@@ -29,7 +29,7 @@ namespace Aula.UnitTest.Aula01Testes.Exemplo01Testes
         [Fact]
         public void CustoZero()
         {
-            decimal pv = Exemplo01.CalculaPV_MLC(0, 50M);
+            decimal pv = Exemplo01.CalcularPV_MargemDeLucro(0, 50M);
 
             Assert.Equal(0, pv);
         }

@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\User2\Documents\GitHub\Aulas\Aula.lib\Aula.Lib.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Admin\Documents\GitHub\Aulas\Aula.lib\Aula.Lib.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\User2\Documents\GitHub\Aulas\Aula.lib\Aula.Lib.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Admin\Documents\GitHub\Aulas\Aula.lib\Aula.Lib.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

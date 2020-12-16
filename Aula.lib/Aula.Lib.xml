@@ -41,6 +41,103 @@
             <param name="mlc">Margem de Lucro</param>
             <returns>Retorna o preço de venda calculado através da Margem de Lucro</returns>
         </member>
+        <member name="T:Aula.Lib.Aula02.Exemplo02">
+            <summary>
+            Classe feita para testar o CPF
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula02.Exemplo02.VerificarCPFMacoratti(System.String)">
+            <summary>
+            VerificarValidadeCPFMacoratti
+            </summary>
+            <param name="CPF">CPF da pessoa a ser verificado</param>
+            <returns>Retorna se o CPF é válido ou não</returns>
+        </member>
+        <member name="T:Aula.Lib.Aula02.Models_DB.ClienteDB">
+            <summary>
+            Classe que representa o cliente no banco de dados
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.Models_DB.ClienteDB.Codigo">
+            <summary>
+            Código do Cliente
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.Models_DB.ClienteDB.Nome">
+            <summary>
+            Nome do Cliente
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.Models_DB.ClienteDB.CPF">
+            <summary>
+            CPF do cliente
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula02.Models_DB.ProdutoDB">
+            <summary>
+            Model para representar o produto no banco de dados
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.Models_DB.ProdutoDB.Codigo">
+            <summary>
+            Código do Produto
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.Models_DB.ProdutoDB.Nome">
+            <summary>
+            Descrição do Produto
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.Models_DB.ProdutoDB.Custo">
+            <summary>
+            Preço de Custo do Produto
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.Models_DB.ProdutoDB.Venda">
+            <summary>
+            Preço de Venda do Produto
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula02.View.ClienteView">
+            <summary>
+            Classe para representar a view do cliente, herdando de ClienteDB
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula02.View.ProdutoVendaView">
+            <summary>
+            Classe que representa o produto na venda, herdando dados da Model.
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.View.ProdutoVendaView.NCM">
+            <summary>
+            Classificação fiscal do produto
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.View.ProdutoVendaView.Qtde">
+            <summary>
+            Quantidade do item a ser vendida
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.View.ProdutoVendaView.Desconto">
+            <summary>
+            Desconto na venda do produto
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.View.ProdutoVendaView.SubTotal">
+            <summary>
+            Retorna o subtotal
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula02.View.ProdutoView">
+            <summary>
+            View para produtos, herdando características da Model
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.View.ProdutoView.Margem">
+            <summary>
+            Representa a margem de lucro para o usuário com base no preço de custo e venda
+            </summary>
+        </member>
         <member name="P:Aula.Lib.Aula02.View.ProdutoView.MargemDeLucro">
             <summary>
             Retorna a Margem de Lucro Calculado com Base no Preço de Custo e Preço de Venda

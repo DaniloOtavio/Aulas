@@ -30,32 +30,59 @@ namespace Aula.Lib.Aula02
             int soma;
             int resto;
             CPF = CPF.Trim();
-            CPF = CPF.Replace(".", "").Replace("-", "").Replace(" ", "");
+            CPF = CPF.Replace(".", "")
+                     .Replace("-", "")
+                     .Replace(" ", "");
+
             if (CPF.Length != 11)
+            {
                 return false;
+            }
+                
             tempCPF = CPF.Substring(0, 9);
             soma = 0;
 
             for (int i = 0; i < 9; i++)
+            {
                 soma += int.Parse(tempCPF[i].ToString()) * multiplicador1[i];
+            }
             resto = soma % 11;
             if (resto < 2)
+            {
                 resto = 0;
+
+            }
             else
+            {
                 resto = 11 - resto;
+            }
+
             digito = resto.ToString();
+            
             tempCPF += digito;
             soma = 0;
             for (int i = 0; i < 10; i++)
+            {
                 soma += int.Parse(tempCPF[i].ToString()) * multiplicador2[i];
+            }
             resto = soma % 11;
             if (resto < 2)
+            {
                 resto = 0;
+            }
             else
+            {
                 resto = 11 - resto;
+            }
+
             digito += resto.ToString();
 
             return CPF.EndsWith(digito);
+        }
+
+        public static string AplicarMascaraCPF(string CPF)
+        {
+            throw new NotImplementedException();
         }
     }
 }

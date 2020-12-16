@@ -11,16 +11,24 @@ namespace Aula.Lib.Aula02.View
         public decimal Venda { get; set; }
         */
 
-        // TODO Fix this shit
-        //public decimal MargemDeLucro
-        //{
-        //    get
-        //    {
-        //        return Exemplo01.
-        //    }
-        //    set;
-        //}
-
+        //TODO Fix this shit
+        /// <summary>
+        /// Retorna a Margem de Lucro Calculado com Base no Preço de Custo e Preço de Venda
+        /// </summary>
+        public decimal MargemDeLucro
+        {
+            get
+            {
+                return Exemplo01.CalcularMargemDeLucro(Custo, Venda);
+            }
+            set
+            {
+                Margem = Exemplo01.CalcularMargemDeLucro(Custo, value);
+            }
+        }
+        /// <summary>
+        /// Retorna o Markup Calculado com Base no Preço de Custo e Preço de Venda
+        /// </summary>
         public decimal MarkUp
         {
             get

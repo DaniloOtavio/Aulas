@@ -6,6 +6,7 @@
         public string Nome { get; set; }
         public decimal Custo { get; set; }
         public decimal Venda { get; set; }
+        public decimal Margem { get; set; }
 
     }
 }

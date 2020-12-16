@@ -41,5 +41,15 @@
             <param name="mlc">Margem de Lucro</param>
             <returns>Retorna o preço de venda calculado através da Margem de Lucro</returns>
         </member>
+        <member name="P:Aula.Lib.Aula02.View.ProdutoView.MargemDeLucro">
+            <summary>
+            Retorna a Margem de Lucro Calculado com Base no Preço de Custo e Preço de Venda
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.View.ProdutoView.MarkUp">
+            <summary>
+            Retorna o Markup Calculado com Base no Preço de Custo e Preço de Venda
+            </summary>
+        </member>
     </members>
 </doc>

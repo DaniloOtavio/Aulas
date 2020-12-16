@@ -80,9 +80,14 @@ namespace Aula.Lib.Aula02
             return CPF.EndsWith(digito);
         }
 
+        /// <summary>
+        /// Aplicar Máscara ao CPF informado
+        /// </summary>
+        /// <param name="CPF"></param>
+        /// <returns></returns>
         public static string AplicarMascaraCPF(string CPF)
         {
-            throw new NotImplementedException();
+            return $"{CPF[0..3]}.{CPF[3..6]}.{CPF[6..9]}-{CPF[9..]}";
         }
     }
 }

@@ -14,15 +14,5 @@ namespace Aula.Lib.Aula02.OOP___Herança
             //this.Saldo -= (valor + 0.10);
             base.Saca(valor + 0.10);
         }
-
-
-
-
-
-
-
     }
-
-
-
 }

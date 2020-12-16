@@ -53,6 +53,13 @@
             <param name="CPF">CPF da pessoa a ser verificado</param>
             <returns>Retorna se o CPF é válido ou não</returns>
         </member>
+        <member name="M:Aula.Lib.Aula02.Exemplo02.AplicarMascaraCPF(System.String)">
+            <summary>
+            Aplicar Máscara ao CPF informado
+            </summary>
+            <param name="CPF"></param>
+            <returns></returns>
+        </member>
         <member name="T:Aula.Lib.Aula02.Models_DB.ClienteDB">
             <summary>
             Classe que representa o cliente no banco de dados

@@ -46,12 +46,17 @@
             Classe feita para testar o CPF
             </summary>
         </member>
-        <member name="M:Aula.Lib.Aula02.Exemplo02.VerificarCPFMacoratti(System.String)">
+        <member name="M:Aula.Lib.Aula02.Exemplo02.VerificarCPF(System.String)">
             <summary>
-            VerificarValidadeCPFMacoratti
+            VerificarCPF
             </summary>
             <param name="CPF">CPF da pessoa a ser verificado</param>
             <returns>Retorna se o CPF é válido ou não</returns>
+        </member>
+        <member name="F:Aula.Lib.Aula02.Exemplo02.CPFValido">
+            <summary>
+            CPF público a ser preenchido caso passe na validação
+            </summary>
         </member>
         <member name="T:Aula.Lib.Aula02.Models_DB.ClienteDB">
             <summary>
@@ -101,6 +106,11 @@
         <member name="T:Aula.Lib.Aula02.View.ClienteView">
             <summary>
             Classe para representar a view do cliente, herdando de ClienteDB
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula02.View.ClienteView.ValidaCPF">
+            <summary>
+            Validação de CPF
             </summary>
         </member>
         <member name="T:Aula.Lib.Aula02.View.ProdutoVendaView">

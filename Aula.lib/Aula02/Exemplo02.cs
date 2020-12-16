@@ -57,8 +57,5 @@ namespace Aula.Lib.Aula02
 
             return CPF.EndsWith(digito);
         }
-        /// <summary>
-        /// CPF público a ser preenchido caso passe na validação
-        /// </summary>
     }
 }

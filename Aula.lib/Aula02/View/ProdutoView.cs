@@ -2,6 +2,9 @@
 
 namespace Aula.Lib.Aula02.View
 {
+    /// <summary>
+    /// View para produtos, herdando características da Model
+    /// </summary>
     public class ProdutoView : Models_DB.ProdutoDB
     {
         /* Não é usado, pois ProdutoDB já tem
@@ -10,6 +13,10 @@ namespace Aula.Lib.Aula02.View
         public decimal Custo { get; set; }
         public decimal Venda { get; set; }
         */
+        /// <summary>
+        /// Representa a margem de lucro para o usuário com base no preço de custo e venda
+        /// </summary>
+        public decimal Margem { get; set; }
 
         //TODO Fix this shit
         /// <summary>

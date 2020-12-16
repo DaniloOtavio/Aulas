@@ -19,16 +19,5 @@ namespace Aula.Lib.Aula02.View
             }
         }
 
-        /// <summary>
-        /// Formatação de CPF no padrão ###.###.###-##
-        /// </summary>
-        public string CPFFormatado
-        {
-            //Fonte: https://www.codigoexpresso.com.br/Home/Postagem/28
-            set
-            {
-                CPF = Convert.ToUInt64(value).ToString(@"000\.000\.000\-00");
-            }
-        }
     }
 }

@@ -45,5 +45,19 @@ namespace Aula.UnitTest.Aula02Testes.Exemplo02Testes
 
             Assert.False(Valida);
         }
+        [Fact]
+        public void CPFInvalido2()
+        {
+            bool Valida = Exemplo02.VerificarCPF("284.716.780-38");
+
+            Assert.False(Valida);
+        }
+        [Fact]
+        public void CPF4Devs3_SemMascara()
+        {
+            bool Valida = Exemplo02.VerificarCPF("98311423067");
+
+            Assert.True(Valida);
+        }
     }
 }

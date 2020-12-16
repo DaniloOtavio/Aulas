@@ -21,7 +21,6 @@ namespace Aula.Lib.Aula02
         /// <returns>Retorna se o CPF é válido ou não</returns>
         public static bool VerificarCPF(string CPF)
         {
-            //
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -40,7 +39,7 @@ namespace Aula.Lib.Aula02
             for (int i = 0; i < 9; i++)
                 soma += int.Parse(tempCPF[i].ToString()) * multiplicador1[i];
             resto = soma % 11;
-            if (resto > 10)
+            if (resto < 2)
                 resto = 0;
             else
                 resto = 11 - resto;
@@ -50,7 +49,7 @@ namespace Aula.Lib.Aula02
             for (int i = 0; i < 10; i++)
                 soma += int.Parse(tempCPF[i].ToString()) * multiplicador2[i];
             resto = soma % 11;
-            if (resto > 10)
+            if (resto < 2)
                 resto = 0;
             else
                 resto = 11 - resto;
@@ -58,5 +57,8 @@ namespace Aula.Lib.Aula02
 
             return CPF.EndsWith(digito);
         }
+        /// <summary>
+        /// CPF público a ser preenchido caso passe na validação
+        /// </summary>
     }
 }

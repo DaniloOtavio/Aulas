@@ -1,9 +1,6 @@
 ﻿using Aula.Lib.Aula02.Models_DB;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aula.Lib.Aula03
 {
@@ -33,26 +30,21 @@ namespace Aula.Lib.Aula03
         /// Remove Clientes
         /// </summary>
         /// <param name="v">Código do Cliente</param>
-        public static ClienteDB RemoverCliente(int v)
+        public static void RemoverCliente(int v)
         {
-            var c = BancoClientes.RemoveCliente(v);
-            if (c == null) throw new InvalidOperationException();
-            return c;
+            if (!BancoClientes.RemoveCliente(v))
+            {
+                throw new InvalidOperationException();
+            }
         }
 
         /// <summary>
         /// Editar Clientes
         /// </summary>
         /// <param name="v">Código do Cliente</param>
-        /// <returns></returns>
-        public static ClienteDB EditarCliente(int v, string Nome)
+        public static void EditarCliente(int v, string Nome)
         {
-            var c = BancoClientes.EditaCliente(v);
-            if (c == null) throw new InvalidOperationException();
-
-            c.Nome = Nome;
-
-            return c;
+            BancoClientes.EditaCliente(v, Nome);
         }
 
         /// <summary>
@@ -71,39 +63,5 @@ namespace Aula.Lib.Aula03
 
             return lst.ToArray();
         }
-
-        /// <summary>
-        /// Remover Cliente
-        /// </summary>
-        /// <param name="CodigoCliente">Código do Cliente</param>
-        public static ClienteDB[] RemoverCliente(int[] CodigoCliente)
-        {
-            List<ClienteDB> lst = new List<ClienteDB>();
-
-            foreach (var c in CodigoCliente)
-            {
-                lst.Remove(BancoClientes.RemoveCliente(c));
-            }
-
-            return lst.ToArray();
-        }
-
-        /// <summary>
-        /// Editar Cliente
-        /// </summary>
-        /// <param name="CodigoCliente">Código do Cliente</param>
-        /// <returns>Retorna o cliente editado</returns>
-        public static ClienteDB[] EditarCliente(int[] CodigoCliente)
-        {
-            List<ClienteDB> lst = new List<ClienteDB>();
-
-            foreach (var c in CodigoCliente)
-            {
-                lst.Remove(BancoClientes.EditaCliente(c));
-            }
-
-            return lst.ToArray();
-        }
-
     }
 }

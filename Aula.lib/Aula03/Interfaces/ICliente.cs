@@ -24,13 +24,13 @@ namespace Aula.Lib.Aula03.Interfaces
         /// </summary>
         /// <param name="CodigoCliente">Código do Cliente</param>
         /// <returns>Remove o cliente da lista</returns>
-        ClienteDB RemoveCliente(int CodigoCliente);
+        bool RemoveCliente(int CodigoCliente);
 
         /// <summary>
         /// Edita Cliente
         /// </summary>
         /// <param name="CodigoCliente">Código do Cliente</param>
         /// <returns>Edita o cliente da lista</returns>
-        ClienteDB EditaCliente(int CodigoCliente);
+        void EditaCliente(int CodigoCliente, string Nome);
     }
 }

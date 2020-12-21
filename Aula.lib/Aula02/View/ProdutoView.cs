@@ -18,7 +18,6 @@ namespace Aula.Lib.Aula02.View
         /// </summary>
         public decimal Margem { get; set; }
 
-        //TODO Fix this shit
         /// <summary>
         /// Retorna a Margem de Lucro Calculado com Base no Preço de Custo e Preço de Venda
         /// </summary>

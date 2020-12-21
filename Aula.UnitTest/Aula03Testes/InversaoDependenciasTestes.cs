@@ -14,7 +14,7 @@ namespace Aula.UnitTest.Aula03Testes
         [Fact]
         public void TesteCliente11()
         {
-            injectaDepndecia();
+            InjectaDepndecia();
 
             var c = ClienteView2.TrazerCliente(4);
             Assert.Equal("Jão", c.Nome);
@@ -22,19 +22,22 @@ namespace Aula.UnitTest.Aula03Testes
         [Fact]
         public void TestarCliente_Null()
         {
-            injectaDepndecia();
+            InjectaDepndecia();
 
             Assert.Throws<InvalidOperationException>(() => ClienteView2.TrazerCliente(12));
         }
 
+        [Fact]
+        public void TestaRemoverCliente()
+        {
+            throw new NotImplementedException();
+          
+        }
 
-        private void injectaDepndecia()
+        private static void InjectaDepndecia()
         {
             ClienteView2.BancoClientes = new FakeDB();
         }
-
-
-
         class FakeDB : ICliente
         {
             List<Lib.Aula02.Models_DB.ClienteDB> clientes;
@@ -70,6 +73,18 @@ namespace Aula.UnitTest.Aula03Testes
                 foreach(var c in clientes)
                 {
                     if (c.Codigo == CodigoCliente) return c;
+                }
+                return null;
+            }
+
+            public Lib.Aula02.Models_DB.ClienteDB RemoveCliente(int CodigoCliente)
+            {
+                foreach (var c in clientes)
+                {
+                    if (c.Codigo == CodigoCliente)
+                    {
+                        clientes.Remove(c);
+                    }
                 }
                 return null;
             }

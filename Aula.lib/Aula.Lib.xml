@@ -192,5 +192,60 @@
             Retorna o Markup Calculado com Base no Preço de Custo e Preço de Venda
             </summary>
         </member>
+        <member name="T:Aula.Lib.Aula03.ClienteView2">
+            <summary>
+            View para Clientes
+            </summary>
+        </member>
+        <member name="F:Aula.Lib.Aula03.ClienteView2.BancoClientes">
+            <summary>
+            Criação de um banco de clientes
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula03.ClienteView2.TrazerCliente(System.Int32)">
+            <summary>
+            Carrega cliente de acordo com o código do cliente
+            </summary>
+            <param name="CodigoCliente">Código do Cliente</param>
+            <returns>Retorna o cliente</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula03.ClienteView2.RemoverCliente(System.Int32)">
+            <summary>
+            Remove Clientes
+            </summary>
+            <param name="v">Código do Cliente</param>
+        </member>
+        <member name="M:Aula.Lib.Aula03.ClienteView2.TrazerClientes(System.Int32[])">
+            <summary>
+            Array para listar os clientes
+            </summary>
+            <param name="CodigoCliente">Código do Cliente</param>
+            <returns>Retorna a listagem dos clientes</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula03.ClienteView2.RemoverCliente(System.Int32[])">
+            <summary>
+            Remover Cliente
+            </summary>
+            <param name="CodigoCliente">Código do Cliente</param>
+        </member>
+        <member name="T:Aula.Lib.Aula03.Interfaces.ICliente">
+            <summary>
+            Interface para clientes
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula03.Interfaces.ICliente.CarregaCliente(System.Int32)">
+            <summary>
+            Carrega clientes
+            </summary>
+            <param name="CodigoCliente">Código do Cliente</param>
+            <returns>Cliente</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula03.Interfaces.ICliente.RemoveCliente(System.Int32)">
+             <summary>
+            Remove cliente 
+             </summary>
+             <param name="CodigoCliente">Código do Cliente</param>
+             <returns>Remove o cliente da lista</returns>
+        </member>
     </members>
 </doc>

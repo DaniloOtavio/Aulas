@@ -7,10 +7,23 @@ using System.Threading.Tasks;
 
 namespace Aula.Lib.Aula03.Interfaces
 {
+    /// <summary>
+    /// Interface para clientes
+    /// </summary>
     public interface ICliente
     {
+        /// <summary>
+        /// Carrega clientes
+        /// </summary>
+        /// <param name="CodigoCliente">Código do Cliente</param>
+        /// <returns>Cliente</returns>
         ClienteDB CarregaCliente(int CodigoCliente);
-
-
+        
+        /// <summary>
+        ///Remove cliente 
+        /// </summary>
+        /// <param name="CodigoCliente">Código do Cliente</param>
+        /// <returns>Remove o cliente da lista</returns>
+        ClienteDB RemoveCliente(int CodigoCliente);
     }
 }

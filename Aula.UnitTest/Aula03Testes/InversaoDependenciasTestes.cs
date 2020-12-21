@@ -45,7 +45,14 @@ namespace Aula.UnitTest.Aula03Testes
         [Fact]
         public void EditaCliente()
         {
-            throw new NotImplementedException();
+            InjectaDepndecia();
+
+            var nomeOriginal = ClienteView2.TrazerCliente(4);
+            Assert.Equal("Jão", nomeOriginal.Nome);
+
+            var novoNome = ClienteView2.EditarCliente(4, "John");
+
+            Assert.Equal("John", novoNome.Nome);
         }
 
         private static void InjectaDepndecia()

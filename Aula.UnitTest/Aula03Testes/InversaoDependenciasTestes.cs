@@ -23,15 +23,24 @@ namespace Aula.UnitTest.Aula03Testes
         public void TestarCliente_Null()
         {
             InjectaDepndecia();
-
             Assert.Throws<InvalidOperationException>(() => ClienteView2.TrazerCliente(12));
         }
+        [Fact]
+        public void TestaRemoverCliente_Null()
+        {
+            InjectaDepndecia();
+            Assert.Throws<InvalidOperationException>(() => ClienteView2.RemoverCliente(15));
 
+        }
         [Fact]
         public void TestaRemoverCliente()
         {
-            throw new NotImplementedException();
-          
+            InjectaDepndecia();
+
+            var c = ClienteView2.RemoverCliente(3);
+
+            Assert.Equal("Gertrudes", c.Nome);
+
         }
 
         private static void InjectaDepndecia()
@@ -84,6 +93,7 @@ namespace Aula.UnitTest.Aula03Testes
                     if (c.Codigo == CodigoCliente)
                     {
                         clientes.Remove(c);
+                        return c;
                     }
                 }
                 return null;

@@ -40,7 +40,12 @@ namespace Aula.UnitTest.Aula03Testes
             var c = ClienteView2.RemoverCliente(3);
 
             Assert.Equal("Gertrudes", c.Nome);
+        }
 
+        [Fact]
+        public void EditaCliente()
+        {
+            throw new NotImplementedException();
         }
 
         private static void InjectaDepndecia()
@@ -86,13 +91,22 @@ namespace Aula.UnitTest.Aula03Testes
                 return null;
             }
 
+            public Lib.Aula02.Models_DB.ClienteDB EditaCliente(int CodigoCliente)
+            {
+                foreach (var c in clientes)
+                {
+                    if (c.Codigo == CodigoCliente) return c;
+                }
+                return null;
+            }
+
             public Lib.Aula02.Models_DB.ClienteDB RemoveCliente(int CodigoCliente)
             {
                 foreach (var c in clientes)
                 {
                     if (c.Codigo == CodigoCliente)
                     {
-                        clientes.Remove(c);
+                        clientes.Remove(c); 
                         return c;
                     }
                 }

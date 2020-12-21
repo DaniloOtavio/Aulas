@@ -215,6 +215,13 @@
             </summary>
             <param name="v">Código do Cliente</param>
         </member>
+        <member name="M:Aula.Lib.Aula03.ClienteView2.EditarCliente(System.Int32,System.String)">
+            <summary>
+            Editar Clientes
+            </summary>
+            <param name="v">Código do Cliente</param>
+            <returns></returns>
+        </member>
         <member name="M:Aula.Lib.Aula03.ClienteView2.TrazerClientes(System.Int32[])">
             <summary>
             Array para listar os clientes
@@ -227,6 +234,13 @@
             Remover Cliente
             </summary>
             <param name="CodigoCliente">Código do Cliente</param>
+        </member>
+        <member name="M:Aula.Lib.Aula03.ClienteView2.EditarCliente(System.Int32[])">
+            <summary>
+            Editar Cliente
+            </summary>
+            <param name="CodigoCliente">Código do Cliente</param>
+            <returns>Retorna o cliente editado</returns>
         </member>
         <member name="T:Aula.Lib.Aula03.Interfaces.ICliente">
             <summary>
@@ -246,6 +260,13 @@
              </summary>
              <param name="CodigoCliente">Código do Cliente</param>
              <returns>Remove o cliente da lista</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula03.Interfaces.ICliente.EditaCliente(System.Int32)">
+            <summary>
+            Edita Cliente
+            </summary>
+            <param name="CodigoCliente">Código do Cliente</param>
+            <returns>Edita o cliente da lista</returns>
         </member>
     </members>
 </doc>

@@ -41,6 +41,21 @@ namespace Aula.Lib.Aula03
         }
 
         /// <summary>
+        /// Editar Clientes
+        /// </summary>
+        /// <param name="v">Código do Cliente</param>
+        /// <returns></returns>
+        public static ClienteDB EditarCliente(int v, string Nome)
+        {
+            var c = BancoClientes.EditaCliente(v);
+            if (c == null) throw new InvalidOperationException();
+
+            c.Nome = Nome;
+
+            return c;
+        }
+
+        /// <summary>
         /// Array para listar os clientes
         /// </summary>
         /// <param name="CodigoCliente">Código do Cliente</param>
@@ -68,6 +83,23 @@ namespace Aula.Lib.Aula03
             foreach (var c in CodigoCliente)
             {
                 lst.Remove(BancoClientes.RemoveCliente(c));
+            }
+
+            return lst.ToArray();
+        }
+
+        /// <summary>
+        /// Editar Cliente
+        /// </summary>
+        /// <param name="CodigoCliente">Código do Cliente</param>
+        /// <returns>Retorna o cliente editado</returns>
+        public static ClienteDB[] EditarCliente(int[] CodigoCliente)
+        {
+            List<ClienteDB> lst = new List<ClienteDB>();
+
+            foreach (var c in CodigoCliente)
+            {
+                lst.Remove(BancoClientes.EditaCliente(c));
             }
 
             return lst.ToArray();

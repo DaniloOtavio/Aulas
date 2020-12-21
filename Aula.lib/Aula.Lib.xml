@@ -220,7 +220,6 @@
             Editar Clientes
             </summary>
             <param name="v">Código do Cliente</param>
-            <returns></returns>
         </member>
         <member name="M:Aula.Lib.Aula03.ClienteView2.TrazerClientes(System.Int32[])">
             <summary>
@@ -248,7 +247,7 @@
              <param name="CodigoCliente">Código do Cliente</param>
              <returns>Remove o cliente da lista</returns>
         </member>
-        <member name="M:Aula.Lib.Aula03.Interfaces.ICliente.EditaCliente(System.Int32)">
+        <member name="M:Aula.Lib.Aula03.Interfaces.ICliente.EditaCliente(System.Int32,System.String)">
             <summary>
             Edita Cliente
             </summary>

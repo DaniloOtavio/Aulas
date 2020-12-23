@@ -11,6 +11,7 @@ namespace Aula.Lib.Aula04
     /// </summary>
     public static class ExercicioAula04
     {
+
         /// <summary>
         /// Função para verificar números pares entre 2 valores
         /// </summary>
@@ -19,15 +20,7 @@ namespace Aula.Lib.Aula04
         /// <returns>Retorna números pares</returns>
         public static double[] NumerosParesEntre(int Inicio, int Fim)
         {
-            if (Inicio % 2 == 0 && Fim % 2 != 0)
-            {
-                return Array.Empty<double>();
-            }
-            else if(Inicio % 2 != 0 && Fim % 2 == 0)
-            {
-                return Array.Empty<double>();
-            }
-            else if (Inicio >= Fim)
+            if (Inicio >= Fim)
             {
                 return Array.Empty<double>();
             }

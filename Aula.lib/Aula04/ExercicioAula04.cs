@@ -11,7 +11,7 @@ namespace Aula.Lib.Aula04
     /// </summary>
     public static class ExercicioAula04
     {
-
+        #region NúmerosParesEntre
         /// <summary>
         /// Função para verificar números pares entre 2 valores
         /// </summary>
@@ -37,7 +37,58 @@ namespace Aula.Lib.Aula04
             }
             return numerosPares;
         }
+        #endregion
+        /// <summary>
+        /// Função para retornar números múltiplos de 2 e 3
+        /// </summary>
+        /// <param name="Inicio">Início do período</param>
+        /// <param name="Fim">Fim do período</param>
+        /// <returns>Retorna números múltiplos entre 2 e 3</returns>
+        //////public static List<int> NumerosMultiplo2e3Entre(int Inicio, int Fim)
+        //////{
+        //////    List<int> multiplos2e3 = new List<int>();
+        //////    int pos = 0;
+
+        //////    for (int i = Inicio; i < Fim; i++)
+        //////    {
+        //////        if (i % 2 == 0 || i % 3 == 0)
+        //////        {
+        //////            multiplos2e3.Add(i);
+        //////            _ = pos++;
+        //////        }
+        //////    }
+        //////    return multiplos2e3;
+        //////}
+
+        public static int[] NumerosMultiplo2e3Entre(int Inicio, int Fim)
+        {
+            int arraySize = 0;
+            for (int i = Inicio; i < Fim; i++)
+            {
+                if (i % 2 == 0 || i % 3 == 0)
+                {
+                    arraySize += 1;
+                }
+            }
+
+            int[] multiplos2e3 = new int[arraySize];
+            int pos = 0;
+
+            for (int i = Inicio; i < Fim; i++)
+            {
+                if (i % 2 == 0 || i % 3 == 0)
+                {
+                    multiplos2e3[pos] = i;
+                    _ = pos++;
+                }
+            }
+            return multiplos2e3;
 
 
+
+
+
+
+        }
     }
 }

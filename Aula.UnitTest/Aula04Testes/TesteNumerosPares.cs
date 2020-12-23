@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xunit;
 namespace Aula.UnitTest.Aula04Testes
 {
-    public class TesteMultiploDe2
+    public class TesteNumerosPares
     {
         [Fact]
         public void TestaNumerosPares1()

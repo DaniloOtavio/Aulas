@@ -274,5 +274,13 @@
             <param name="Fim">Fim do período</param>
             <returns>Retorna números pares</returns>
         </member>
+        <member name="M:Aula.Lib.Aula04.ExercicioAula04.NumerosMultiplo2e3Entre(System.Int32,System.Int32)">
+            <summary>
+            Função para retornar números múltiplos de 2 e 3
+            </summary>
+            <param name="Inicio">Início do período</param>
+            <param name="Fim">Fim do período</param>
+            <returns>Retorna números múltiplos entre 2 e 3</returns>
+        </member>
     </members>
 </doc>

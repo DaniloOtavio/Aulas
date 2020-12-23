@@ -1,9 +1,5 @@
 ﻿using Aula.Lib.Aula04;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Aula.UnitTest.Aula04Testes
@@ -14,8 +10,8 @@ namespace Aula.UnitTest.Aula04Testes
         public void TestaFibonacci1()
         {
             var resultado = ExercicioAula04.Fibonacci(10);
-
-            Assert.Equal(new int[11] { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 }, resultado);
+            Assert.Equal(10, resultado.Length);
+            Assert.Equal(new int[10] { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 }, resultado);
         }
         [Fact]
         public void TestaFibonacci2()
@@ -42,6 +38,21 @@ namespace Aula.UnitTest.Aula04Testes
         public void TestaFibonacci5()
         {
             var resultado = ExercicioAula04.Fibonacci(50);
+
+            Assert.Equal(Array.Empty<int>(), resultado);
+        }
+        [Fact]
+        public void TestaFibonacciN()
+        {
+            var resultado = ExercicioAula04.Fibonacci(-2);
+
+            Assert.Equal(Array.Empty<int>(), resultado);
+        }
+
+        [Fact]
+        public void TestaFibonacciZero()
+        {
+            var resultado = ExercicioAula04.Fibonacci(0);
 
             Assert.Equal(Array.Empty<int>(), resultado);
         }

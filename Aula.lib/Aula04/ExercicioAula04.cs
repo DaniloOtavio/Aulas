@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aula.Lib.Aula04
 {
@@ -32,7 +28,7 @@ namespace Aula.Lib.Aula04
                 if (i % 2 == 0)
                 {
                     numerosPares[pos] = i;
-                    _ = pos++;
+                    pos++;
                 }
             }
             return numerosPares;
@@ -46,21 +42,6 @@ namespace Aula.Lib.Aula04
         /// <param name="Inicio">Início do período</param>
         /// <param name="Fim">Fim do período</param>
         /// <returns>Retorna números múltiplos entre 2 e 3</returns>
-        //////public static List<int> NumerosMultiplo2e3Entre(int Inicio, int Fim)
-        //////{
-        //////    List<int> multiplos2e3 = new List<int>();
-        //////    int pos = 0;
-
-        //////    for (int i = Inicio; i < Fim; i++)
-        //////    {
-        //////        if (i % 2 == 0 || i % 3 == 0)
-        //////        {
-        //////            multiplos2e3.Add(i);
-        //////            _ = pos++;
-        //////        }
-        //////    }
-        //////    return multiplos2e3;
-        //////}
         public static int[] NumerosMultiplo2e3Entre(int Inicio, int Fim)
         {
             int arraySize = 0;
@@ -68,7 +49,7 @@ namespace Aula.Lib.Aula04
             {
                 if (i % 2 == 0 || i % 3 == 0)
                 {
-                    arraySize += 1;
+                    arraySize++;
                 }
             }
 
@@ -80,7 +61,7 @@ namespace Aula.Lib.Aula04
                 if (i % 2 == 0 || i % 3 == 0)
                 {
                     multiplos2e3[pos] = i;
-                    _ = pos++;
+                    pos++;
                 }
             }
             return multiplos2e3;
@@ -96,13 +77,13 @@ namespace Aula.Lib.Aula04
         /// <returns>Retorna a quantidade de números calculados</returns>
         public static int[] Fibonacci(int Quantidade)
         {
-            if (Quantidade > 46) { return Array.Empty<int>(); }
+            if (Quantidade > 46) throw new ArgumentOutOfRangeException(nameof(Quantidade), "Quantidade deve ser menor do que 47.");
 
             int x = 0;
             int y = 1;
-            int[] numeros = new int[Quantidade + 1];
+            int[] numeros = new int[Quantidade];
 
-            for (int i = 0; i <= Quantidade; i++)
+            for (int i = 0; i < Quantidade; i++)
             {
                 if (i == 0) { numeros[i] = 0; }
                 else if (i == 1) { numeros[i] = 1; }
@@ -111,12 +92,7 @@ namespace Aula.Lib.Aula04
                     int z = x + y;
                     numeros[i] = z;
                     x = y;
-                    y = z;
-
-                    if (z > 2147483647)
-                    {
-                        return Array.Empty<int>();
-                    }    
+                    y = z; 
                 }
                 
             }

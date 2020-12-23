@@ -38,6 +38,8 @@ namespace Aula.Lib.Aula04
             return numerosPares;
         }
         #endregion
+
+        #region NumerosMultiplos2e3Entre
         /// <summary>
         /// Função para retornar números múltiplos de 2 e 3
         /// </summary>
@@ -59,7 +61,6 @@ namespace Aula.Lib.Aula04
         //////    }
         //////    return multiplos2e3;
         //////}
-
         public static int[] NumerosMultiplo2e3Entre(int Inicio, int Fim)
         {
             int arraySize = 0;
@@ -83,6 +84,30 @@ namespace Aula.Lib.Aula04
                 }
             }
             return multiplos2e3;
+
+        }
+        #endregion
+
+        static int x = 0;
+        static int y = 1;
+        static int z = 0;
+
+        static int[] Fibonacci(int Quantidade)
+        {
+            int[] soma = new int[Quantidade];
+
+            for (int i = 0; i < Quantidade; i++)
+            {
+                z = x + y;
+
+                soma[i] = z;
+
+                x = y;
+                y = z;
+            }
+
+            return soma;
         }
     }
 }
+

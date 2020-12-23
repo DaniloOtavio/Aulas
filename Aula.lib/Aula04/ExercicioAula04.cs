@@ -83,12 +83,6 @@ namespace Aula.Lib.Aula04
                 }
             }
             return multiplos2e3;
-
-
-
-
-
-
         }
     }
 }

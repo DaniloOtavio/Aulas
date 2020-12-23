@@ -282,5 +282,12 @@
             <param name="Fim">Fim do período</param>
             <returns>Retorna números múltiplos entre 2 e 3</returns>
         </member>
+        <member name="M:Aula.Lib.Aula04.ExercicioAula04.Fibonacci(System.Int32)">
+            <summary>
+            Calcula Fibonacci
+            </summary>
+            <param name="Quantidade">Quantidade de números</param>
+            <returns>Retorna a quantidade de números calculados</returns>
+        </member>
     </members>
 </doc>

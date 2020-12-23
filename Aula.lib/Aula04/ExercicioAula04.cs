@@ -88,26 +88,41 @@ namespace Aula.Lib.Aula04
         }
         #endregion
 
-        static int x = 0;
-        static int y = 1;
-        static int z = 0;
-
-        static int[] Fibonacci(int Quantidade)
+        #region Fibonacci
+        /// <summary>
+        /// Calcula Fibonacci
+        /// </summary>
+        /// <param name="Quantidade">Quantidade de números</param>
+        /// <returns>Retorna a quantidade de números calculados</returns>
+        public static int[] Fibonacci(int Quantidade)
         {
-            int[] soma = new int[Quantidade];
+            if (Quantidade > 46) { return Array.Empty<int>(); }
 
-            for (int i = 0; i < Quantidade; i++)
+            int x = 0;
+            int y = 1;
+            int[] numeros = new int[Quantidade + 1];
+
+            for (int i = 0; i <= Quantidade; i++)
             {
-                z = x + y;
+                if (i == 0) { numeros[i] = 0; }
+                else if (i == 1) { numeros[i] = 1; }
+                else
+                {
+                    int z = x + y;
+                    numeros[i] = z;
+                    x = y;
+                    y = z;
 
-                soma[i] = z;
-
-                x = y;
-                y = z;
+                    if (z > 2147483647)
+                    {
+                        return Array.Empty<int>();
+                    }    
+                }
+                
             }
-
-            return soma;
+            return numeros;
         }
+        #endregion
     }
 }
 

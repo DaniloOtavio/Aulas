@@ -220,6 +220,7 @@
             Editar Clientes
             </summary>
             <param name="v">Código do Cliente</param>
+            <param name="Nome">Nome do Cliente</param>
         </member>
         <member name="M:Aula.Lib.Aula03.ClienteView2.TrazerClientes(System.Int32[])">
             <summary>
@@ -252,7 +253,26 @@
             Edita Cliente
             </summary>
             <param name="CodigoCliente">Código do Cliente</param>
+            <param name="Nome">Nome do Cliente</param>
             <returns>Edita o cliente da lista</returns>
+        </member>
+        <member name="T:Aula.Lib.Aula04.Enumeraveis">
+            <summary>
+            Classe de estudo - Enumeráveis
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula04.ExercicioAula04">
+            <summary>
+            Exercícios Aula01
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula04.ExercicioAula04.NumerosParesEntre(System.Int32,System.Int32)">
+            <summary>
+            Função para verificar números pares entre 2 valores
+            </summary>
+            <param name="Inicio">Início do período</param>
+            <param name="Fim">Fim do período</param>
+            <returns>Retorna números pares</returns>
         </member>
     </members>
 </doc>

@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Aula.Lib.Aula04
 {
+    /// <summary>
+    /// Classe de estudo - Enumeráveis
+    /// </summary>
     public class Enumeraveis
     {
-
+        
 
 
 

@@ -42,6 +42,7 @@ namespace Aula.Lib.Aula03
         /// Editar Clientes
         /// </summary>
         /// <param name="v">Código do Cliente</param>
+        /// <param name="Nome">Nome do Cliente</param>
         public static void EditarCliente(int v, string Nome)
         {
             BancoClientes.EditaCliente(v, Nome);

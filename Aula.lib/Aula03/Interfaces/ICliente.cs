@@ -30,6 +30,7 @@ namespace Aula.Lib.Aula03.Interfaces
         /// Edita Cliente
         /// </summary>
         /// <param name="CodigoCliente">Código do Cliente</param>
+        /// <param name="Nome">Nome do Cliente</param>
         /// <returns>Edita o cliente da lista</returns>
         void EditaCliente(int CodigoCliente, string Nome);
     }

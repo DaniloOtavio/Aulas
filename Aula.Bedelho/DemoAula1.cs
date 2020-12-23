@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aula.Bedelho
 {
-    static class DemoAula1
+    class DemoAula1
     {
         static void parte1()
         {
@@ -57,5 +57,7 @@ namespace Aula.Bedelho
                 return pares;
             }
         }
+
+        
     }
 }

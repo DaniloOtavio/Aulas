@@ -6,9 +6,6 @@ namespace Aula.Bedelho
     {
         static void Main(string[] args)
         {
-            
-            Console.WriteLine();
-
         }
     }
 }

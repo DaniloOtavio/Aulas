@@ -289,5 +289,17 @@
             <param name="Quantidade">Quantidade de números</param>
             <returns>Retorna a quantidade de números calculados</returns>
         </member>
+        <member name="T:Aula.Lib.Aula05.Comparacao">
+            <summary>
+            Classe para comparação de itens
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula05.Comparacao.Ordenar(System.Int32[])">
+            <summary>
+            Ordenar itens
+            </summary>
+            <param name="Itens">Itens a serem ordenados</param>
+            <returns>Retorna os itens ordenados</returns>
+        </member>
     </members>
 </doc>

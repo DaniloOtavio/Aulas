@@ -78,6 +78,7 @@ namespace Aula.Lib.Aula04
         public static int[] Fibonacci(int Quantidade)
         {
             if (Quantidade > 46) throw new ArgumentOutOfRangeException(nameof(Quantidade), "Quantidade deve ser menor do que 47.");
+            if (Quantidade < 0) throw new ArgumentOutOfRangeException(nameof(Quantidade), "Quantidade deve ser maior que 0 (zero)");
 
             int x = 0;
             int y = 1;

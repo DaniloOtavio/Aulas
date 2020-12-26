@@ -12,4 +12,8 @@
     <DocumentationFile>C:\Users\User2\Documents\GitHub\Aulas\Aula.lib\Aula.Lib.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Simple.Sqlite" Version="0.4.43" />
+  </ItemGroup>
+
 </Project>

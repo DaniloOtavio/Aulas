@@ -53,7 +53,7 @@ namespace Aula.UnitTest.Aula04Testes
         {
             var resultado = ExercicioAula04.Fibonacci(0);
             Assert.Empty(resultado);
-            Assert.Equal(new int[0] { }, resultado);
+            Assert.Equal(Array.Empty<int>(), resultado);
         }
     }
 }

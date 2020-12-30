@@ -6,7 +6,7 @@ namespace Aula.Bedelho
     {
         static void Main(string[] args)
         {
-            Aula.Lib.Aula06.E0.UI.RUN();
+            Aula.Lib.Aula06.E1.UI.Inicializar();
         }
     }
 }

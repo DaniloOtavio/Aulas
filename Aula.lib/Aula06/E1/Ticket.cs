@@ -1,8 +1,11 @@
-﻿namespace Aula.Lib.Aula06.E1
+﻿using Simple.Sqlite.Attributes;
+
+namespace Aula.Lib.Aula06.E1
 {
     public class Ticket
     {
-        public int ID { get; set; }
+        [PrimaryKey]
+        public long ID { get; set; }
         public string Assunto { get; set; }
         public string DataAbertura { get; set; }
         public string Tipo { get; set; }

@@ -14,6 +14,8 @@ namespace Aula.Lib.Aula06.E1
         }
         public static TicketHist BuscarHistorico(string ID)
         {
+            
+
             return DB.Get<TicketHist>("ID", ID);
         }
 

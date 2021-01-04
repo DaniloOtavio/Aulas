@@ -13,6 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Aula06\E1\TicketHist_View.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Simple.Sqlite" Version="0.4.43" />
   </ItemGroup>
 

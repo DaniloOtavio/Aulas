@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Aula.Lib.Aula06.E0
 {
+    /// <summary>
+    /// Interface do usuário
+    /// </summary>
     public class UI
     {
+        /// <summary>
+        /// Start do sistema
+        /// </summary>
         public static void RUN()
         {
             Console.WriteLine("My awesome piece of shit");

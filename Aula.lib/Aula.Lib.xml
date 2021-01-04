@@ -301,5 +301,188 @@
             <param name="Itens">Itens a serem ordenados</param>
             <returns>Retorna os itens ordenados</returns>
         </member>
+        <member name="T:Aula.Lib.Aula06.E0.Item">
+            <summary>
+            Classe Item
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E0.Item.ID">
+            <summary>
+            ID interno
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E0.Item.Nome">
+            <summary>
+            Nome do Produto
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E0.Item.Local">
+            <summary>
+            Local armazenagem
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E0.Item.Patrimonio">
+            <summary>
+            Número Patrimônio
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula06.E0.Item_View">
+            <summary>
+            View para Produto
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E0.Item_View.DB">
+            <summary>
+            Variável SQLite
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E0.Item_View.Inserir(Aula.Lib.Aula06.E0.Item)">
+            <summary>
+            Grava o item no banco
+            </summary>
+            <param name="item">Código do item</param>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E0.Item_View.BuscaPatrimonio(System.String)">
+            <summary>
+            Consulta por número de patrimônio
+            </summary>
+            <param name="Patrimonio">Número do patrimônio</param>
+            <returns>Retorna o item através da consulta por número do patrimônio</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E0.Item_View.TrazACambada">
+            <summary>
+            Busca todos os itens
+            </summary>
+            <returns>Retorna todos os itens</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E0.Item_View.Setup">
+            <summary>
+            Configuração Banco de dados
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula06.E0.UI">
+            <summary>
+            Interface do usuário
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E0.UI.RUN">
+            <summary>
+            Start do sistema
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula06.E1.Ticket">
+            <summary>
+            Model do ticket
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.Ticket.ID">
+            <summary>
+            ID interno do ticket
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.Ticket.Assunto">
+            <summary>
+            Assunto do ticket
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.Ticket.DataAbertura">
+            <summary>
+            Data de Abertura do ticket
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.Ticket.Tipo">
+            <summary>
+            Tipo (Bug ou Sugestão)
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.Ticket.Responsavel">
+            <summary>
+            Responsável pela abertura do chamado
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.Ticket.VersaoAfetada">
+            <summary>
+            Versão do software afetada
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.Ticket.Finalizado">
+            <summary>
+            Finalizado ou não
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula06.E1.TicketHist">
+            <summary>
+            Model dos históricos do ticket
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.TicketHist.ID">
+            <summary>
+            ID interno do histórico
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.TicketHist.ID_Ticket">
+            <summary>
+            ID do ticket
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.TicketHist.Texto">
+            <summary>
+            Ocorrência registrada
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.TicketHist.DataHoraAlteracao">
+            <summary>
+            Data e hora da inserção da alteração
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula06.E1.Ticket_View">
+            <summary>
+            View do ticket
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.Ticket_View.DB">
+            <summary>
+            Variável SQLite
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E1.Ticket_View.NovoTicket(Aula.Lib.Aula06.E1.Ticket)">
+            <summary>
+            Gravação do cabeçalho do ticket
+            </summary>
+            <param name="ticket">Informações do cabeçalho do ticket</param>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E1.Ticket_View.NovaAtualizacao(Aula.Lib.Aula06.E1.TicketHist)">
+            <summary>
+            Inserçaõ do histórico do ticket
+            </summary>
+            <param name="tickethist">Informações do histórico do ticket</param>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E1.Ticket_View.BuscarTicket(System.String)">
+            <summary>
+            Consultar ticket
+            </summary>
+            <param name="ID">ID do ticket</param>
+            <returns>Retorna o ticket cadastrado</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E1.Ticket_View.Setup">
+            <summary>
+            Configuração do Banco de Dados
+            </summary>
+        </member>
+        <member name="T:Aula.Lib.Aula06.E1.UI">
+            <summary>
+            Interface do Usuário
+            </summary>
+        </member>
+        <member name="P:Aula.Lib.Aula06.E1.UI.DB">
+            <summary>
+            Variável do SQLite
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula06.E1.UI.Inicializar">
+            <summary>
+            Inicializar sistema
+            </summary>
+        </member>
     </members>
 </doc>

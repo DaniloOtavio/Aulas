@@ -23,7 +23,7 @@ namespace Aula.Lib.Aula06.E1
         /// <summary>
         /// Tipo (Bug ou Sugestão)
         /// </summary>
-        public string Tipo { get; set; }
+        public Tipo_Ticket Tipo { get; set; }
         /// <summary>
         /// Responsável pela abertura do chamado
         /// </summary>

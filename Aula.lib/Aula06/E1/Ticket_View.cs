@@ -47,11 +47,8 @@ namespace Aula.Lib.Aula06.E1
 
             DB.CreateTables()
               .Add<Ticket>()
+              .Add<TicketHist>()
               .Commit();
-
-            DB.CreateTables()
-               .Add<TicketHist>()
-               .Commit();
         }
     }
 }

@@ -71,7 +71,14 @@ namespace Aula.Lib.Aula06.E1
 
             Console.SetCursorPosition(0, 2);
 
-            long id; string assunto = ""; var data = DateTime.Now; string tipo = ""; string responsavel = ""; string versao = ""; string ocorrencia = "";
+            long id; 
+            string assunto = ""; 
+            var data = DateTime.Now;
+            Tipo_Ticket tipo = Tipo_Ticket.BUG;
+            string responsavel = ""; 
+            string versao = ""; 
+            string ocorrencia = "";
+
             int posicao = 1;
             while (true)
             {
@@ -93,44 +100,46 @@ namespace Aula.Lib.Aula06.E1
 
                 if (key.Key == ConsoleKey.F2)
                 {
-                    string espaco = "";
                     if (posicao == 1)
                     {
-                        for (int i = 0; i < assunto.Length; i++) espaco += " ";
-
-                        Console.Write(espaco);
+                        Console.Write(new string(' ', Console.WindowWidth));
                         Console.SetCursorPosition(0, 2);
                         assunto = Console.ReadLine();
                     }
                     else if (posicao == 2)
                     {
-                        for (int i = 0; i < tipo.Length; i++) espaco += " ";
-
-                        Console.Write(espaco);
+                        Console.Write(new string(' ', 30));
                         Console.SetCursorPosition(0, 4);
-                        tipo = Console.ReadLine();
+                        string temp = Console.ReadLine();
+
+                        if (temp == "BUG")
+                        {
+                            tipo = Tipo_Ticket.BUG;
+                        }
+                        else if (temp == "SUGESTÃO")
+                        {
+                            tipo = Tipo_Ticket.SUGESTAO;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Tipo chamado inválido!");
+                        }
                     }
                     else if (posicao == 3)
                     {
-                        for (int i = 0; i < responsavel.Length; i++) espaco += " ";
-
-                        Console.Write(espaco);
+                        Console.Write(new string(' ', responsavel.Length));
                         Console.SetCursorPosition(0, 6);
                         responsavel = Console.ReadLine();
                     }
                     else if (posicao == 4)
                     {
-                        for (int i = 0; i < versao.Length; i++) espaco += " ";
-
-                        Console.Write(espaco);
+                        Console.Write(new string(' ', versao.Length));
                         Console.SetCursorPosition(0, 8);
                         versao = Console.ReadLine();
                     }
                     else if (posicao == 5)
                     {
-                        for (int i = 0; i < ocorrencia.Length; i++) espaco += " ";
-
-                        Console.Write(espaco);
+                        Console.Write(new string(' ', ocorrencia.Length));
                         Console.SetCursorPosition(0, 10);
                         ocorrencia = Console.ReadLine();
                     }
@@ -138,7 +147,7 @@ namespace Aula.Lib.Aula06.E1
 
                 if (key.Key == ConsoleKey.F5)
                 {
-                    if (CamposPreenchidos(assunto, tipo, responsavel, versao, ocorrencia) == false)
+                    if (CamposPreenchidos(assunto, responsavel, versao, ocorrencia) == false)
                     {
                         Console.SetCursorPosition(0, 2);
                         break;
@@ -169,14 +178,16 @@ namespace Aula.Lib.Aula06.E1
                     Console.WriteLine($"Registro incluído com sucesso! ID do ticket: {ticket.ID}");
                     Console.ReadKey();
                     MenuPrincipal();
+                    return;
                 }
             }
 
-            static bool CamposPreenchidos(string assunto, string tipo, string responsavel, string versao, string ocorrencia)
+            static bool CamposPreenchidos(string assunto, string responsavel, string versao, string ocorrencia)
             {
+                //ORGANIZAR TUDO ISSO AQUI
+
                 string campos = "";
                 if (assunto == "") campos = "[ASSUNTO]";
-                if (tipo == "") if (campos == "") campos = "[TIPO]"; else campos += " [TIPO]";
                 if (responsavel == "") if (campos == "") campos = "[RESPONSÁVEL]"; else campos += " [RESPONSÁVEL]";
                 if (versao == "") if (campos == "") campos = "[VERSÃO SOFTWARE]"; else campos += " [VERSÃO SOFTWARE]";
                 if (ocorrencia == "") if (campos == "") campos = "[OCORRÊNCIA]"; else campos += " [OCORRÊNCIA]";
@@ -304,4 +315,6 @@ namespace Aula.Lib.Aula06.E1
             }
         }
     }
+
+
 }

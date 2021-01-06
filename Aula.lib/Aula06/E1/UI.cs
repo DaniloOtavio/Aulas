@@ -16,9 +16,10 @@ namespace Aula.Lib.Aula06.E1
         /// </summary>
         public static void Inicializar()
         {
-
             Ticket_View.Setup();
             Console.WriteLine("Inicializando...");
+            Ticket_View.BackupDB();
+            Console.WriteLine("Backup realizado...");
             MenuPrincipal();
         }
         static void MenuPrincipal()
@@ -65,7 +66,7 @@ namespace Aula.Lib.Aula06.E1
 
             Console.SetCursorPosition(0, 15);
             Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("Pressione [F2] para inserir para liberar a digitação e [ENTER] para confirmar!");
+            Console.WriteLine("Pressione [F2] para liberar a digitação e [ENTER] para confirmar!");
             Console.WriteLine("Pressione [F5] para salvar!");
             Console.ResetColor();
 
@@ -188,9 +189,39 @@ namespace Aula.Lib.Aula06.E1
 
                 string campos = "";
                 if (assunto == "") campos = "[ASSUNTO]";
-                if (responsavel == "") if (campos == "") campos = "[RESPONSÁVEL]"; else campos += " [RESPONSÁVEL]";
-                if (versao == "") if (campos == "") campos = "[VERSÃO SOFTWARE]"; else campos += " [VERSÃO SOFTWARE]";
-                if (ocorrencia == "") if (campos == "") campos = "[OCORRÊNCIA]"; else campos += " [OCORRÊNCIA]";
+                if (responsavel == "")
+                {
+                    if (campos == "")
+                    {
+                        campos = "[RESPONSÁVEL]";
+                    }
+                    else
+                    {
+                        campos += " [RESPONSÁVEL]";
+                    }
+                }
+                if (versao == "")
+                {
+                    if (campos == "")
+                    {
+                        campos = "[VERSÃO SOFTWARE]";
+                    }
+                    else
+                    {
+                        campos += " [VERSÃO SOFTWARE]";
+                    }
+                }
+                if (ocorrencia == "")
+                {
+                    if (campos == "")
+                    {
+                        campos = "[OCORRÊNCIA]";
+                    }
+                    else
+                    {
+                        campos += " [OCORRÊNCIA]";
+                    }
+                }
 
                 if (campos != "")
                 {
@@ -209,112 +240,139 @@ namespace Aula.Lib.Aula06.E1
             Console.Clear();
 
             Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("Digite o ID do chamado:");
+            Console.WriteLine("Digite o ID do chamado para consultá-lo, digite * (asterisco) para exibir todos ou deixe vazio para voltar ao menu principal");
             Console.ResetColor();
 
             string ID = Console.ReadLine();
 
-            var ticket = Ticket_View.BuscarTicket(ID);
-            Console.Clear();
-
-            if (ticket != null)
+            if (ID == "")
             {
-                string status;
-                if (ticket.Finalizado == true) status = "Finalizado";
-                else status = "Aberto";
+                MenuPrincipal();
+                return;
+            }
 
-                Console.WriteLine($"Ticket nº: {ticket.ID } - Tipo: {ticket.Tipo} - Aberto em: {ticket.DataAbertura} - Por: {ticket.Responsavel} - Status: {status}");
-                Console.WriteLine("");
-                Console.WriteLine("Atualizações:");
-                Console.WriteLine("");
-
-                DB = new SqliteDB("Database.db");
-
-                var historico = DB.ExecuteQuery<TicketHist>("SELECT * FROM TicketHist WHERE ID_Ticket = @ID", new { ID });
-
-                foreach (var item in historico)
+            if (ID == "*")
+            {
+                var tickets = Ticket_View.CarregarTodosOsTickets();
+                Console.Clear();
+                foreach (var item in tickets)
                 {
-                    Console.WriteLine(item.DataHoraAlteracao);
-                    Console.WriteLine(item.Texto);
-                    Console.WriteLine("---------------------------------------------------------");
+                    Console.WriteLine($"ID: {item.ID} - Assunto: {item.Assunto} - Data de Abertura: {item.DataAbertura}");
                 }
-
-                Console.WriteLine("");
-                Console.WriteLine("");
+                Console.WriteLine("========================================================");
                 Console.WriteLine("Selecione uma opção: ");
-
-                string resposta;
-                if (status == "Aberto")
-                {
-                    Console.WriteLine("1 - Inserir nova atualização");
-                    Console.WriteLine("2 - Encerrar chamado");
-                    Console.WriteLine("3 - Voltar ao menu principal");
-
-                    resposta = Console.ReadLine();
-
-                    if (resposta == "1")
-                    {
-                        Console.WriteLine("---------------------------------------------------------");
-                        Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
-                        Console.WriteLine("Digitando nova ocorrência...");
-                        Console.ResetColor();
-
-                        string texto = Console.ReadLine();
-
-                        var ticket_hist = new TicketHist()
-                        {
-                            ID_Ticket = Convert.ToInt32(ID),
-                            DataHoraAlteracao = Convert.ToString(DateTime.Now),
-                            Texto = texto,
-                        };
-
-                        Ticket_View.NovaAtualizacao(ticket_hist);
-                        Console.WriteLine("Registro incluído com sucesso!");
-                        Console.ReadKey();
-                        MenuPrincipal();
-                    }
-                    else if (resposta == "2")
-                    {
-                        DB = new SqliteDB("Database.db");
-
-                        DB.ExecuteNonQuery("UPDATE Ticket SET Finalizado = TRUE WHERE ID = @ID", new { ID });
-
-                        Console.WriteLine("Chamado encerrado com sucesso!");
-                        Console.ReadKey();
-                        MenuPrincipal();
-                    }
-                    else if (resposta == "3") MenuPrincipal();
-
-                    else
-                    {
-                        Console.WriteLine("Opção inválida. Retornando ao menu principal...");
-                        Console.ReadKey();
-                        MenuPrincipal();
-                    }
-                }
+                Console.WriteLine("1 - Visualizar ticket");
+                Console.WriteLine("2 - Voltar ao menu principal");
+                string resposta = Console.ReadLine();
+                if (resposta == "1") MenuVisualizarTicket();
+                else if (resposta == "2") MenuPrincipal();
                 else
                 {
-                    Console.WriteLine("1 - Voltar ao menu principal");
-                    resposta = Console.ReadLine();
-                    if (resposta == "1") MenuPrincipal();
-                    else
-                    {
-                        Console.WriteLine("Opção inválida. Retornando ao menu principal...");
-                        Console.ReadKey();
-                        MenuPrincipal();
-                    }
+                    Console.WriteLine("Opção inválida. Retornando ao menu principal...");
+                    Console.ReadKey();
+                    MenuPrincipal();
                 }
             }
-            else //TICKET == NULL - NÃO ENCONTRADO
+            else
             {
-                Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("Não encontrado nenhum registro com esse ID!");
-                Console.ResetColor();
-                Console.ReadKey();
-                MenuVisualizarTicket();
+                var ticket = Ticket_View.BuscarTicket(ID);
+                Console.Clear();
+
+                if (ticket != null)
+                {
+                    string status;
+                    if (ticket.Finalizado == true) status = "Finalizado";
+                    else status = "Aberto";
+
+                    Console.WriteLine($"Ticket nº: {ticket.ID } - Tipo: {ticket.Tipo} - Aberto em: {ticket.DataAbertura} - Por: {ticket.Responsavel} - Status: {status}");
+                    Console.WriteLine("");
+                    Console.WriteLine("Atualizações:");
+                    Console.WriteLine("");
+
+                    var historico = Ticket_View.CarregarHistorico(ID);
+
+                    foreach (var item in historico)
+                    {
+                        Console.WriteLine(item.DataHoraAlteracao);
+                        Console.WriteLine(item.Texto);
+                        Console.WriteLine("---------------------------------------------------------");
+                    }
+
+                    Console.WriteLine("");
+                    Console.WriteLine("");
+                    Console.WriteLine("Selecione uma opção: ");
+
+                    string resposta;
+                    if (status == "Aberto")
+                    {
+                        Console.WriteLine("1 - Inserir nova atualização");
+                        Console.WriteLine("2 - Encerrar chamado");
+                        Console.WriteLine("3 - Voltar ao menu principal");
+
+                        resposta = Console.ReadLine();
+
+                        if (resposta == "1")
+                        {
+                            Console.WriteLine("---------------------------------------------------------");
+                            Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
+                            Console.WriteLine("Digitando nova ocorrência...");
+                            Console.ResetColor();
+
+                            string texto = Console.ReadLine();
+
+                            var ticket_hist = new TicketHist()
+                            {
+                                ID_Ticket = Convert.ToInt32(ID),
+                                DataHoraAlteracao = Convert.ToString(DateTime.Now),
+                                Texto = texto,
+                            };
+
+                            Ticket_View.NovaAtualizacao(ticket_hist);
+                            Console.WriteLine("Registro incluído com sucesso!");
+                            Console.ReadKey();
+                            MenuPrincipal();
+                        }
+                        else if (resposta == "2")
+                        {
+                            DB = new SqliteDB("Database.db");
+
+                            DB.ExecuteNonQuery("UPDATE Ticket SET Finalizado = @Tipo WHERE ID = @ID", new { ID, Tipo = true });
+
+                            Console.WriteLine("Chamado encerrado com sucesso!");
+                            Console.ReadKey();
+                            MenuPrincipal();
+                        }
+                        else if (resposta == "3") MenuPrincipal();
+
+                        else
+                        {
+                            Console.WriteLine("Opção inválida. Retornando ao menu principal...");
+                            Console.ReadKey();
+                            MenuPrincipal();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("1 - Voltar ao menu principal");
+                        resposta = Console.ReadLine();
+                        if (resposta == "1") MenuPrincipal();
+                        else
+                        {
+                            Console.WriteLine("Opção inválida. Retornando ao menu principal...");
+                            Console.ReadKey();
+                            MenuPrincipal();
+                        }
+                    }
+                }
+                else //TICKET == NULL - NÃO ENCONTRADO
+                {
+                    Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
+                    Console.WriteLine("Não encontrado nenhum registro com esse ID!");
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    MenuVisualizarTicket();
+                }
             }
         }
     }
-
-
 }

@@ -199,6 +199,7 @@ namespace Aula.Lib.Aula06.E1
                     };
                     Ticket_View.NovaAtualizacao(ticket_hist);
 
+                    Console.SetCursorPosition(0, 14);
                     Console.WriteLine($"Registro incluído com sucesso! ID do ticket: {ticket.ID}");
                     Console.ReadKey();
                     MenuPrincipal();

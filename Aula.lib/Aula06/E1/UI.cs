@@ -50,6 +50,8 @@ namespace Aula.Lib.Aula06.E1
         }
         static void MenuNovoTicket()
         {
+            //Cria cabeçalho
+            //..................................................................................................................................................................................
             Console.Clear();
 
             Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
@@ -74,27 +76,29 @@ namespace Aula.Lib.Aula06.E1
             Console.ResetColor();
 
             Console.SetCursorPosition(0, 2);
+            //..................................................................................................................................................................................
 
-            long id; 
-            string assunto = ""; 
-            var data = DateTime.Now;
-            Tipo_Ticket tipo = Tipo_Ticket.VAZIO;
-            string responsavel = ""; 
-            string versao = ""; 
-            string ocorrencia = "";
+            long id; //ID do ticket gravado
+            string assunto = ""; //Assunto do ticket a ser gravado
+            var data = DateTime.Now; //Data do ticket a ser gravado
+            Tipo_Ticket tipo = Tipo_Ticket.VAZIO; //Tipo do ticket a ser gravado
+            string responsavel = ""; //Responsável do ticket a ser gravado
+            string versao = ""; //Versão afetada do ticket a ser gravado
+            string ocorrencia = ""; //Ocorrência
 
             int posicao = 1;
             while (true)
             {
+                //Muda a posição de acordo com as setas pressionadas
+                //..................................................................................................................................................................................
                 if (posicao == 1) Console.SetCursorPosition(0, 2);
                 if (posicao == 2) Console.SetCursorPosition(0, 4);
                 if (posicao == 3) Console.SetCursorPosition(0, 6);
                 if (posicao == 4) Console.SetCursorPosition(0, 8);
                 if (posicao == 5) Console.SetCursorPosition(0, 10);
+                //..................................................................................................................................................................................
 
                 var key = Console.ReadKey(true);
-
-
                 if (key.Key == ConsoleKey.UpArrow && posicao > 1) posicao--;
                 if (key.Key == ConsoleKey.DownArrow && posicao < 5) posicao++;
                 if (key.Key == ConsoleKey.Escape)
@@ -103,6 +107,7 @@ namespace Aula.Lib.Aula06.E1
                     return;
                 }
 
+                //[F2] Libera a digitação
                 if (key.Key == ConsoleKey.F2)
                 {
                     if (posicao == 1)
@@ -248,6 +253,7 @@ namespace Aula.Lib.Aula06.E1
                     }
                 }
 
+                //[F5] Grava o ticket
                 if (key.Key == ConsoleKey.F5)
                 {
                     if (CamposPreenchidos(assunto, tipo, responsavel, versao, ocorrencia) == false)
@@ -286,7 +292,7 @@ namespace Aula.Lib.Aula06.E1
                     }
                 }
             }
-
+            //Função para validar os campos vazios
             static bool CamposPreenchidos(string assunto, Tipo_Ticket tipo, string responsavel, string versao, string ocorrencia)
             {
                 string campos = "";
@@ -371,11 +377,14 @@ namespace Aula.Lib.Aula06.E1
             if (ID == "*")
             {
                 var tickets = Ticket_View.CarregarTodosOsTickets();
+
                 Console.Clear();
+
                 foreach (var item in tickets)
                 {
                     Console.WriteLine($"ID: {item.ID} - Assunto: {item.Assunto} - Data de Abertura: {item.DataAbertura}");
                 }
+
                 Console.WriteLine("========================================================");
                 Console.WriteLine("Selecione uma opção: ");
                 Console.WriteLine("1 - Visualizar ticket");

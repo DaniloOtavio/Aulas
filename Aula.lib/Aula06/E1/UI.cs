@@ -9,6 +9,7 @@ namespace Aula.Lib.Aula06.E1
     /// </summary>
     public class UI
     {
+
         /// <summary>
         /// Variável do SQLite
         /// </summary>
@@ -93,6 +94,7 @@ namespace Aula.Lib.Aula06.E1
 
                 var key = Console.ReadKey(true);
 
+
                 if (key.Key == ConsoleKey.UpArrow && posicao > 1) posicao--;
                 if (key.Key == ConsoleKey.DownArrow && posicao < 5) posicao++;
                 if (key.Key == ConsoleKey.Escape)
@@ -129,7 +131,7 @@ namespace Aula.Lib.Aula06.E1
                             //..................................................................
                             assunto = assunto.Substring(0, 50);
                         }
-                        posicao++;
+                        posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                     }
                     else if (posicao == 2)
                     {
@@ -140,12 +142,12 @@ namespace Aula.Lib.Aula06.E1
                         if (temp == "0")
                         {
                             tipo = Tipo_Ticket.BUG;
-                            posicao++;
+                            posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                         }
                         else if (temp == "1")
                         {
                             tipo = Tipo_Ticket.SUGESTAO;
-                            posicao++;
+                            posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                         }
                         else
                         {
@@ -159,14 +161,14 @@ namespace Aula.Lib.Aula06.E1
                         Console.Write(new string(' ', responsavel.Length));
                         Console.SetCursorPosition(0, 6);
                         responsavel = Console.ReadLine();
-                        posicao++;
+                        posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                     }
                     else if (posicao == 4)
                     {
                         Console.Write(new string(' ', versao.Length));
                         Console.SetCursorPosition(0, 8);
                         versao = Console.ReadLine();
-                        posicao++;
+                        posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                     }
                     else if (posicao == 5)
                     {

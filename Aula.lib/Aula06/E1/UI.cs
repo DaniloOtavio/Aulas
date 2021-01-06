@@ -109,50 +109,91 @@ namespace Aula.Lib.Aula06.E1
                     {
                         Console.Write(new string(' ', Console.WindowWidth));
                         Console.SetCursorPosition(0, 2);
+                        Console.BackgroundColor = ConsoleColor.Blue;
                         assunto = Console.ReadLine();
+                        Console.ResetColor();
 
-                        var excesso = assunto.ToArray();
+                        int tam_excesso = 0;
 
                         if (assunto.Length > 50)
                         {
-                            //Pinta o excedente, informando que não será gravado
                             for (int i = 0; i < assunto.Length; i++)
                             {
                                 if (i >= 50)
                                 {
-                                    Console.SetCursorPosition(i, 2);
-                                    Console.BackgroundColor = ConsoleColor.Red;
-                                    Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write(excesso[i].ToString());
+                                    tam_excesso++;
                                 }
                             }
-                            Console.ResetColor();
                             Console.SetCursorPosition(0, 2);
                             //..................................................................
+
+                            //Retorna cor padrão
+                            Console.SetCursorPosition(0, 2);
+                            Console.ResetColor();
+                            Console.Write(new string(' ', Console.WindowWidth));
+                            Console.SetCursorPosition(0, 2);
+                            Console.Write(assunto.Substring(0, 50));
+
+                            //Printando excedente do assunto em vermelho
+                            Console.SetCursorPosition(50, 2);
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.Write(assunto.Substring(50,tam_excesso));
+                            Console.ResetColor();
+
+                            //campo assunto deve ir no máximo 50 para o BD
                             assunto = assunto.Substring(0, 50);
                         }
+                        else
+                        {
+                            Console.SetCursorPosition(0, 2);
+                            Console.ResetColor();
+                            Console.Write(new string(' ', Console.WindowWidth));
+                            Console.SetCursorPosition(0, 2);
+                            Console.Write(assunto);
+                        }
                         posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
+                        
                     }
                     else if (posicao == 2)
                     {
-                        Console.Write(new string(' ', 30));
+                        Console.Write(new string(' ', 61));
                         Console.SetCursorPosition(0, 4);
+                        Console.BackgroundColor = ConsoleColor.Blue;
                         string temp = Console.ReadLine();
 
                         if (temp == "0")
                         {
                             tipo = Tipo_Ticket.BUG;
+
+                            //Retorna cor padrão
+                            Console.SetCursorPosition(0, 4);
+                            Console.ResetColor();
+                            Console.Write(new string(' ', Console.WindowWidth));
+                            Console.SetCursorPosition(0, 4);
+                            Console.Write(temp);
+
                             posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                         }
                         else if (temp == "1")
                         {
                             tipo = Tipo_Ticket.SUGESTAO;
+
+                            //Retorna cor padrão
+                            Console.SetCursorPosition(0, 4);
+                            Console.ResetColor();
+                            Console.Write(new string(' ', Console.WindowWidth));
+                            Console.SetCursorPosition(0, 4);
+                            Console.Write(temp);
+
                             posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                         }
                         else
                         {
                             Console.SetCursorPosition(0, 4);
+                            Console.BackgroundColor = ConsoleColor.Red;
                             Console.WriteLine("Tipo chamado inválido! Siga as orientações da linha anterior.");
+                            Console.ResetColor();
                         }
                         Console.SetCursorPosition(0, 6);
                     }
@@ -160,21 +201,50 @@ namespace Aula.Lib.Aula06.E1
                     {
                         Console.Write(new string(' ', responsavel.Length));
                         Console.SetCursorPosition(0, 6);
+                        Console.BackgroundColor = ConsoleColor.Blue;
                         responsavel = Console.ReadLine();
+                        Console.ResetColor();
+
+                        //Retorna cor padrão
+                        Console.SetCursorPosition(0, 6);
+                        Console.ResetColor();
+                        Console.Write(new string(' ', Console.WindowWidth));
+                        Console.SetCursorPosition(0, 6);
+                        Console.Write(responsavel);
+
                         posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                     }
                     else if (posicao == 4)
                     {
                         Console.Write(new string(' ', versao.Length));
                         Console.SetCursorPosition(0, 8);
+                        Console.BackgroundColor = ConsoleColor.Blue;
                         versao = Console.ReadLine();
+                        Console.ResetColor();
+
+                        //Retorna cor padrão
+                        Console.SetCursorPosition(0, 8);
+                        Console.ResetColor();
+                        Console.Write(new string(' ', Console.WindowWidth));
+                        Console.SetCursorPosition(0, 8);
+                        Console.Write(versao);
+
                         posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                     }
                     else if (posicao == 5)
                     {
                         Console.Write(new string(' ', ocorrencia.Length));
                         Console.SetCursorPosition(0, 10);
+                        Console.BackgroundColor = ConsoleColor.Blue;
                         ocorrencia = Console.ReadLine();
+                        Console.ResetColor();
+
+                        //Retorna cor padrão
+                        Console.SetCursorPosition(0, 10);
+                        Console.ResetColor();
+                        Console.Write(new string(' ', Console.WindowWidth));
+                        Console.SetCursorPosition(0, 10);
+                        Console.Write(ocorrencia);
                     }
                 }
 
@@ -219,8 +289,6 @@ namespace Aula.Lib.Aula06.E1
 
             static bool CamposPreenchidos(string assunto, Tipo_Ticket tipo, string responsavel, string versao, string ocorrencia)
             {
-                //ORGANIZAR TUDO ISSO AQUI
-
                 string campos = "";
                 if (assunto == "") campos = "[ASSUNTO]";
 
@@ -367,7 +435,15 @@ namespace Aula.Lib.Aula06.E1
                             Console.WriteLine("Digitando nova ocorrência...");
                             Console.ResetColor();
 
+                            Console.BackgroundColor = ConsoleColor.Blue;
                             string texto = Console.ReadLine();
+
+                            //Retorna cor padrão
+                            Console.ResetColor();
+                            Console.SetCursorPosition(0, Console.CursorTop - 1);
+                            Console.Write(new string(' ', Console.WindowWidth));
+                            Console.SetCursorPosition(0, Console.CursorTop - 1);
+                            Console.Write(texto);
 
                             var ticket_hist = new TicketHist()
                             {
@@ -377,6 +453,8 @@ namespace Aula.Lib.Aula06.E1
                             };
 
                             Ticket_View.NovaAtualizacao(ticket_hist);
+                            Console.WriteLine("");
+                            Console.WriteLine("");
                             Console.WriteLine("Registro incluído com sucesso! Pressione alguma tecla para prosseguir.");
                             Console.ReadKey();
                             MenuPrincipal();

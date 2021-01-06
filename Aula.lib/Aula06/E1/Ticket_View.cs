@@ -41,11 +41,11 @@ namespace Aula.Lib.Aula06.E1
         {
             return DB.Get<Ticket>("ID", ID);
         }
+        
         /// <summary>
-        /// Consultar todos os tickets abertos
+        /// Retorna todos os tickets
         /// </summary>
-        /// <param name="ID">ID do Ticket</param>
-        /// <returns>Retorna todos os tickets</returns>
+        /// <returns></returns>
         public static Ticket[] CarregarTodosOsTickets()
         {
             var tickets = DB.GetAll<Ticket>();
@@ -73,6 +73,9 @@ namespace Aula.Lib.Aula06.E1
               .Add<TicketHist>()
               .Commit();
         }
+        /// <summary>
+        /// Realiza uma cópia do banco de dados
+        /// </summary>
         public static void BackupDB()
         {
             string localDB;

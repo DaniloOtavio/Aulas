@@ -58,7 +58,7 @@ namespace Aula.Lib.Aula06.E1
 
             Console.Write("Assunto: (Máx. 50 caracteres.) - (Caracteres destacados em vermelho serão desprezados na gravação.)");
             Console.SetCursorPosition(0, 3);
-            Console.Write("Informe o tipo da ocorrência (0 - BUG /1 - SUGESTÃO):");
+            Console.Write("Informe o tipo da ocorrência (1 - BUG /2 - SUGESTÃO):");
             Console.SetCursorPosition(0, 5);
             Console.Write("Responsável pelo atendimento:");
             Console.SetCursorPosition(0, 7);
@@ -78,7 +78,7 @@ namespace Aula.Lib.Aula06.E1
             long id; 
             string assunto = ""; 
             var data = DateTime.Now;
-            Tipo_Ticket tipo = Tipo_Ticket.BUG;
+            Tipo_Ticket tipo = Tipo_Ticket.VAZIO;
             string responsavel = ""; 
             string versao = ""; 
             string ocorrencia = "";
@@ -162,7 +162,7 @@ namespace Aula.Lib.Aula06.E1
                         Console.BackgroundColor = ConsoleColor.Blue;
                         string temp = Console.ReadLine();
 
-                        if (temp == "0")
+                        if (temp == "1")
                         {
                             tipo = Tipo_Ticket.BUG;
 
@@ -175,7 +175,7 @@ namespace Aula.Lib.Aula06.E1
 
                             posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
                         }
-                        else if (temp == "1")
+                        else if (temp == "2")
                         {
                             tipo = Tipo_Ticket.SUGESTAO;
 
@@ -423,8 +423,9 @@ namespace Aula.Lib.Aula06.E1
                     if (status == "Aberto")
                     {
                         Console.WriteLine("1 - Inserir nova atualização");
-                        Console.WriteLine("2 - Encerrar chamado");
-                        Console.WriteLine("3 - Voltar ao menu principal");
+                        Console.WriteLine("2 - Editar chamado");
+                        Console.WriteLine("3 - Encerrar chamado");
+                        Console.WriteLine("4 - Voltar ao menu principal");
 
                         resposta = Console.ReadLine();
 
@@ -461,15 +462,206 @@ namespace Aula.Lib.Aula06.E1
                         }
                         else if (resposta == "2")
                         {
+                            string old_assunto = ticket.Assunto;
+                            Tipo_Ticket old_tipo = ticket.Tipo;
+
+                            Console.Clear();
+                            Console.WriteLine($"Editando dados do chamado: {ticket.ID}");
+                            Console.WriteLine("---------------------------------------------------------");
+
+                            Console.SetCursorPosition(0, 3);
+                            Console.Write("Assunto: (Máx. 50 caracteres.) - (Caracteres destacados em vermelho serão desprezados na gravação.)");
+                            Console.SetCursorPosition(0, 5);
+                            Console.Write("Informe o tipo da ocorrência (0 - BUG /1 - SUGESTÃO):");
+
+                            Console.SetCursorPosition(0, 15);
+                            Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
+                            Console.WriteLine("Pressione [F2] para liberar a digitação e [ENTER] para confirmar!");
+                            Console.WriteLine("Pressione [F5] para salvar!");
+                            Console.WriteLine(@"Use as setas para cima ↑ e para baixo ↓ para navegar entre os campos!");
+                            Console.ResetColor();
+
+                            Console.SetCursorPosition(0, 4);
+
+                            string novo_assunto = "";
+                            Tipo_Ticket novo_tipo = Tipo_Ticket.VAZIO;
+                            int posicao = 1;
+                            while (true)
+                            {
+                                if (posicao == 1) Console.SetCursorPosition(0, 4);
+                                if (posicao == 2) Console.SetCursorPosition(0, 6);
+
+                                var key = Console.ReadKey(true);
+
+                                if (key.Key == ConsoleKey.UpArrow && posicao > 1) posicao--;
+                                if (key.Key == ConsoleKey.DownArrow && posicao < 2) posicao++;
+                                if (key.Key == ConsoleKey.Escape)
+                                {
+                                    MenuPrincipal();
+                                    return;
+                                }
+
+                                if (key.Key == ConsoleKey.F2)
+                                {
+                                    if (posicao == 1)
+                                    {
+                                        Console.Write(new string(' ', Console.WindowWidth));
+                                        Console.SetCursorPosition(0, 4);
+                                        Console.BackgroundColor = ConsoleColor.Blue;
+                                        novo_assunto = Console.ReadLine();
+                                        Console.ResetColor();
+
+                                        int tam_excesso = 0;
+
+                                        if (novo_assunto.Length > 50)
+                                        {
+                                            for (int i = 0; i < novo_assunto.Length; i++)
+                                            {
+                                                if (i >= 50)
+                                                {
+                                                    tam_excesso++;
+                                                }
+                                            }
+                                            Console.SetCursorPosition(0, 4);
+                                            //..................................................................
+
+                                            //Retorna cor padrão
+                                            Console.SetCursorPosition(0, 4);
+                                            Console.ResetColor();
+                                            Console.Write(new string(' ', Console.WindowWidth));
+                                            Console.SetCursorPosition(0, 4);
+                                            Console.Write(novo_assunto.Substring(0, 50));
+
+                                            //Printando excedente do assunto em vermelho
+                                            Console.SetCursorPosition(50, 4);
+                                            Console.BackgroundColor = ConsoleColor.Red;
+                                            Console.ForegroundColor = ConsoleColor.Black;
+                                            Console.Write(novo_assunto.Substring(50, tam_excesso));
+                                            Console.ResetColor();
+
+                                            //campo assunto deve ir no máximo 50 para o BD
+                                            novo_assunto = novo_assunto.Substring(0, 50);
+                                        }
+                                        else
+                                        {
+                                            Console.SetCursorPosition(0, 4);
+                                            Console.ResetColor();
+                                            Console.Write(new string(' ', Console.WindowWidth));
+                                            Console.SetCursorPosition(0, 4);
+                                            Console.Write(novo_assunto);
+                                        }
+                                        posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
+
+                                    }
+                                    else if (posicao == 2)
+                                    {
+                                        Console.Write(new string(' ', 61));
+                                        Console.SetCursorPosition(0, 6);
+                                        Console.BackgroundColor = ConsoleColor.Blue;
+                                        string temp = Console.ReadLine();
+
+                                        if (temp == "1")
+                                        {
+                                            novo_tipo = Tipo_Ticket.BUG;
+
+                                            //Retorna cor padrão
+                                            Console.SetCursorPosition(0, 6);
+                                            Console.ResetColor();
+                                            Console.Write(new string(' ', Console.WindowWidth));
+                                            Console.SetCursorPosition(0, 6);
+                                            Console.Write(temp);
+
+                                            //posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
+                                        }
+                                        else if (temp == "2")
+                                        {
+                                            novo_tipo = Tipo_Ticket.SUGESTAO;
+
+                                            //Retorna cor padrão
+                                            Console.SetCursorPosition(0, 6);
+                                            Console.ResetColor();
+                                            Console.Write(new string(' ', Console.WindowWidth));
+                                            Console.SetCursorPosition(0, 6);
+                                            Console.Write(temp);
+
+                                            //posicao++; //AVANÇA PARA O PRÓXIMO CAMPO
+                                        }
+                                        else
+                                        {
+                                            Console.SetCursorPosition(0, 6);
+                                            Console.BackgroundColor = ConsoleColor.Red;
+                                            Console.WriteLine("Tipo chamado inválido! Siga as orientações da linha anterior.");
+                                            Console.ResetColor();
+                                        }
+                                    }
+                                }
+                                else if (key.Key == ConsoleKey.F5)
+                                {
+                                    string camposAlterados = "";
+                                    DB = new SqliteDB("Database.db");
+                                    if (novo_assunto != "")
+                                    {
+                                        if (novo_assunto != old_assunto)
+                                        {
+                                            DB.ExecuteNonQuery("UPDATE Ticket SET Assunto = @ASSUNTO WHERE ID = @ID", new { ASSUNTO = novo_assunto, ID });
+                                            camposAlterados = "[ASSUNTO]";
+                                        }
+                                    }
+                                    if (novo_tipo != Tipo_Ticket.VAZIO)
+                                    {
+                                        if (novo_tipo != old_tipo)
+                                        {
+                                            DB.ExecuteNonQuery("UPDATE Ticket SET Tipo = @TIPO WHERE ID = @ID", new { TIPO = novo_tipo, ID });
+                                            if (camposAlterados == "") _ = "[TIPO]";
+                                            else camposAlterados += " [TIPO]";
+                                        }
+                                    }
+                                    if (camposAlterados != "")
+                                    {
+                                        var ticket_hist = new TicketHist()
+                                        {
+                                            ID_Ticket = Convert.ToInt32(ID),
+                                            DataHoraAlteracao = Convert.ToString(DateTime.Now),
+                                            Texto = $"Alteração de campos realizada. Campos afetados: {camposAlterados}"
+                                        };
+                                        Ticket_View.NovaAtualizacao(ticket_hist);
+
+                                        Console.SetCursorPosition(0, 14);
+                                        Console.WriteLine("Dados alterados com sucesso! Pressione alguma tecla para prosseguir.");
+                                        Console.ReadKey();
+                                        MenuVisualizarTicket();
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        Console.SetCursorPosition(0, 14);
+                                        Console.WriteLine("Nenhum campo foi alterado. Voltando ao menu de pesquisa de tickets... Pressione alguma tecla para prosseguir.");
+                                        Console.ReadKey();
+                                        MenuVisualizarTicket();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        else if (resposta == "3")
+                        {
                             DB = new SqliteDB("Database.db");
 
                             DB.ExecuteNonQuery("UPDATE Ticket SET Finalizado = @Tipo WHERE ID = @ID", new { ID, Tipo = true });
+
+                            var ticket_hist = new TicketHist()
+                            {
+                                ID_Ticket = Convert.ToInt32(ID),
+                                DataHoraAlteracao = Convert.ToString(DateTime.Now),
+                                Texto = "Chamado encerrado!"
+                            };
+                            Ticket_View.NovaAtualizacao(ticket_hist);
 
                             Console.WriteLine("Chamado encerrado com sucesso! Pressione alguma tecla para prosseguir.");
                             Console.ReadKey();
                             MenuPrincipal();
                         }
-                        else if (resposta == "3") MenuPrincipal();
+                        else if (resposta == "4") MenuPrincipal();
 
                         else
                         {

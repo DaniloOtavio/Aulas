@@ -6,12 +6,16 @@
     public enum Tipo_Ticket
     {
         /// <summary>
+        /// TipoTicket não informado
+        /// </summary>
+        VAZIO = 0,
+        /// <summary>
         /// Bug
         /// </summary>
-        BUG = 0,
+        BUG = 1,
         /// <summary>
         /// Sugestão
         /// </summary>
-        SUGESTAO = 1
+        SUGESTAO = 2
     }
 }

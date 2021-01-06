@@ -466,10 +466,9 @@
         </member>
         <member name="M:Aula.Lib.Aula06.E1.Ticket_View.CarregarTodosOsTickets">
             <summary>
-            Consultar todos os tickets abertos
+            Retorna todos os tickets
             </summary>
-            <param name="ID">ID do Ticket</param>
-            <returns>Retorna todos os tickets</returns>
+            <returns></returns>
         </member>
         <member name="M:Aula.Lib.Aula06.E1.Ticket_View.CarregarHistorico(System.String)">
             <summary>
@@ -483,9 +482,19 @@
             Configuração do Banco de Dados
             </summary>
         </member>
+        <member name="M:Aula.Lib.Aula06.E1.Ticket_View.BackupDB">
+            <summary>
+            Realiza uma cópia do banco de dados
+            </summary>
+        </member>
         <member name="T:Aula.Lib.Aula06.E1.Tipo_Ticket">
             <summary>
             Tipo do ticket a ser aberto (0 - BUG/1 - SUGESTÃO)
+            </summary>
+        </member>
+        <member name="F:Aula.Lib.Aula06.E1.Tipo_Ticket.VAZIO">
+            <summary>
+            TipoTicket não informado
             </summary>
         </member>
         <member name="F:Aula.Lib.Aula06.E1.Tipo_Ticket.BUG">

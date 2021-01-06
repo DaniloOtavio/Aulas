@@ -70,6 +70,7 @@ namespace Aula.Lib.Aula06.E1
             Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("Pressione [F2] para liberar a digitação e [ENTER] para confirmar!");
             Console.WriteLine("Pressione [F5] para salvar!");
+            Console.WriteLine(@"Use as setas para cima ↑ e para baixo ↓ para navegar entre os campos!");
             Console.ResetColor();
 
             Console.SetCursorPosition(0, 2);

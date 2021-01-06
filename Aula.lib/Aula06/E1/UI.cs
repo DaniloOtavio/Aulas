@@ -100,7 +100,7 @@ namespace Aula.Lib.Aula06.E1
                 if (key.Key == ConsoleKey.Escape)
                 {
                     MenuPrincipal();
-                    break;
+                    return;
                 }
 
                 if (key.Key == ConsoleKey.F2)
@@ -180,48 +180,62 @@ namespace Aula.Lib.Aula06.E1
 
                 if (key.Key == ConsoleKey.F5)
                 {
-                    if (CamposPreenchidos(assunto, responsavel, versao, ocorrencia) == false)
+                    if (CamposPreenchidos(assunto, tipo, responsavel, versao, ocorrencia) == false)
                     {
                         Console.SetCursorPosition(0, 2);
-                        break;
                     }
-
-                    var ticket = new Ticket()
+                    else
                     {
-                        Assunto = assunto,
-                        DataAbertura = Convert.ToString(data),
-                        Tipo = tipo,
-                        Responsavel = responsavel,
-                        VersaoAfetada = versao,
-                        Finalizado = false
-                    };
+                        var ticket = new Ticket()
+                        {
+                            Assunto = assunto,
+                            DataAbertura = Convert.ToString(data),
+                            Tipo = tipo,
+                            Responsavel = responsavel,
+                            VersaoAfetada = versao,
+                            Finalizado = false
+                        };
 
-                    Ticket_View.NovoTicket(ticket);
+                        Ticket_View.NovoTicket(ticket);
 
-                    id = ticket.ID;
+                        id = ticket.ID;
 
-                    var ticket_hist = new TicketHist()
-                    {
-                        ID_Ticket = id,
-                        DataHoraAlteracao = Convert.ToString(DateTime.Now),
-                        Texto = ocorrencia
-                    };
-                    Ticket_View.NovaAtualizacao(ticket_hist);
+                        var ticket_hist = new TicketHist()
+                        {
+                            ID_Ticket = id,
+                            DataHoraAlteracao = Convert.ToString(DateTime.Now),
+                            Texto = ocorrencia
+                        };
+                        Ticket_View.NovaAtualizacao(ticket_hist);
 
-                    Console.SetCursorPosition(0, 14);
-                    Console.WriteLine($"Registro incluído com sucesso! ID do ticket: {ticket.ID}. Pressione alguma tecla para prosseguir.");
-                    Console.ReadKey();
-                    MenuPrincipal();
-                    return;
+                        Console.SetCursorPosition(0, 14);
+                        Console.WriteLine($"Registro incluído com sucesso! ID do ticket: {ticket.ID}. Pressione alguma tecla para prosseguir.");
+                        Console.ReadKey();
+                        MenuPrincipal();
+                        return;
+                    }
                 }
             }
 
-            static bool CamposPreenchidos(string assunto, string responsavel, string versao, string ocorrencia)
+            static bool CamposPreenchidos(string assunto, Tipo_Ticket tipo, string responsavel, string versao, string ocorrencia)
             {
                 //ORGANIZAR TUDO ISSO AQUI
 
                 string campos = "";
                 if (assunto == "") campos = "[ASSUNTO]";
+
+                if (tipo != Tipo_Ticket.BUG && tipo != Tipo_Ticket.SUGESTAO)
+                {
+                    if (campos == "")
+                    {
+                        campos = "[TIPO CHAMADO]";
+                    }
+                    else
+                    {
+                        campos += " [TIPO CHAMADO]";
+                    }
+                }
+
                 if (responsavel == "")
                 {
                     if (campos == "")
@@ -259,8 +273,10 @@ namespace Aula.Lib.Aula06.E1
                 if (campos != "")
                 {
                     Console.SetCursorPosition(0, 20);
+                    Console.Write(new string(' ', 75));
+                    Console.SetCursorPosition(0, 20);
                     Console.BackgroundColor = ConsoleColor.Red; Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Campos faltantes:");
+                    Console.Write("Campos faltantes: ");
                     Console.Write(campos);
                     Console.ResetColor();
                     return false;

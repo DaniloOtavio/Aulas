@@ -58,7 +58,7 @@ namespace Aula.Lib.Aula06.E1
 
             Console.Write("Assunto: (Máx. 50 caracteres.) - (Caracteres destacados em vermelho serão desprezados na gravação.)");
             Console.SetCursorPosition(0, 3);
-            Console.Write("Informe o tipo da ocorrência (BUG / SUGESTÃO):");
+            Console.Write("Informe o tipo da ocorrência (0 - BUG /1 - SUGESTÃO):");
             Console.SetCursorPosition(0, 5);
             Console.Write("Responsável pelo atendimento:");
             Console.SetCursorPosition(0, 7);
@@ -136,17 +136,18 @@ namespace Aula.Lib.Aula06.E1
                         Console.SetCursorPosition(0, 4);
                         string temp = Console.ReadLine();
 
-                        if (temp == "BUG")
+                        if (temp == "0")
                         {
                             tipo = Tipo_Ticket.BUG;
                         }
-                        else if (temp == "SUGESTÃO")
+                        else if (temp == "1")
                         {
                             tipo = Tipo_Ticket.SUGESTAO;
                         }
                         else
                         {
-                            Console.WriteLine("Tipo chamado inválido!");
+                            Console.SetCursorPosition(0, 4);
+                            Console.WriteLine("Tipo chamado inválido! Siga as orientações da linha anterior.");
                         }
                     }
                     else if (posicao == 3)

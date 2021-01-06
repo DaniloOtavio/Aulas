@@ -9,7 +9,6 @@ namespace Aula.Lib.Aula06.E1
     /// </summary>
     public class UI
     {
-
         /// <summary>
         /// Variável do SQLite
         /// </summary>
@@ -39,12 +38,12 @@ namespace Aula.Lib.Aula06.E1
             else if (resposta == "2") MenuVisualizarTicket();
             else if (resposta == "3")
             {
-                Console.WriteLine("Saindo...");
+                Console.WriteLine("Saindo... Pressione alguma tecla para prosseguir.");
                 Console.ReadKey();
             }
             else
             {
-                Console.WriteLine("Comando não reconhecido!");
+                Console.WriteLine("Comando não reconhecido! Pressione alguma tecla para prosseguir.");
                 Console.ReadKey();
                 MenuPrincipal();
             }
@@ -209,7 +208,7 @@ namespace Aula.Lib.Aula06.E1
                     Ticket_View.NovaAtualizacao(ticket_hist);
 
                     Console.SetCursorPosition(0, 14);
-                    Console.WriteLine($"Registro incluído com sucesso! ID do ticket: {ticket.ID}");
+                    Console.WriteLine($"Registro incluído com sucesso! ID do ticket: {ticket.ID}. Pressione alguma tecla para prosseguir.");
                     Console.ReadKey();
                     MenuPrincipal();
                     return;
@@ -301,7 +300,7 @@ namespace Aula.Lib.Aula06.E1
                 else if (resposta == "2") MenuPrincipal();
                 else
                 {
-                    Console.WriteLine("Opção inválida. Retornando ao menu principal...");
+                    Console.WriteLine("Opção inválida. Retornando ao menu principal... Pressione alguma tecla para prosseguir.");
                     Console.ReadKey();
                     MenuPrincipal();
                 }
@@ -361,7 +360,7 @@ namespace Aula.Lib.Aula06.E1
                             };
 
                             Ticket_View.NovaAtualizacao(ticket_hist);
-                            Console.WriteLine("Registro incluído com sucesso!");
+                            Console.WriteLine("Registro incluído com sucesso! Pressione alguma tecla para prosseguir.");
                             Console.ReadKey();
                             MenuPrincipal();
                         }
@@ -371,7 +370,7 @@ namespace Aula.Lib.Aula06.E1
 
                             DB.ExecuteNonQuery("UPDATE Ticket SET Finalizado = @Tipo WHERE ID = @ID", new { ID, Tipo = true });
 
-                            Console.WriteLine("Chamado encerrado com sucesso!");
+                            Console.WriteLine("Chamado encerrado com sucesso! Pressione alguma tecla para prosseguir.");
                             Console.ReadKey();
                             MenuPrincipal();
                         }
@@ -379,7 +378,7 @@ namespace Aula.Lib.Aula06.E1
 
                         else
                         {
-                            Console.WriteLine("Opção inválida. Retornando ao menu principal...");
+                            Console.WriteLine("Opção inválida. Retornando ao menu principal... Pressione alguma tecla para prosseguir.");
                             Console.ReadKey();
                             MenuPrincipal();
                         }
@@ -400,7 +399,7 @@ namespace Aula.Lib.Aula06.E1
                 else //TICKET == NULL - NÃO ENCONTRADO
                 {
                     Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
-                    Console.WriteLine("Não encontrado nenhum registro com esse ID!");
+                    Console.WriteLine("Não encontrado nenhum registro com esse ID! Pressione alguma tecla para prosseguir.");
                     Console.ResetColor();
                     Console.ReadKey();
                     MenuVisualizarTicket();

@@ -129,6 +129,7 @@ namespace Aula.Lib.Aula06.E1
                             //..................................................................
                             assunto = assunto.Substring(0, 50);
                         }
+                        posicao++;
                     }
                     else if (posicao == 2)
                     {
@@ -139,28 +140,33 @@ namespace Aula.Lib.Aula06.E1
                         if (temp == "0")
                         {
                             tipo = Tipo_Ticket.BUG;
+                            posicao++;
                         }
                         else if (temp == "1")
                         {
                             tipo = Tipo_Ticket.SUGESTAO;
+                            posicao++;
                         }
                         else
                         {
                             Console.SetCursorPosition(0, 4);
                             Console.WriteLine("Tipo chamado inválido! Siga as orientações da linha anterior.");
                         }
+                        Console.SetCursorPosition(0, 6);
                     }
                     else if (posicao == 3)
                     {
                         Console.Write(new string(' ', responsavel.Length));
                         Console.SetCursorPosition(0, 6);
                         responsavel = Console.ReadLine();
+                        posicao++;
                     }
                     else if (posicao == 4)
                     {
                         Console.Write(new string(' ', versao.Length));
                         Console.SetCursorPosition(0, 8);
                         versao = Console.ReadLine();
+                        posicao++;
                     }
                     else if (posicao == 5)
                     {

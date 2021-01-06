@@ -1,5 +1,7 @@
 ﻿using Simple.Sqlite;
 using System;
+using System.Linq;
+
 namespace Aula.Lib.Aula06.E1
 {
     /// <summary>
@@ -54,7 +56,7 @@ namespace Aula.Lib.Aula06.E1
             Console.WriteLine("Digitando nova ocorrência... (Pressione ESC para sair.)");
             Console.ResetColor();
 
-            Console.Write("Assunto: (Máx. 50 caracteres.)");
+            Console.Write("Assunto: (Máx. 50 caracteres.) - (Caracteres destacados em vermelho serão desprezados na gravação.)");
             Console.SetCursorPosition(0, 3);
             Console.Write("Informe o tipo da ocorrência (BUG / SUGESTÃO):");
             Console.SetCursorPosition(0, 5);
@@ -106,6 +108,27 @@ namespace Aula.Lib.Aula06.E1
                         Console.Write(new string(' ', Console.WindowWidth));
                         Console.SetCursorPosition(0, 2);
                         assunto = Console.ReadLine();
+
+                        var excesso = assunto.ToArray();
+
+                        if (assunto.Length > 50)
+                        {
+                            //Pinta o excedente, informando que não será gravado
+                            for (int i = 0; i < assunto.Length; i++)
+                            {
+                                if (i >= 50)
+                                {
+                                    Console.SetCursorPosition(i, 2);
+                                    Console.BackgroundColor = ConsoleColor.Red;
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Console.Write(excesso[i].ToString());
+                                }
+                            }
+                            Console.ResetColor();
+                            Console.SetCursorPosition(0, 2);
+                            //..................................................................
+                            assunto = assunto.Substring(0, 50);
+                        }
                     }
                     else if (posicao == 2)
                     {

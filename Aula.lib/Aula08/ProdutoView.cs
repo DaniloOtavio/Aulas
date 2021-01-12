@@ -1,8 +1,6 @@
 ﻿using Isaac.FileStorage;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Aula.Lib.Aula08
 {
@@ -35,6 +33,22 @@ namespace Aula.Lib.Aula08
             var produtos = BD.GetAllKeys();
             return produtos.ToArray();
         }
+
+        // exemplos que vou remover por hora
+        // e depois você re-implementa
+        //public static ProdutoCadastro[] ListarTodosProdutosProdutos()
+        //{
+        //    return BD.GetAllKeys()
+        //             .Select(k => BD.Get<ProdutoCadastro>(k))
+        //             .ToArray();
+        //}
+        //public static ProdutoCadastro[] ListarProdutosNomeContem(string ParteNome)
+        //{
+        //    return ListarTodosProdutosProdutos()
+        //        .Where(p => p.Nome.Contains(ParteNome))
+        //        .ToArray();
+        //}
+
 
         /// <summary>
         /// Busca o produto

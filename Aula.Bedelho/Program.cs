@@ -15,7 +15,9 @@
             //    Console.WriteLine($"O texto '{bagaca}' não é um número.");
             //}
 
-            Aula.Lib.Aula06.E1.UI.Inicializar();
+            //Aula.Lib.Aula06.E1.UI.Inicializar();
+
+            Lib.Aula08.UI.Run();
         }
     }
 }

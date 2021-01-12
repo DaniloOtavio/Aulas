@@ -12,14 +12,14 @@ namespace Aula.Lib.Aula08
         /// <summary>
         /// Variável do BD
         /// </summary>
-        public static Core BD { get; private set; }
+        public Core BD { get; private set; }
 
         /// <summary>
         /// Grava o produto no cadastro
         /// </summary>
         /// <param name="Key">Identificador do produto</param>
         /// <param name="Produto">Classe produtos a ser preenchida</param>
-        public static void CadastrarProduto(string Key, ProdutoCadastro Produto)
+        public void CadastrarProduto(string Key, ProdutoCadastro Produto)
         {
             BD.Insert(Key,Produto);
         }
@@ -28,7 +28,7 @@ namespace Aula.Lib.Aula08
         /// Listar todos os produtos
         /// </summary>
         /// <returns>Retorna todos os produtos cadastrados</returns>
-        public static string[] ListarTodosProdutos()
+        public string[] ListarTodosProdutos()
         {
             var produtos = BD.GetAllKeys();
             return produtos.ToArray();
@@ -55,7 +55,7 @@ namespace Aula.Lib.Aula08
         /// </summary>
         /// <param name="key">Nome do Produto (key)</param>
         /// <returns>Retorna o produto cadastrado</returns>
-        public static ProdutoCadastro BuscarProduto(string key)
+        public ProdutoCadastro BuscarProduto(string key)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Aula.Lib.Aula08
         /// <summary>
         /// Inicializa Banco
         /// </summary>
-        public static void Setup()
+        public void Setup()
         {
             BD = new Core("SistemaEstoque");
         }

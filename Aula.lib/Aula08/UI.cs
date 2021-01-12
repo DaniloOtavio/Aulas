@@ -10,6 +10,7 @@ namespace Aula.Lib.Aula08
     public class UI
     {
         static readonly string prosseguir = "Pressione qualquer tecla para prosseguir.";
+        private static ProdutoView produtoView;
 
         //public static Core BD { get; private set; }
 
@@ -18,7 +19,8 @@ namespace Aula.Lib.Aula08
         /// </summary>
         public static void Run()
         {
-            ProdutoView.Setup();
+            produtoView = new ProdutoView();
+            produtoView.Setup();
             Console.WriteLine("Inicializando...");
 
             MenuPrincipal();
@@ -67,7 +69,7 @@ namespace Aula.Lib.Aula08
             }
             else if (descricao == "*")
             {
-                var produtos = ProdutoView.ListarTodosProdutos();
+                var produtos = produtoView.ListarTodosProdutos();
 
                 foreach (var key in produtos)
                 {
@@ -81,7 +83,7 @@ namespace Aula.Lib.Aula08
             }
             else
             {
-                var produto = ProdutoView.BuscarProduto(descricao);
+                var produto = produtoView.BuscarProduto(descricao);
 
                 if (produto == null)
                 {
@@ -296,7 +298,7 @@ namespace Aula.Lib.Aula08
                             LocalArmazenagem=localArmazenagem.ToUpper(),
                             Quantidade=Convert.ToDecimal(qtdeEstoque),
                         };
-                        ProdutoView.CadastrarProduto(produto.Nome, produto);
+                        produtoView.CadastrarProduto(produto.Nome, produto);
                         Console.SetCursorPosition(0, 5);
                         Console.Write(produto.GUID);
 

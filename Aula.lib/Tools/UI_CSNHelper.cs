@@ -11,12 +11,12 @@ namespace Aula.Lib.Tools
             int selecionado = 0;
             while (true)
             {
-                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
                 for (int i = 0; i < Opcoes.Length; i++)
                 {
-                    if (selecionado == i) Console.BackgroundColor = ConsoleColor.Blue;
-                    else Console.BackgroundColor = ConsoleColor.Black;
+                    if (selecionado == i) Console.ForegroundColor = ConsoleColor.Green;
+                    else Console.ForegroundColor = ConsoleColor.White;
 
                     Console.WriteLine(Opcoes[i]);
                 }
@@ -32,8 +32,10 @@ namespace Aula.Lib.Tools
                         break;
 
                     case ConsoleKey.Enter:
+                        Console.ForegroundColor = ConsoleColor.White;
                         return selecionado;
                     case ConsoleKey.Escape:
+                        Console.ForegroundColor = ConsoleColor.White;
                         return -1;
 
                     default:

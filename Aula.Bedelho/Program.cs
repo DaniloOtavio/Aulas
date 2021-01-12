@@ -1,4 +1,7 @@
-﻿namespace Aula.Bedelho
+﻿using System;
+using Aula.Lib.Aula08;
+
+namespace Aula.Bedelho
 {
     class Program
     {
@@ -17,7 +20,11 @@
 
             //Aula.Lib.Aula06.E1.UI.Inicializar();
 
+            //DemoAula9.ExemploSerializacao();
+
             Lib.Aula08.UI.Run();
         }
+
+
     }
 }

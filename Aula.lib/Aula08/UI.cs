@@ -1,4 +1,5 @@
-﻿using Isaac.FileStorage;
+﻿using Aula.Lib.Aula09;
+using Isaac.FileStorage;
 using System;
 using System.IO;
 
@@ -10,7 +11,7 @@ namespace Aula.Lib.Aula08
     public class UI
     {
         static readonly string prosseguir = "Pressione qualquer tecla para prosseguir.";
-        private static ProdutoView produtoView;
+        private static IProdutoView produtoView;
 
         //public static Core BD { get; private set; }
 
@@ -19,7 +20,7 @@ namespace Aula.Lib.Aula08
         /// </summary>
         public static void Run()
         {
-            produtoView = new ProdutoView();
+            produtoView = new ProdutoView_Arquivo();
             produtoView.Setup();
             Console.WriteLine("Inicializando...");
 

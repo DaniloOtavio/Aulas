@@ -7,7 +7,7 @@ namespace Aula.Lib.Aula08
     /// <summary>
     /// Classe contendo os métodos e funções do sistema
     /// </summary>
-    public class ProdutoView
+    public class ProdutoView_Arquivo : Aula09.IProdutoView
     {
         /// <summary>
         /// Variável do BD

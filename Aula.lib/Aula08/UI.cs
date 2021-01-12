@@ -20,13 +20,37 @@ namespace Aula.Lib.Aula08
         /// </summary>
         public static void Run()
         {
-            produtoView = new ProdutoView_Arquivo();
+            escolheBD();
+
             produtoView.Setup();
             Console.WriteLine("Inicializando...");
 
             MenuPrincipal();
 
         }
+
+        private static void escolheBD()
+        {
+            Console.Clear();
+            Console.WriteLine("Escolha o banco:");
+            Console.WriteLine(" 1 - Arquivo NoSql");
+            Console.WriteLine(" 2 - SqlLite");
+            var escolha = Console.ReadLine();
+
+            if (escolha == "1")
+            {
+                produtoView = new ProdutoView_Arquivo();
+            }
+            else if (escolha == "2")
+            {
+                produtoView = new ProdutoView_SqlLite();
+            }
+            else
+            {
+                throw new Exception("Are you stupid ?");
+            }
+        }
+
         private static void MenuPrincipal()
         {
             Console.Clear();

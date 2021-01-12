@@ -7,7 +7,7 @@ namespace Aula.Lib.Aula08
     /// <summary>
     /// Classe contendo os métodos e funções do sistema
     /// </summary>
-    public class ProdutoView_Arquivo : Aula09.IProdutoView
+    public class ProdutoView_Arquivo : Aula09.IProdutoViewExpandido
     {
         /// <summary>
         /// Variável do BD
@@ -36,12 +36,12 @@ namespace Aula.Lib.Aula08
 
         // exemplos que vou remover por hora
         // e depois você re-implementa
-        //public static ProdutoCadastro[] ListarTodosProdutosProdutos()
-        //{
-        //    return BD.GetAllKeys()
-        //             .Select(k => BD.Get<ProdutoCadastro>(k))
-        //             .ToArray();
-        //}
+        public ProdutoCadastro[] ListarTodosProdutosProdutos()
+        {
+            return BD.GetAllKeys()
+                     .Select(k => BD.Get<ProdutoCadastro>(k))
+                     .ToArray();
+        }
         //public static ProdutoCadastro[] ListarProdutosNomeContem(string ParteNome)
         //{
         //    return ListarTodosProdutosProdutos()

@@ -69,7 +69,7 @@ namespace Aula.Lib.Aula08
             }
             else if (descricao == "*")
             {
-                var produtos = produtoView.ListarTodosProdutos();
+                var produtos = produtoView.ListarTodasKeys();
 
                 foreach (var key in produtos)
                 {

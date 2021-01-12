@@ -28,7 +28,7 @@ namespace Aula.Lib.Aula08
         /// Listar todos os produtos
         /// </summary>
         /// <returns>Retorna todos os produtos cadastrados</returns>
-        public string[] ListarTodosProdutos()
+        public string[] ListarTodasKeys()
         {
             var produtos = BD.GetAllKeys();
             return produtos.ToArray();

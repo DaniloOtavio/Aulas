@@ -11,10 +11,8 @@ namespace Aula.Lib.Aula08
     {
         static readonly string prosseguir = "Pressione qualquer tecla para prosseguir.";
 
-        /// <summary>
-        /// Variável do banco de dados
-        /// </summary>
-        public static Core BD { get; private set; }
+        //public static Core BD { get; private set; }
+
         /// <summary>
         /// Inicializa o sistema
         /// </summary>
@@ -119,19 +117,21 @@ namespace Aula.Lib.Aula08
 
                     if (resultado == "1")
                     {
-                        BD = new Core("SistemaEstoque");
-                        Console.Clear();
-                        Console.WriteLine("Digite o novo nome do produto...");
-                        string novoNome = Console.ReadLine();
-                        string oldArquivo = $"{BD.DirectoryPath}\\{produto.Nome}.j2k";
+                        throw new NotImplementedException();
 
-                        produto.Nome = novoNome;
-
-                        BD.Insert<ProdutoCadastro>(produto.Nome, produto);
-
-                        Console.WriteLine($"Alteração realizada com sucesso! {prosseguir}");
-
-                        File.Delete(oldArquivo);
+                        //BD = new Core("SistemaEstoque");
+                        //Console.Clear();
+                        //Console.WriteLine("Digite o novo nome do produto...");
+                        //string novoNome = Console.ReadLine();
+                        //string oldArquivo = $"{BD.DirectoryPath}\\{produto.Nome}.j2k";
+                        //
+                        //produto.Nome = novoNome;
+                        //
+                        //BD.Insert<ProdutoCadastro>(produto.Nome, produto);
+                        //
+                        //Console.WriteLine($"Alteração realizada com sucesso! {prosseguir}");
+                        //
+                        //File.Delete(oldArquivo);
 
                         Console.ReadKey();
                         MenuPrincipal();
@@ -139,20 +139,22 @@ namespace Aula.Lib.Aula08
                     }
                     else if (resultado == "2")
                     {
-                        Console.Clear();
-                        Console.WriteLine("Digite a nova quantidade do produto...");
-                        string novaQuantidade = Console.ReadLine();
+                        throw new NotImplementedException();
 
-                        produto.Quantidade = Convert.ToDecimal(novaQuantidade);
-
-                        BD = new Core("SistemaEstoque");
-
-                        BD.Insert<ProdutoCadastro>(produto.Nome, produto);
-
-                        Console.WriteLine($"Alteração realizada com sucesso! {prosseguir}");
-                        Console.ReadKey();
-                        MenuPrincipal();
-                        return;
+                        //Console.Clear();
+                        //Console.WriteLine("Digite a nova quantidade do produto...");
+                        //string novaQuantidade = Console.ReadLine();
+                        //
+                        //produto.Quantidade = Convert.ToDecimal(novaQuantidade);
+                        //
+                        //BD = new Core("SistemaEstoque");
+                        //
+                        //BD.Insert<ProdutoCadastro>(produto.Nome, produto);
+                        //
+                        //Console.WriteLine($"Alteração realizada com sucesso! {prosseguir}");
+                        //Console.ReadKey();
+                        //MenuPrincipal();
+                        //return;
                     }
                     else if (resultado == "3")
                     {

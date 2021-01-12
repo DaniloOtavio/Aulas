@@ -20,9 +20,21 @@ namespace Aula.Bedelho
 
             //Aula.Lib.Aula06.E1.UI.Inicializar();
 
-            //DemoAula9.ExemploSerializacao();
+            //DemoAula9.ExemploUI2();
 
-            Lib.Aula08.UI.Run();
+            string[] itens = { "Maçã", "Banana", "Laranja", "Abacaxi" };
+            int opcao = Lib.Tools.UI_CSNHelper.ExibirMenu(itens);
+            if (opcao == -1)
+            {
+                Console.WriteLine("Menu cancelado");
+            }
+            else
+            {
+                Console.WriteLine(itens[opcao]);
+            }
+
+
+            //Lib.Aula08.UI.Run();
         }
 
 

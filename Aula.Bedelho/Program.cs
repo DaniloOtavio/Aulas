@@ -1,6 +1,4 @@
-﻿using Aula.Lib.Aula08;
-
-namespace Aula.Bedelho
+﻿namespace Aula.Bedelho
 {
     class Program
     {
@@ -32,8 +30,7 @@ namespace Aula.Bedelho
             //    Console.WriteLine(itens[opcao]);
             //}
 
-
-            UI.Run();
+            Lib.Aula08.UI.Run();
         }
 
 

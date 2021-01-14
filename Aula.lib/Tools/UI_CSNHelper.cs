@@ -4,8 +4,16 @@ using System.Text;
 
 namespace Aula.Lib.Tools
 {
+    /// <summary>
+    /// Helper para as aulas
+    /// </summary>
     public class UI_CSNHelper
     {
+        /// <summary>
+        /// Monta um menu
+        /// </summary>
+        /// <param name="Opcoes">Array com as opções desejadas</param>
+        /// <returns>Retorna um menu estruturado</returns>
         public static int ExibirMenu(string[] Opcoes)
         {
             int selecionado = 0;

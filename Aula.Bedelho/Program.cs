@@ -1,5 +1,4 @@
-﻿using System;
-using Aula.Lib.Aula08;
+﻿using Aula.Lib.Aula08;
 
 namespace Aula.Bedelho
 {
@@ -22,19 +21,19 @@ namespace Aula.Bedelho
 
             //DemoAula9.ExemploUI2();
 
-            string[] itens = { "Maçã", "Banana", "Laranja", "Abacaxi" };
-            int opcao = Lib.Tools.UI_CSNHelper.ExibirMenu(itens);
-            if (opcao == -1)
-            {
-                Console.WriteLine("Menu cancelado");
-            }
-            else
-            {
-                Console.WriteLine(itens[opcao]);
-            }
+            //string[] itens = { "Maçã", "Banana", "Laranja", "Abacaxi" };
+            //int opcao = Lib.Tools.UI_CSNHelper.ExibirMenu(itens);
+            //if (opcao == -1)
+            //{
+            //    Console.WriteLine("Menu cancelado");
+            //}
+            //else
+            //{
+            //    Console.WriteLine(itens[opcao]);
+            //}
 
 
-            //Lib.Aula08.UI.Run();
+            UI.Run();
         }
 
 

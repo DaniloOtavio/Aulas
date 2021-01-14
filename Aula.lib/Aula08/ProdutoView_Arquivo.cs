@@ -19,7 +19,7 @@ namespace Aula.Lib.Aula08
         /// </summary>
         /// <param name="Key">Identificador do produto</param>
         /// <param name="Produto">Classe produtos a ser preenchida</param>
-        public void CadastrarProduto(string Key, ProdutoCadastro Produto)
+        public void CadastrarAlterarProduto(string Key, ProdutoCadastro Produto)
         {
             BD.Insert(Key,Produto);
         }

@@ -12,7 +12,7 @@ namespace Aula.Lib.Aula09
             throw new NotImplementedException();
         }
 
-        public void CadastrarProduto(string Key, ProdutoCadastro Produto)
+        public void CadastrarAlterarProduto(string Key, ProdutoCadastro Produto)
         {
             throw new NotImplementedException();
         }

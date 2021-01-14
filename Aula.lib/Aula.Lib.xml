@@ -547,31 +547,6 @@
             Quantidade armazenada
             </summary>
         </member>
-        <member name="T:Aula.Lib.Aula08.ProdutoEstoque">
-            <summary>
-            Classe que armazena as características que devem ser preenchidas ao lançar no estoque
-            </summary>
-        </member>
-        <member name="P:Aula.Lib.Aula08.ProdutoEstoque.Nome">
-            <summary>
-            Descrição do produto
-            </summary>
-        </member>
-        <member name="P:Aula.Lib.Aula08.ProdutoEstoque.Guid">
-            <summary>
-            Identificador do produto
-            </summary>
-        </member>
-        <member name="P:Aula.Lib.Aula08.ProdutoEstoque.LocalArmazenagem">
-            <summary>
-            Local de armazenagem do produto
-            </summary>
-        </member>
-        <member name="P:Aula.Lib.Aula08.ProdutoEstoque.QuantidadeLocal">
-            <summary>
-            Quantidade do produto
-            </summary>
-        </member>
         <member name="T:Aula.Lib.Aula08.ProdutoView_Arquivo">
             <summary>
             Classe contendo os métodos e funções do sistema
@@ -582,7 +557,7 @@
             Variável do BD
             </summary>
         </member>
-        <member name="M:Aula.Lib.Aula08.ProdutoView_Arquivo.CadastrarProduto(System.String,Aula.Lib.Aula08.ProdutoCadastro)">
+        <member name="M:Aula.Lib.Aula08.ProdutoView_Arquivo.CadastrarAlterarProduto(System.String,Aula.Lib.Aula08.ProdutoCadastro)">
             <summary>
             Grava o produto no cadastro
             </summary>

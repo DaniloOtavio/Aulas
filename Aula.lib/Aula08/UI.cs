@@ -1,7 +1,5 @@
 ﻿using Aula.Lib.Aula09;
-using Isaac.FileStorage;
 using System;
-using System.IO;
 
 namespace Aula.Lib.Aula08
 {
@@ -20,21 +18,21 @@ namespace Aula.Lib.Aula08
         /// </summary>
         public static void Run()
         {
-            escolheBD();
+            MenuEscolheDB();
 
-            produtoView.Setup();
             Console.WriteLine("Inicializando...");
+            produtoView.Setup();
 
             MenuPrincipal();
-
         }
-
-        private static void escolheBD()
+        private static void MenuEscolheDB()
         {
             Console.Clear();
             Console.WriteLine("Escolha o banco:");
-            Console.WriteLine(" 1 - Arquivo NoSql");
-            Console.WriteLine(" 2 - SqlLite");
+            Console.WriteLine("1 - Arquivo JSON (NoSQL)");
+            Console.WriteLine("2 - Banco de Dados SQLite");
+            Console.WriteLine("3 - Sair");
+
             var escolha = Console.ReadLine();
 
             if (escolha == "1")
@@ -45,12 +43,18 @@ namespace Aula.Lib.Aula08
             {
                 produtoView = new ProdutoView_SqlLite();
             }
+            else if (escolha == "")
+            {
+                Console.Write($"Saindo... {prosseguir}");
+                Console.ReadKey();
+            }
             else
             {
-                throw new Exception("Are you stupid ?");
+                Console.WriteLine($"Opção inválida! {prosseguir}");
+                Console.ReadKey();
+                MenuEscolheDB();
             }
         }
-
         private static void MenuPrincipal()
         {
             Console.Clear();
@@ -58,6 +62,7 @@ namespace Aula.Lib.Aula08
             Console.WriteLine("1 - Cadastrar novo produto");
             Console.WriteLine("2 - Buscar Produtos");
             Console.WriteLine("3 - Sair do sistema");
+            Console.WriteLine("4 - Retornar à seleção de banco de dados");
 
             string resultado = Console.ReadLine();
 
@@ -67,12 +72,16 @@ namespace Aula.Lib.Aula08
             }
             else if (resultado == "2")
             {
-                MenuBuscarProdutos();
+                MenuListarProdutos();
             }
             else if (resultado == "3")
             {
                 Console.WriteLine($"Saindo... {prosseguir}");
                 Console.ReadKey();
+            }
+            else if (resultado == "4")
+            {
+                MenuEscolheDB();
             }
             else
             {
@@ -81,127 +90,117 @@ namespace Aula.Lib.Aula08
                 MenuPrincipal();
             }
         }
-        private static void MenuBuscarProdutos()
+        private static void MenuListarProdutos()
         {
             Console.Clear();
-            Console.WriteLine("Digite nome do produto para consultá-lo, digite * (asterisco) para exibir todos ou deixe vazio para voltar ao menu principal");
-            string descricao = Console.ReadLine();
+            var produtos = produtoView.ListarTodasKeys();
 
-            if (descricao == "")
+            if (produtos.Length == 0)
             {
-                MenuPrincipal();
-                return;
-            }
-            else if (descricao == "*")
-            {
-                var produtos = produtoView.ListarTodasKeys();
-
-                foreach (var key in produtos)
-                {
-                    Console.WriteLine(key);
-                }
-                Console.Write($"\n{prosseguir}");
-                
+                Console.WriteLine($"Nenhuma chave encontrada! {prosseguir}");
                 Console.ReadKey();
-                MenuBuscarProdutos();
-                return;
+                MenuPrincipal();
             }
             else
             {
-                var produto = produtoView.BuscarProduto(descricao);
+                Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("Escolha uma opção abaixo e pressione [ENTER].");
+                Console.ResetColor();
 
-                if (produto == null)
+                Console.WriteLine($"Chaves encontradas: ({produtos.Length})\n");
+
+                for (int i = 0; i < produtos.Length; i++)
                 {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.WriteLine($"Produto não encontrado com essa descrição! {prosseguir}");
-                    Console.ResetColor();
+                    Console.WriteLine($"{i + 1} - {produtos[i]}");
+                }
+                var opcao = Console.ReadLine();
+                var key = int.Parse(opcao) - 1;
+
+                if (key > produtos.Length)
+                {
+                    Console.WriteLine($"Opção inválida! Selecione uma das opções disponíveis. {prosseguir}");
                     Console.ReadKey();
-                    MenuBuscarProdutos();
+                    MenuListarProdutos();
                     return;
                 }
 
-                Console.Clear();
-
-                Console.WriteLine($"Dados do produto {produto.Nome}");
-                Console.WriteLine(new string('-',50));
-                Console.WriteLine("\nID do produto:");
-                Console.WriteLine(produto.GUID);
-                Console.WriteLine("\nLocal de armazenagem:");
-                Console.WriteLine(produto.LocalArmazenagem);
-                Console.WriteLine("\nQuantidade atual:");
-                Console.WriteLine(produto.Quantidade);
-
-                Console.SetCursorPosition(0, 15);
-                Console.WriteLine("Selecione uma opção:");
-                Console.WriteLine("1 - Alterar nome do produto");
-                Console.WriteLine("2 - Alterar quantidade do produto");
-                Console.WriteLine("3 - Retornar ao menu principal");
-
-                while (true)
-                {
-                    string resultado = Console.ReadLine();
-
-                    if (resultado == "1")
-                    {
-                        throw new NotImplementedException();
-
-                        //BD = new Core("SistemaEstoque");
-                        //Console.Clear();
-                        //Console.WriteLine("Digite o novo nome do produto...");
-                        //string novoNome = Console.ReadLine();
-                        //string oldArquivo = $"{BD.DirectoryPath}\\{produto.Nome}.j2k";
-                        //
-                        //produto.Nome = novoNome;
-                        //
-                        //BD.Insert<ProdutoCadastro>(produto.Nome, produto);
-                        //
-                        //Console.WriteLine($"Alteração realizada com sucesso! {prosseguir}");
-                        //
-                        //File.Delete(oldArquivo);
-
-                        Console.ReadKey();
-                        MenuPrincipal();
-                        return;
-                    }
-                    else if (resultado == "2")
-                    {
-                        throw new NotImplementedException();
-
-                        //Console.Clear();
-                        //Console.WriteLine("Digite a nova quantidade do produto...");
-                        //string novaQuantidade = Console.ReadLine();
-                        //
-                        //produto.Quantidade = Convert.ToDecimal(novaQuantidade);
-                        //
-                        //BD = new Core("SistemaEstoque");
-                        //
-                        //BD.Insert<ProdutoCadastro>(produto.Nome, produto);
-                        //
-                        //Console.WriteLine($"Alteração realizada com sucesso! {prosseguir}");
-                        //Console.ReadKey();
-                        //MenuPrincipal();
-                        //return;
-                    }
-                    else if (resultado == "3")
-                    {
-                        MenuPrincipal();
-                        return;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Opção inválida! {prosseguir}");
-                        Console.ReadKey();
-                        Console.SetCursorPosition(0, 19);
-                        Console.WriteLine(new string(' ', Console.WindowWidth));
-                        Console.WriteLine(new string(' ', Console.WindowWidth));
-                        Console.WriteLine(new string(' ', Console.WindowWidth));
-                        Console.SetCursorPosition(0, 19);
-                    }
-                }
+                var produto = produtoView.BuscarProduto(produtos[key]);
+                MenuCarregaProduto(produto);
             }
         }
+        private static void MenuCarregaProduto(ProdutoCadastro produto)
+        {
+            Console.Clear();
+            Console.WriteLine("Nome do produto:");
+            Console.WriteLine($"{produto.Nome}\n");
+            Console.WriteLine("Identificador único:");
+            Console.WriteLine($"{produto.GUID}\n");
+            Console.WriteLine("Local de armazenagem:");
+            Console.WriteLine($"{produto.LocalArmazenagem}\n");
+            Console.WriteLine("Quantidade:");
+            Console.WriteLine($"{produto.Quantidade}\n");
+            Console.WriteLine($"{new string('-', 50)}\n");
 
+            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("1 - Alterar nome do produto");
+            Console.WriteLine("2 - Alterar quantidade do produto");
+            Console.WriteLine("3 - Sair");
+
+            string opcao = Console.ReadLine();
+            
+            if (opcao == "1")
+            {
+                Console.Clear();
+                Console.WriteLine("Digite o novo nome do produto:");
+                string novoNome = Console.ReadLine();
+
+                if (novoNome == "")
+                {
+                    Console.WriteLine($"Nome informado em branco! Operação anulada. {prosseguir}");
+                    Console.ReadKey();
+                    MenuCarregaProduto(produto);
+                    return;
+                }
+                else
+                {
+                    produto.Nome = novoNome.ToUpper();
+
+                    produtoView.CadastrarAlterarProduto(produto.GUID.ToString(), produto);
+
+                    Console.WriteLine($"Nome alterado com sucesso! {prosseguir}");
+                    Console.ReadKey();
+                    MenuCarregaProduto(produto);
+                }
+            }
+            else if (opcao == "2")
+            {
+                Console.Clear();
+                Console.WriteLine("Digite a nova quantidade do produto:");
+                string novaQuantidade = Console.ReadLine();
+
+                if (novaQuantidade == "")
+                {
+                    Console.WriteLine($"Quantidade não informada! Operação anulada. {prosseguir}");
+                    Console.ReadKey();
+                    MenuCarregaProduto(produto);
+                    return;
+                }
+                else
+                {
+                    produto.Quantidade = Convert.ToDecimal(novaQuantidade);
+
+                    produtoView.CadastrarAlterarProduto(produto.GUID.ToString(), produto);
+
+                    Console.WriteLine($"Quantidade alterada com sucesso! {prosseguir}");
+                    Console.ReadKey();
+                    MenuCarregaProduto(produto);
+                }
+            }
+            else if (opcao == "3")
+            {
+                MenuPrincipal();
+            }
+        }
         private static void MenuCadastrarProduto()
         {
             Console.Clear();
@@ -323,7 +322,7 @@ namespace Aula.Lib.Aula08
                             LocalArmazenagem=localArmazenagem.ToUpper(),
                             Quantidade=Convert.ToDecimal(qtdeEstoque),
                         };
-                        produtoView.CadastrarProduto(produto.Nome, produto);
+                        produtoView.CadastrarAlterarProduto(produto.GUID.ToString(), produto);
                         Console.SetCursorPosition(0, 5);
                         Console.Write(produto.GUID);
 

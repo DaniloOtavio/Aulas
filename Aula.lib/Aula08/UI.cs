@@ -22,8 +22,6 @@ namespace Aula.Lib.Aula08
 
             Console.WriteLine("Inicializando...");
             produtoView.Setup();
-
-            MenuPrincipal();
         }
         private static void MenuEscolheDB()
         {
@@ -38,15 +36,18 @@ namespace Aula.Lib.Aula08
             if (escolha == "1")
             {
                 produtoView = new ProdutoView_Arquivo();
+                MenuPrincipal();
             }
             else if (escolha == "2")
             {
                 produtoView = new ProdutoView_SqlLite();
+                MenuPrincipal();
             }
-            else if (escolha == "")
+            else if (escolha == "3")
             {
                 Console.Write($"Saindo... {prosseguir}");
                 Console.ReadKey();
+                Environment.Exit(0);
             }
             else
             {
@@ -81,7 +82,9 @@ namespace Aula.Lib.Aula08
             }
             else if (resultado == "4")
             {
+                produtoView = null;
                 MenuEscolheDB();
+                return;
             }
             else
             {

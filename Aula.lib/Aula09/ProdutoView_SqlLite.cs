@@ -19,6 +19,12 @@ namespace Aula.Lib.Aula09
         {
             throw new NotImplementedException();
         }
+
+        public ProdutoCadastro BuscarProdutoParteDoNome(string ParteNome)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Faz o cadastro do produto caso o mesmo não exista. Caso exista apenas substitui a key existente com as alterações
         /// </summary>

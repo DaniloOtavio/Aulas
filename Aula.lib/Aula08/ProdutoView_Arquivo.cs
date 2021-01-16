@@ -75,5 +75,10 @@ namespace Aula.Lib.Aula08
         {
             BD = new Core("SistemaEstoque");
         }
+
+        public ProdutoCadastro BuscarProdutoParteDoNome(string ParteNome)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

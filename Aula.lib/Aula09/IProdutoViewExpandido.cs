@@ -19,8 +19,8 @@ namespace Aula.Lib.Aula09
         /// <summary>
         /// Busca o produto por parte do nome
         /// </summary>
-        /// <param name="parteNome">Parte do nome a ser pesquisado</param>
-        void BuscaProdutoParteNome(string parteNome)
+        /// <param name="nome">Parte do nome a ser pesquisado</param>
+        void BuscaProduto(string nome)
         {
 
         }

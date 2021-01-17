@@ -36,7 +36,11 @@ namespace Aula.Lib.Aula08
 
         // exemplos que vou remover por hora
         // e depois você re-implementa
-        public ProdutoCadastro[] ListarTodosProdutosProdutos()
+        /// <summary>
+        /// Lista todos os produtos
+        /// </summary>
+        /// <returns>Retorna todos os produtos</returns>
+        public ProdutoCadastro[] ListarTodosOsProdutos()
         {
             return BD.GetAllKeys()
                      .Select(k => BD.Get<ProdutoCadastro>(k))
@@ -76,9 +80,16 @@ namespace Aula.Lib.Aula08
             BD = new Core("SistemaEstoque");
         }
 
-        public ProdutoCadastro BuscarProdutoParteDoNome(string ParteNome)
+        /// <summary>
+        /// Realiza a busca de um produto de acordo com parte do nome digitado
+        /// </summary>
+        /// <param name="nome">Parte do nome do produto a ser pesquisado</param>
+        /// <returns>Retorna o produto</returns>
+        public ProdutoCadastro[] BuscarProdutoParteNome(string nome)
         {
-            throw new NotImplementedException();
+            return ListarTodosOsProdutos()
+                .Where(p => p.Nome.Contains(nome))
+                .ToArray();
         }
     }
 }

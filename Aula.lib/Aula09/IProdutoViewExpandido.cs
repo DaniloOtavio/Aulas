@@ -14,15 +14,14 @@ namespace Aula.Lib.Aula09
         /// Listar todos os produtos cadastrados
         /// </summary>
         /// <returns>Retorna todos os produtos cadastrados</returns>
-        ProdutoCadastro[] ListarTodosProdutosProdutos();
-
+        ProdutoCadastro[] ListarTodosOsProdutos();
+        
         /// <summary>
-        /// Busca o produto por parte do nome
+        /// Realiza a busca de um produto de acordo com parte do nome digitado
         /// </summary>
-        /// <param name="nome">Parte do nome a ser pesquisado</param>
-        void BuscaProduto(string nome)
-        {
+        /// <param name="nome">Parte do nome do produto a ser pesquisado</param>
+        /// <returns>Retorna o produto</returns>
+        ProdutoCadastro[] BuscarProdutoParteNome(string nome);
 
-        }
     }
 }

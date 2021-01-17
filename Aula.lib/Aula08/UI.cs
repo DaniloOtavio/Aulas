@@ -9,7 +9,7 @@ namespace Aula.Lib.Aula08
     public class UI
     {
         static readonly string prosseguir = "Pressione qualquer tecla para prosseguir.";
-        private static IProdutoView produtoView;
+        private static IProdutoViewExpandido produtoView;
 
         //public static Core BD { get; private set; }
 
@@ -22,6 +22,7 @@ namespace Aula.Lib.Aula08
 
             Console.WriteLine("Inicializando...");
             produtoView.Setup();
+            MenuPrincipal();
         }
         private static void MenuEscolheDB()
         {
@@ -36,12 +37,12 @@ namespace Aula.Lib.Aula08
             if (escolha == "1")
             {
                 produtoView = new ProdutoView_Arquivo();
-                MenuPrincipal();
+                //MenuPrincipal();
             }
             else if (escolha == "2")
             {
-                produtoView = new ProdutoView_SqlLite();
-                MenuPrincipal();
+                //produtoView = new ProdutoView_SqlLite();
+                //MenuPrincipal();
             }
             else if (escolha == "3")
             {
@@ -61,9 +62,10 @@ namespace Aula.Lib.Aula08
             Console.Clear();
             Console.WriteLine("Selecione uma opção:");
             Console.WriteLine("1 - Cadastrar novo produto");
-            Console.WriteLine("2 - Buscar Produtos");
-            Console.WriteLine("3 - Sair do sistema");
-            Console.WriteLine("4 - Retornar à seleção de banco de dados");
+            Console.WriteLine("2 - Listar Produtos");
+            Console.WriteLine("3 - Buscar Produto");
+            Console.WriteLine("4 - Sair do sistema");
+            Console.WriteLine("5 - Retornar à seleção de banco de dados");
 
             string resultado = Console.ReadLine();
 
@@ -77,10 +79,14 @@ namespace Aula.Lib.Aula08
             }
             else if (resultado == "3")
             {
+                MenuBuscarProduto();
+            }
+            else if (resultado == "4")
+            {
                 Console.WriteLine($"Saindo... {prosseguir}");
                 Console.ReadKey();
             }
-            else if (resultado == "4")
+            else if (resultado == "5")
             {
                 produtoView = null;
                 MenuEscolheDB();
@@ -91,6 +97,67 @@ namespace Aula.Lib.Aula08
                 Console.WriteLine($"Comando não reconhecido! {prosseguir}");
                 Console.ReadKey();
                 MenuPrincipal();
+            }
+        }
+        private static void MenuBuscarProduto()
+        {
+            Console.Clear();
+            Console.WriteLine("Digite o nome (ou parte do nome) do produto a ser pesquisado e pressione [ENTER].\nPara retornar ao menu principal deixe o nome em branco e pressione [ENTER].");
+            string nome = Console.ReadLine().ToUpper();
+            
+            if (nome != "")
+            {
+                var produtos = produtoView.BuscarProdutoParteNome(nome);
+
+                if (produtos.Length == 1)
+                {
+                    ProdutoCadastro prod = new ProdutoCadastro()
+                    {
+                        Nome = produtos[0].Nome,
+                        GUID = produtos[0].GUID,
+                        LocalArmazenagem = produtos[0].LocalArmazenagem,
+                        Quantidade = produtos[0].Quantidade,
+                    };
+                    MenuCarregaProduto(prod);
+                }
+                else if (produtos.Length > 1)
+                {
+                    Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
+                    Console.WriteLine("Escolha uma opção abaixo e pressione [ENTER].");
+                    Console.ResetColor();
+
+                    Console.WriteLine($"Chaves encontradas: ({produtos.Length})\n");
+
+                    for (int i = 0; i < produtos.Length; i++)
+                    {
+                        Console.WriteLine($"{i + 1} - {produtos[i].Nome}");
+                    }
+                    var opcao = Console.ReadLine();
+                    var key = int.Parse(opcao) - 1;
+
+                    if (key + 1 > produtos.Length)
+                    {
+                        Console.WriteLine($"Opção inválida! Retornando ao menu anterior. {prosseguir}");
+                        Console.ReadKey();
+                        MenuBuscarProduto();
+                        return;
+                    }
+
+                    var prod1 = produtoView.BuscarProdutoParteNome(produtos[key].Nome);
+                    ProdutoCadastro prod2 = new ProdutoCadastro()
+                    {
+                        GUID=prod1[0].GUID,
+                        Nome=prod1[0].Nome,
+                        LocalArmazenagem = prod1[0].LocalArmazenagem,
+                        Quantidade = prod1[0].Quantidade,
+                    };
+                    MenuCarregaProduto(prod2);
+                }
+            }
+            else
+            {
+                MenuPrincipal();
+                return;
             }
         }
         private static void MenuListarProdutos()

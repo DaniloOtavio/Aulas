@@ -24,13 +24,7 @@ namespace Aula.Lib.Aula09
         /// <param name="key">Key do produto</param>
         /// <returns>Retorna a key encontrada na classe ProdutoCadastro</returns>
         ProdutoCadastro BuscarProduto(string key);
-
-        /// <summary>
-        /// Busca o produto por parte do nome dele
-        /// </summary>
-        /// <param name="ParteNome">Parte do nome do produto a ser pesquisado</param>
-        /// <returns>Retorna o produto</returns>
-        ProdutoCadastro BuscarProdutoParteDoNome(string ParteNome);
+   
         /// <summary>
         /// Configuração do banco de dados
         /// </summary>

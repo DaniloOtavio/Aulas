@@ -30,7 +30,8 @@ namespace Aula.Lib.Aula08
             Console.WriteLine("Escolha o banco:");
             Console.WriteLine("1 - Arquivo JSON (NoSQL)");
             Console.WriteLine("2 - Banco de Dados SQLite");
-            Console.WriteLine("3 - Sair");
+            Console.WriteLine("3 - M$ Access");
+            Console.WriteLine("4 - Sair");
 
             var escolha = Console.ReadLine();
 
@@ -49,6 +50,10 @@ namespace Aula.Lib.Aula08
                 //MenuPrincipal();
             }
             else if (escolha == "3")
+            {
+                produtoView = new ProdutoView_Access();
+            }
+            else if (escolha == "4")
             {
                 Console.Write($"Saindo... {prosseguir}");
                 Console.ReadKey();

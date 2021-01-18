@@ -139,7 +139,7 @@ namespace Aula.Lib.Aula06.E1
                             Console.SetCursorPosition(0, 2);
                             Console.Write(assunto.Substring(0, 50));
 
-                            //Printando excedente do assunto em vermelho
+                            //Pintando excedente do assunto em vermelho
                             Console.SetCursorPosition(50, 2);
                             Console.BackgroundColor = ConsoleColor.Red;
                             Console.ForegroundColor = ConsoleColor.Black;

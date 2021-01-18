@@ -12,11 +12,8 @@ namespace Aula.Lib.Aula08
     {
         public SqliteDB BD { get; private set; }
 
-        public ProdutoCadastro BuscarProduto(string key)
-        {
-            var produto = BD.Get<ProdutoCadastro>("Nome", key);
-            return produto;
-        }
+        //USANDO LAMBDA (O PRÓPRIO => JÁ DÁ O RETURN, ENTÃO ECONOMIZA LINHA, MAS FICA DIFÍCIL PRA LER)
+        public ProdutoCadastro BuscarProduto(string key) => BD.Get<ProdutoCadastro>("Nome", key);
 
         public ProdutoCadastro[] BuscarProdutoParteNome(string nome)
         {

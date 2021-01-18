@@ -19,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="Isaac.FileStorage" Version="0.3.4" />
     <PackageReference Include="Simple.Sqlite" Version="0.4.79" />
+    <PackageReference Include="System.Data.OleDb" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

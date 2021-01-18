@@ -29,7 +29,7 @@ namespace Aula.Lib.Aula08
             Console.Clear();
             Console.WriteLine("Escolha o banco:");
             Console.WriteLine("1 - Arquivo JSON (NoSQL)");
-            Console.WriteLine("2 - Banco de Dados SQLite (DESATIVADO MOMENTANEAMENTE)");
+            Console.WriteLine("2 - Banco de Dados SQLite");
             Console.WriteLine("3 - Sair");
 
             var escolha = Console.ReadLine();
@@ -41,11 +41,11 @@ namespace Aula.Lib.Aula08
             }
             else if (escolha == "2")
             {
-                Console.WriteLine($"Essa opção está temporariamente indisponível! {prosseguir}");
-                Console.ReadKey();
-                MenuEscolheDB();
-                return;
-                //produtoView = new ProdutoView_SQLite();
+                //Console.WriteLine($"Essa opção está temporariamente indisponível! {prosseguir}");
+                //Console.ReadKey();
+                //MenuEscolheDB();
+                //return;
+                produtoView = new ProdutoView_SQLite();
                 //MenuPrincipal();
             }
             else if (escolha == "3")
@@ -197,7 +197,7 @@ namespace Aula.Lib.Aula08
                     MenuListarProdutos();
                     return;
                 }
-                var produto = produtoView.BuscarProduto(produtos[key].GUID.ToString());
+                var produto = produtoView.BuscarProduto(produtos[key].Nome);
                 MenuCarregaProduto(produto);
             }
         }

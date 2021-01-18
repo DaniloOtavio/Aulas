@@ -11,12 +11,6 @@ namespace Aula.Lib.Aula09
     public interface IProdutoViewExpandido : IProdutoView
     {
         /// <summary>
-        /// Listar todos os produtos cadastrados
-        /// </summary>
-        /// <returns>Retorna todos os produtos cadastrados</returns>
-        ProdutoCadastro[] ListarTodosOsProdutos();
-        
-        /// <summary>
         /// Realiza a busca de um produto de acordo com parte do nome digitado
         /// </summary>
         /// <param name="nome">Parte do nome do produto a ser pesquisado</param>

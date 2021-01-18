@@ -20,6 +20,11 @@ namespace Aula.Lib.Aula09
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ParteNome"></param>
+        /// <returns></returns>
         public ProdutoCadastro BuscarProdutoParteDoNome(string ParteNome)
         {
             throw new NotImplementedException();
@@ -42,6 +47,16 @@ namespace Aula.Lib.Aula09
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ProdutoCadastro[] ListarTodosOsProdutos()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Configuração do banco de dados
         /// </summary>

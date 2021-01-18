@@ -104,12 +104,19 @@ namespace Aula.Lib.Aula08
             Console.Clear();
             Console.WriteLine("Digite o nome (ou parte do nome) do produto a ser pesquisado e pressione [ENTER].\nPara retornar ao menu principal deixe o nome em branco e pressione [ENTER].");
             string nome = Console.ReadLine().ToUpper();
-            
+
             if (nome != "")
             {
                 var produtos = produtoView.BuscarProdutoParteNome(nome);
 
-                if (produtos.Length == 1)
+                if (produtos.Length == 0)
+                {
+                    Console.WriteLine($"Nenhum produto encontrado com essa informação! {prosseguir}");
+                    Console.ReadKey();
+                    MenuBuscarProduto();
+                    return;
+                }
+                else if (produtos.Length == 1)
                 {
                     ProdutoCadastro prod = new ProdutoCadastro()
                     {
@@ -126,7 +133,7 @@ namespace Aula.Lib.Aula08
                     Console.WriteLine("Escolha uma opção abaixo e pressione [ENTER].");
                     Console.ResetColor();
 
-                    Console.WriteLine($"Chaves encontradas: ({produtos.Length})\n");
+                    Console.WriteLine($"Produtos encontrados: ({produtos.Length})\n");
 
                     for (int i = 0; i < produtos.Length; i++)
                     {
@@ -146,8 +153,8 @@ namespace Aula.Lib.Aula08
                     var prod1 = produtoView.BuscarProdutoParteNome(produtos[key].Nome);
                     ProdutoCadastro prod2 = new ProdutoCadastro()
                     {
-                        GUID=prod1[0].GUID,
-                        Nome=prod1[0].Nome,
+                        GUID = prod1[0].GUID,
+                        Nome = prod1[0].Nome,
                         LocalArmazenagem = prod1[0].LocalArmazenagem,
                         Quantidade = prod1[0].Quantidade,
                     };
@@ -163,11 +170,11 @@ namespace Aula.Lib.Aula08
         private static void MenuListarProdutos()
         {
             Console.Clear();
-            var produtos = produtoView.ListarTodasKeys();
+            var produtos = produtoView.ListarTodosOsProdutos();
 
             if (produtos.Length == 0)
             {
-                Console.WriteLine($"Nenhuma chave encontrada! {prosseguir}");
+                Console.WriteLine($"Nenhum produto encontrado! {prosseguir}");
                 Console.ReadKey();
                 MenuPrincipal();
             }
@@ -177,24 +184,23 @@ namespace Aula.Lib.Aula08
                 Console.WriteLine("Escolha uma opção abaixo e pressione [ENTER].");
                 Console.ResetColor();
 
-                Console.WriteLine($"Chaves encontradas: ({produtos.Length})\n");
+                Console.WriteLine($"Produtos encontrados: ({produtos.Length})\n");
 
                 for (int i = 0; i < produtos.Length; i++)
                 {
-                    Console.WriteLine($"{i + 1} - {produtos[i]}");
+                    Console.WriteLine($"{i + 1} - {produtos[i].Nome}");
                 }
                 var opcao = Console.ReadLine();
                 var key = int.Parse(opcao) - 1;
 
-                if (key > produtos.Length)
+                if (key + 1 > produtos.Length)
                 {
                     Console.WriteLine($"Opção inválida! Selecione uma das opções disponíveis. {prosseguir}");
                     Console.ReadKey();
                     MenuListarProdutos();
                     return;
                 }
-
-                var produto = produtoView.BuscarProduto(produtos[key]);
+                var produto = produtoView.BuscarProduto(produtos[key].GUID.ToString());
                 MenuCarregaProduto(produto);
             }
         }
@@ -217,7 +223,7 @@ namespace Aula.Lib.Aula08
             Console.WriteLine("3 - Sair");
 
             string opcao = Console.ReadLine();
-            
+
             if (opcao == "1")
             {
                 Console.Clear();
@@ -303,7 +309,7 @@ namespace Aula.Lib.Aula08
             string nomeProduto = "";
             string localArmazenagem = "";
             string qtdeEstoque = "";
-            
+
             int pos = 1;
             while (true)
             {
@@ -389,8 +395,8 @@ namespace Aula.Lib.Aula08
                         {
                             Nome = nomeProduto.ToUpper(),
                             GUID = Guid.NewGuid(),
-                            LocalArmazenagem=localArmazenagem.ToUpper(),
-                            Quantidade=Convert.ToDecimal(qtdeEstoque),
+                            LocalArmazenagem = localArmazenagem.ToUpper(),
+                            Quantidade = Convert.ToDecimal(qtdeEstoque),
                         };
                         produtoView.CadastrarAlterarProduto(produto.GUID.ToString(), produto);
                         Console.SetCursorPosition(0, 5);
@@ -398,7 +404,7 @@ namespace Aula.Lib.Aula08
 
                         Console.SetCursorPosition(0, 14);
                         Console.WriteLine($"Produto cadastrado com sucesso! {prosseguir}");
-                        
+
                         Console.ReadKey();
                         MenuPrincipal();
                         return;

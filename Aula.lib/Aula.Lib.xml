@@ -617,7 +617,7 @@
             <param name="Key">Key do produto</param>
             <param name="Produto">Classe do produto</param>
         </member>
-        <member name="M:Aula.Lib.Aula09.IProdutoView.ListarTodasKeys">
+        <member name="M:Aula.Lib.Aula09.IProdutoView.ListarTodosOsProdutos">
             <summary>
             Listar todas as keys cadastradas
             </summary>
@@ -640,12 +640,6 @@
             Interface expandida da IProdutoView
             </summary>
         </member>
-        <member name="M:Aula.Lib.Aula09.IProdutoViewExpandido.ListarTodosOsProdutos">
-            <summary>
-            Listar todos os produtos cadastrados
-            </summary>
-            <returns>Retorna todos os produtos cadastrados</returns>
-        </member>
         <member name="M:Aula.Lib.Aula09.IProdutoViewExpandido.BuscarProdutoParteNome(System.String)">
             <summary>
             Realiza a busca de um produto de acordo com parte do nome digitado
@@ -665,6 +659,13 @@
             <param name="key">Key do produto</param>
             <returns>Retorna a key encontrada na classe ProdutoCadastro</returns>
         </member>
+        <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.BuscarProdutoParteDoNome(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ParteNome"></param>
+            <returns></returns>
+        </member>
         <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.CadastrarAlterarProduto(System.String,Aula.Lib.Aula08.ProdutoCadastro)">
             <summary>
             Faz o cadastro do produto caso o mesmo não exista. Caso exista apenas substitui a key existente com as alterações
@@ -677,6 +678,12 @@
             Listar todas as keys cadastradas
             </summary>
             <returns>Retorna todas as keys</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.ListarTodosOsProdutos">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.Setup">
             <summary>

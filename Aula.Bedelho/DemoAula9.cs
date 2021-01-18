@@ -15,10 +15,10 @@ namespace Aula.Bedelho
                 Nome = "Sblevers"
             });
 
-            json = json;
+            //json = json;
 
             var produto = Newtonsoft.Json.JsonConvert.DeserializeObject<ProdutoCadastro>(json);
-            produto = produto;
+            //produto = produto;
 
             using var ms = new MemoryStream();
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(ProdutoCadastro));

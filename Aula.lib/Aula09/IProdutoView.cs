@@ -17,7 +17,7 @@ namespace Aula.Lib.Aula09
         /// Listar todas as keys cadastradas
         /// </summary>
         /// <returns>Retorna todas as keys</returns>
-        string[] ListarTodasKeys();
+        ProdutoCadastro[] ListarTodosOsProdutos();
         /// <summary>
         /// Consulta o produto com base na key informada
         /// </summary>

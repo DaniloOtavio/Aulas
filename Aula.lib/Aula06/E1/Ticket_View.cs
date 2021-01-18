@@ -1,4 +1,5 @@
-﻿using Aula.Lib.Aula06.E0;
+﻿using Aula.Lib.Aula08;
+using Aula.Lib.Aula09;
 using Simple.Sqlite;
 using System;
 using System.IO;

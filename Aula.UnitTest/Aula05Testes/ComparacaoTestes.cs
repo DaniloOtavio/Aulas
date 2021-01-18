@@ -25,10 +25,10 @@ namespace Aula.UnitTest.Aula05Testes
         [Fact]
         public void Comparacao_Ordena0()
         {
-            var valores = new int[0];
+            var valores = Array.Empty<int>();
             var resultado = Comparacao.Ordenar(valores);
 
-            var esperado = new int[0];
+            var esperado = Array.Empty<int>();
 
             Assert.Equal(esperado, resultado);
         }

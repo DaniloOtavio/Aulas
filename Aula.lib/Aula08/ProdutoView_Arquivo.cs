@@ -17,11 +17,10 @@ namespace Aula.Lib.Aula08
         /// <summary>
         /// Grava o produto no cadastro
         /// </summary>
-        /// <param name="Key">Identificador do produto</param>
         /// <param name="Produto">Classe produtos a ser preenchida</param>
-        public void CadastrarAlterarProduto(string Key, ProdutoCadastro Produto)
+        public void CadastrarAlterarProduto(ProdutoCadastro Produto)
         {
-            BD.Insert(Key,Produto);
+            BD.Insert(Produto.GUID.ToString(),Produto);
         }
 
         /// <summary>

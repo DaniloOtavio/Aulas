@@ -557,11 +557,10 @@
             Variável do BD
             </summary>
         </member>
-        <member name="M:Aula.Lib.Aula08.ProdutoView_Arquivo.CadastrarAlterarProduto(System.String,Aula.Lib.Aula08.ProdutoCadastro)">
+        <member name="M:Aula.Lib.Aula08.ProdutoView_Arquivo.CadastrarAlterarProduto(Aula.Lib.Aula08.ProdutoCadastro)">
             <summary>
             Grava o produto no cadastro
             </summary>
-            <param name="Key">Identificador do produto</param>
             <param name="Produto">Classe produtos a ser preenchida</param>
         </member>
         <member name="M:Aula.Lib.Aula08.ProdutoView_Arquivo.ListarTodasKeys">
@@ -610,11 +609,10 @@
             Interface para as views
             </summary>
         </member>
-        <member name="M:Aula.Lib.Aula09.IProdutoView.CadastrarAlterarProduto(System.String,Aula.Lib.Aula08.ProdutoCadastro)">
+        <member name="M:Aula.Lib.Aula09.IProdutoView.CadastrarAlterarProduto(Aula.Lib.Aula08.ProdutoCadastro)">
             <summary>
             Faz o cadastro do produto caso o mesmo não exista. Caso exista apenas substitui a key existente com as alterações
             </summary>
-            <param name="Key">Key do produto</param>
             <param name="Produto">Classe do produto</param>
         </member>
         <member name="M:Aula.Lib.Aula09.IProdutoView.ListarTodosOsProdutos">
@@ -646,49 +644,6 @@
             </summary>
             <param name="nome">Parte do nome do produto a ser pesquisado</param>
             <returns>Retorna o produto</returns>
-        </member>
-        <member name="T:Aula.Lib.Aula09.ProdutoView_SqlLite">
-            <summary>
-            View para trabalhar com SQLite
-            </summary>
-        </member>
-        <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.BuscarProduto(System.String)">
-            <summary>
-            Consulta o produto com base na key informada
-            </summary>
-            <param name="key">Key do produto</param>
-            <returns>Retorna a key encontrada na classe ProdutoCadastro</returns>
-        </member>
-        <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.BuscarProdutoParteDoNome(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="ParteNome"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.CadastrarAlterarProduto(System.String,Aula.Lib.Aula08.ProdutoCadastro)">
-            <summary>
-            Faz o cadastro do produto caso o mesmo não exista. Caso exista apenas substitui a key existente com as alterações
-            </summary>
-            <param name="Key">Key do produto</param>
-            <param name="Produto">Classe do produto</param>
-        </member>
-        <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.ListarTodasKeys">
-            <summary>
-            Listar todas as keys cadastradas
-            </summary>
-            <returns>Retorna todas as keys</returns>
-        </member>
-        <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.ListarTodosOsProdutos">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Aula.Lib.Aula09.ProdutoView_SqlLite.Setup">
-            <summary>
-            Configuração do banco de dados
-            </summary>
         </member>
         <member name="T:Aula.Lib.Tools.UI_CSNHelper">
             <summary>

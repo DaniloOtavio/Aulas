@@ -10,24 +10,29 @@ namespace Aula.Lib.Aula08
 {
     class ProdutoView_SQLite : IProdutoView
     {
+        public SqliteDB BD { get; private set; }
+
         public ProdutoCadastro BuscarProduto(string key)
         {
-            throw new NotImplementedException();
+            var produto = BD.Get<ProdutoCadastro>(key);
+            return produto;
         }
-
-        public void CadastrarAlterarProduto(string Key, ProdutoCadastro Produto)
+        public void CadastrarAlterarProduto(ProdutoCadastro Produto)
         {
-            throw new NotImplementedException();
+            BD.Insert(Produto);
         }
-
         public ProdutoCadastro[] ListarTodosOsProdutos()
         {
-            throw new NotImplementedException();
+            var produtos = BD.GetAll<ProdutoCadastro>();
+            return produtos.ToArray();
         }
-
         public void Setup()
         {
-            throw new NotImplementedException();
+            BD = new SqliteDB("Database.db");
+
+            BD.CreateTables()
+              .Add<ProdutoCadastro>()
+              .Commit();
         }
     }
 }

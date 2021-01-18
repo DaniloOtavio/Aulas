@@ -10,9 +10,8 @@ namespace Aula.Lib.Aula09
         /// <summary>
         /// Faz o cadastro do produto caso o mesmo não exista. Caso exista apenas substitui a key existente com as alterações
         /// </summary>
-        /// <param name="Key">Key do produto</param>
         /// <param name="Produto">Classe do produto</param>
-        void CadastrarAlterarProduto(string Key, ProdutoCadastro Produto);
+        void CadastrarAlterarProduto(ProdutoCadastro Produto);
         /// <summary>
         /// Listar todas as keys cadastradas
         /// </summary>

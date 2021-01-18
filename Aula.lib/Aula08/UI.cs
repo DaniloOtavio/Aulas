@@ -29,7 +29,7 @@ namespace Aula.Lib.Aula08
             Console.Clear();
             Console.WriteLine("Escolha o banco:");
             Console.WriteLine("1 - Arquivo JSON (NoSQL)");
-            Console.WriteLine("2 - Banco de Dados SQLite");
+            Console.WriteLine("2 - Banco de Dados SQLite (DESATIVADO MOMENTANEAMENTE)");
             Console.WriteLine("3 - Sair");
 
             var escolha = Console.ReadLine();
@@ -41,7 +41,11 @@ namespace Aula.Lib.Aula08
             }
             else if (escolha == "2")
             {
-                //produtoView = new ProdutoView_SqlLite();
+                Console.WriteLine($"Essa opção está temporariamente indisponível! {prosseguir}");
+                Console.ReadKey();
+                MenuEscolheDB();
+                return;
+                //produtoView = new ProdutoView_SQLite();
                 //MenuPrincipal();
             }
             else if (escolha == "3")
@@ -65,7 +69,6 @@ namespace Aula.Lib.Aula08
             Console.WriteLine("2 - Listar Produtos");
             Console.WriteLine("3 - Buscar Produto");
             Console.WriteLine("4 - Sair do sistema");
-            Console.WriteLine("5 - Retornar à seleção de banco de dados");
 
             string resultado = Console.ReadLine();
 
@@ -85,12 +88,6 @@ namespace Aula.Lib.Aula08
             {
                 Console.WriteLine($"Saindo... {prosseguir}");
                 Console.ReadKey();
-            }
-            else if (resultado == "5")
-            {
-                produtoView = null;
-                MenuEscolheDB();
-                return;
             }
             else
             {
@@ -241,7 +238,7 @@ namespace Aula.Lib.Aula08
                 {
                     produto.Nome = novoNome.ToUpper();
 
-                    produtoView.CadastrarAlterarProduto(produto.GUID.ToString(), produto);
+                    produtoView.CadastrarAlterarProduto(produto);
 
                     Console.WriteLine($"Nome alterado com sucesso! {prosseguir}");
                     Console.ReadKey();
@@ -265,7 +262,7 @@ namespace Aula.Lib.Aula08
                 {
                     produto.Quantidade = Convert.ToDecimal(novaQuantidade);
 
-                    produtoView.CadastrarAlterarProduto(produto.GUID.ToString(), produto);
+                    produtoView.CadastrarAlterarProduto(produto);
 
                     Console.WriteLine($"Quantidade alterada com sucesso! {prosseguir}");
                     Console.ReadKey();
@@ -398,7 +395,7 @@ namespace Aula.Lib.Aula08
                             LocalArmazenagem = localArmazenagem.ToUpper(),
                             Quantidade = Convert.ToDecimal(qtdeEstoque),
                         };
-                        produtoView.CadastrarAlterarProduto(produto.GUID.ToString(), produto);
+                        produtoView.CadastrarAlterarProduto(produto);
                         Console.SetCursorPosition(0, 5);
                         Console.Write(produto.GUID);
 

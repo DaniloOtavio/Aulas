@@ -1,9 +1,8 @@
 ﻿using Aula.Lib.Aula09;
 using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace Aula.Lib.Aula08
 {
@@ -33,8 +32,23 @@ namespace Aula.Lib.Aula08
         /// <returns>Retorna o produto</returns>
         public ProdutoCadastro BuscarProduto(string key)
         {
+            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome = {key}",Con);
 
-            throw new NotImplementedException();
+            Reader = CMD.ExecuteReader();
+
+            if (Reader.HasRows)
+            {
+
+                ProdutoCadastro prod = new ProdutoCadastro()
+                {
+                    Nome = Reader["Nome"].ToString(),
+                    GUID = Guid.Parse(Reader["ID"].ToString()),
+                    LocalArmazenagem = Reader["LocalArmazenagem"].ToString(),
+                    Quantidade = Convert.ToDecimal(Reader["Quantidade"]),
+                };
+                return prod;
+            }
+            else return null;
         }
         /// <summary>
         /// Busca o produto com parte do nome dele
@@ -62,6 +76,11 @@ namespace Aula.Lib.Aula08
                 }
             }
         }
+        /// <summary>
+        /// Busca o produto por parte do nome informado
+        /// </summary>
+        /// <param name="nome">Nome/ parte do nome do produto</param>
+        /// <returns>Retorna o produto</returns>
         public ProdutoCadastro[] BuscarProdutoParteNome(string nome) => BuscarProdutoParteNomeIE(nome).ToArray();
         /// <summary>
         /// Realiza o cadastro do produto e caso já exista, atualiza
@@ -87,8 +106,13 @@ namespace Aula.Lib.Aula08
         /// </summary>
         public void Setup()
         {
-            Con = new OleDbConnection();
-            Con.ConnectionString = "";
+            string pastaBD = AppDomain.CurrentDomain.BaseDirectory;
+            string nomeBD = "SistemaEstoque.accdb";
+            string senha = "abc123";
+            Con = new OleDbConnection
+            {
+                ConnectionString = @$"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={pastaBD}\{nomeBD}.accdb;Jet OLEDB:Database Password={senha}"
+            };
             Con.Open();
         }
     }

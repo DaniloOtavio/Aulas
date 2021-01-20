@@ -581,6 +581,13 @@
             <param name="nome">Parte do nome do produto</param>
             <returns>Retorna o produto</returns>
         </member>
+        <member name="M:Aula.Lib.Aula08.ProdutoView_Access.BuscarProdutoParteNome(System.String)">
+            <summary>
+            Busca o produto por parte do nome informado
+            </summary>
+            <param name="nome">Nome/ parte do nome do produto</param>
+            <returns>Retorna o produto</returns>
+        </member>
         <member name="M:Aula.Lib.Aula08.ProdutoView_Access.CadastrarAlterarProduto(Aula.Lib.Aula08.ProdutoCadastro)">
             <summary>
             Realiza o cadastro do produto e caso já exista, atualiza

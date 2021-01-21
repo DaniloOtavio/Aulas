@@ -1,4 +1,5 @@
 ﻿using Aula.Lib.Aula08;
+using System.Collections.Generic;
 
 namespace Aula.Lib.Aula09
 {
@@ -16,7 +17,7 @@ namespace Aula.Lib.Aula09
         /// Listar todas as keys cadastradas
         /// </summary>
         /// <returns>Retorna todas as keys</returns>
-        ProdutoCadastro[] ListarTodosOsProdutos();
+        IEnumerable<ProdutoCadastro> ListarTodosOsProdutos();
         /// <summary>
         /// Consulta o produto com base na key informada
         /// </summary>

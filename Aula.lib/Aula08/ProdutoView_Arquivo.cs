@@ -1,5 +1,7 @@
-﻿using Isaac.FileStorage;
+﻿using Aula.Lib.Aula09;
+using Isaac.FileStorage;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Aula.Lib.Aula08
@@ -7,7 +9,7 @@ namespace Aula.Lib.Aula08
     /// <summary>
     /// Classe contendo os métodos e funções do sistema
     /// </summary>
-    public class ProdutoView_Arquivo : Aula09.IProdutoViewExpandido
+    public class ProdutoView_Arquivo : IProdutoViewExpandido
     {
         /// <summary>
         /// Variável do BD
@@ -39,11 +41,10 @@ namespace Aula.Lib.Aula08
         /// Lista todos os produtos
         /// </summary>
         /// <returns>Retorna todos os produtos</returns>
-        public ProdutoCadastro[] ListarTodosOsProdutos()
+        public IEnumerable<ProdutoCadastro> ListarTodosOsProdutos()
         {
             return BD.GetAllKeys()
-                     .Select(k => BD.Get<ProdutoCadastro>(k))
-                     .ToArray();
+                     .Select(k => BD.Get<ProdutoCadastro>(k));
         }
         //public static ProdutoCadastro[] ListarProdutosNomeContem(string ParteNome)
         //{
@@ -84,13 +85,10 @@ namespace Aula.Lib.Aula08
         /// </summary>
         /// <param name="nome">Parte do nome do produto a ser pesquisado</param>
         /// <returns>Retorna o produto</returns>
-        public ProdutoCadastro[] BuscarProdutoParteNome(string nome)
+        IEnumerable<ProdutoCadastro> IProdutoViewExpandido.BuscarProdutoParteNome(string nome)
         {
             return ListarTodosOsProdutos()
-                .Where(p => p.Nome.Contains(nome))
-                .ToArray();
+                .Where(p => p.Nome.Contains(nome));
         }
-
-        
     }
 }

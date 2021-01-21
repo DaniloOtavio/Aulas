@@ -645,7 +645,7 @@
             Inicializa Banco
             </summary>
         </member>
-        <member name="M:Aula.Lib.Aula08.ProdutoView_Arquivo.BuscarProdutoParteNome(System.String)">
+        <member name="M:Aula.Lib.Aula08.ProdutoView_Arquivo.Aula#Lib#Aula09#IProdutoViewExpandido#BuscarProdutoParteNome(System.String)">
             <summary>
             Realiza a busca de um produto de acordo com parte do nome digitado
             </summary>

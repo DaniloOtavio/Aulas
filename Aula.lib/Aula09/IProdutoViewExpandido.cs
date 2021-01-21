@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Aula.Lib.Aula08;
 using System.Collections.Generic;
-using System.Text;
-using Aula.Lib.Aula08;
 
 namespace Aula.Lib.Aula09
 {
@@ -15,7 +13,7 @@ namespace Aula.Lib.Aula09
         /// </summary>
         /// <param name="nome">Parte do nome do produto a ser pesquisado</param>
         /// <returns>Retorna o produto</returns>
-        ProdutoCadastro[] BuscarProdutoParteNome(string nome);
+        IEnumerable<ProdutoCadastro> BuscarProdutoParteNome(string nome);
 
     }
 }

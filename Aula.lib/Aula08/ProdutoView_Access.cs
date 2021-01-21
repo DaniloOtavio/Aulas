@@ -81,7 +81,7 @@ namespace Aula.Lib.Aula08
         /// </summary>
         /// <param name="nome">Nome/ parte do nome do produto</param>
         /// <returns>Retorna o produto</returns>
-        public ProdutoCadastro[] BuscarProdutoParteNome(string nome) => BuscarProdutoParteNomeIE(nome).ToArray();
+        public IEnumerable<ProdutoCadastro> BuscarProdutoParteNome(string nome) => BuscarProdutoParteNomeIE(nome);
         /// <summary>
         /// Realiza o cadastro do produto e caso já exista, atualiza
         /// </summary>
@@ -100,7 +100,7 @@ namespace Aula.Lib.Aula08
         /// Listar todos os produtos
         /// </summary>
         /// <returns>Retorna uma lista com todos os produtos</returns>
-        public ProdutoCadastro[] ListarTodosOsProdutos() => BuscarProdutoParteNomeIE("").ToArray();
+        public IEnumerable<ProdutoCadastro> ListarTodosOsProdutos() => BuscarProdutoParteNomeIE("");
         /// <summary>
         /// Configuração do banco de dados
         /// </summary>
@@ -124,8 +124,6 @@ namespace Aula.Lib.Aula08
                 throw new Exception(ex.ToString());
                 //throw new Exception("Provedor Microsoft.ACE.OLEDB.12.0 não foi encontrado. Certifique-se de que o Microsoft Access esteja instalado e sua respectiva engine.");
             }
-
-            
         }
     }
 }

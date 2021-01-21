@@ -1,6 +1,7 @@
 ﻿using Aula.Lib.Aula09;
 using Aula.Lib.Tools;
 using System;
+using System.Linq;
 
 namespace Aula.Lib.Aula08
 {
@@ -109,7 +110,7 @@ namespace Aula.Lib.Aula08
 
             if (nome != "")
             {
-                var produtos = produtoView.BuscarProdutoParteNome(nome);
+                var produtos = produtoView.BuscarProdutoParteNome(nome).ToArray();
 
                 if (produtos.Length == 0)
                 {
@@ -152,7 +153,7 @@ namespace Aula.Lib.Aula08
                         return;
                     }
 
-                    var prod1 = produtoView.BuscarProdutoParteNome(produtos[key].Nome);
+                    var prod1 = produtoView.BuscarProdutoParteNome(produtos[key].Nome).ToArray();
                     ProdutoCadastro prod2 = new ProdutoCadastro()
                     {
                         GUID = prod1[0].GUID,
@@ -172,7 +173,7 @@ namespace Aula.Lib.Aula08
         private static void MenuListarProdutos()
         {
             Console.Clear();
-            var produtos = produtoView.ListarTodosOsProdutos();
+            var produtos = produtoView.ListarTodosOsProdutos().ToArray();
 
             if (produtos.Length == 0)
             {

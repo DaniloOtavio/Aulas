@@ -15,7 +15,7 @@ namespace Aula.Lib.Aula08
         //USANDO LAMBDA (O PRÓPRIO => JÁ DÁ O RETURN, ENTÃO ECONOMIZA LINHA, MAS FICA DIFÍCIL PRA LER)
         public ProdutoCadastro BuscarProduto(string key) => BD.Get<ProdutoCadastro>("Nome", key);
 
-        public ProdutoCadastro[] BuscarProdutoParteNome(string nome)
+        public IEnumerable<ProdutoCadastro> BuscarProdutoParteNome(string nome)
         {
             nome = $"%{nome}%";
             var produtos = BD.ExecuteQuery<ProdutoCadastro>($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE @Nome ", new { nome });
@@ -26,10 +26,10 @@ namespace Aula.Lib.Aula08
         {
             BD.Insert(Produto);
         }
-        public ProdutoCadastro[] ListarTodosOsProdutos()
+        public IEnumerable<ProdutoCadastro> ListarTodosOsProdutos()
         {
             var produtos = BD.GetAll<ProdutoCadastro>();
-            return produtos.ToArray();
+            return produtos;
         }
         public void Setup()
         {

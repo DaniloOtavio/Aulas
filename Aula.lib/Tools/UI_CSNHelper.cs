@@ -7,7 +7,7 @@ namespace Aula.Lib.Tools
     /// <summary>
     /// Helper para as aulas
     /// </summary>
-    public class UI_CSNHelper
+    public static class UI_CSNHelper
     {
         /// <summary>
         /// Monta um menu
@@ -57,15 +57,46 @@ namespace Aula.Lib.Tools
         /// </summary>
         /// <param name="Opcoes">Opções para criar o menu</param>
         /// <returns>Retorna o menu criado</returns>
-        public static string CriarMenu(string [] Opcoes)
+        public static int CriarMenu(string [] Opcoes)
         {
             Console.Clear();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < Opcoes.Length; i++)
             {
-                sb.Append($"{Opcoes[i]}\n");
+                sb.AppendLine($"{Opcoes[i]}");
             }
-            return sb.ToString();
+            Console.Write(sb.ToString());
+
+            var escolha = Console.ReadLine();
+
+            if (!int.TryParse(escolha, out int value))
+            {
+                Console.WriteLine("Apenas números são permitidos na seleção do menu! Pressione qualquer tecla para prosseguir.");
+                Console.ReadKey();
+                CriarMenu(Opcoes);
+            }
+            return value; 
+        }
+
+        /// <summary>
+        /// Altera a cor do texto quando está em modo de edição
+        /// </summary>
+        /// <param name="Texto">Texto a ser digitado</param>
+        /// <returns>Retorna o texto</returns>
+        public static string ModoEdicao(int pos)
+        {
+            var key = Console.ReadKey(true);
+
+            switch (key.Key)
+            {
+                case ConsoleKey.F2:
+                    if (pos == 1)
+                    {
+                        break;
+                    }
+            }
+
+            return null;
         }
     }
 }

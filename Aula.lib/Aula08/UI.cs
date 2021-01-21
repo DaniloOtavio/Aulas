@@ -34,15 +34,12 @@ namespace Aula.Lib.Aula08
                                                               "2 - Banco de dados SQLite",
                                                               "3 - M$ Access (Não Recomendável)",
                                                               "4 - Sair do Sistema"});
-            Console.Write(opcoes);
 
-            var escolha = Console.ReadLine();
-
-            if (escolha == "1")
+            if (opcoes == 1)
             {
                 produtoView = new ProdutoView_Arquivo();
             }
-            else if (escolha == "2")
+            else if (opcoes == 2)
             {
                 //Console.WriteLine($"Essa opção está temporariamente indisponível! {prosseguir}");
                 //Console.ReadKey();
@@ -51,11 +48,11 @@ namespace Aula.Lib.Aula08
                 produtoView = new ProdutoView_SQLite();
                 //MenuPrincipal();
             }
-            else if (escolha == "3")
+            else if (opcoes == 3)
             {
                 produtoView = new ProdutoView_Access();
             }
-            else if (escolha == "4")
+            else if (opcoes == 4)
             {
                 Console.Write($"Saindo... {prosseguir}");
                 Console.ReadKey();
@@ -76,28 +73,26 @@ namespace Aula.Lib.Aula08
                                                               "3 - Buscar Produto",
                                                               "4 - Sair do sistema"});
 
-            var escolha = Console.ReadLine();
-
-            if (escolha == "1")
+            if (opcoes == 1)
             {
                 MenuCadastrarProduto();
             }
-            else if (escolha == "2")
+            else if (opcoes == 2)
             {
                 MenuListarProdutos();
             }
-            else if (escolha == "3")
+            else if (opcoes == 3)
             {
                 MenuBuscarProduto();
             }
-            else if (escolha == "4")
+            else if (opcoes == 4)
             {
                 Console.WriteLine($"Saindo... {prosseguir}");
                 Console.ReadKey();
             }
             else
             {
-                Console.WriteLine($"Comando não reconhecido! {prosseguir}");
+                Console.WriteLine($"Opção inválida! {prosseguir}");
                 Console.ReadKey();
                 MenuPrincipal();
             }

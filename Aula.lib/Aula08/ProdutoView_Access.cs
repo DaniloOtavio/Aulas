@@ -32,13 +32,13 @@ namespace Aula.Lib.Aula08
         /// <returns>Retorna o produto</returns>
         public ProdutoCadastro BuscarProduto(string key)
         {
-            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome = {key}",Con);
+            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome = '{key}'",Con);
 
             Reader = CMD.ExecuteReader();
 
             if (Reader.HasRows)
             {
-
+                Reader.Read();
                 ProdutoCadastro prod = new ProdutoCadastro()
                 {
                     Nome = Reader["Nome"].ToString(),
@@ -90,7 +90,7 @@ namespace Aula.Lib.Aula08
         {
             CMD = new OleDbCommand("INSERT INTO ProdutoCadastro(Nome, ID, LocalArmazenagem, Quantidade) VALUES(@Nome, @ID, @LocalArmazenagem, @Quantidade)", Con);
             CMD.Parameters.AddWithValue("@Nome", Produto.Nome);
-            CMD.Parameters.AddWithValue("@ID", Produto.GUID);
+            CMD.Parameters.AddWithValue("@ID", Produto.GUID.ToString());
             CMD.Parameters.AddWithValue("@LocalArmazenagem", Produto.LocalArmazenagem);
             CMD.Parameters.AddWithValue("@Quantidade", Produto.Quantidade);
 
@@ -107,13 +107,25 @@ namespace Aula.Lib.Aula08
         public void Setup()
         {
             string pastaBD = AppDomain.CurrentDomain.BaseDirectory;
-            string nomeBD = "SistemaEstoque.accdb";
-            string senha = "abc123";
-            Con = new OleDbConnection
+            string nomeBD = "SistemaEstoque";
+            string senha = "123";
+
+
+            try
             {
-                ConnectionString = @$"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={pastaBD}\{nomeBD}.accdb;Jet OLEDB:Database Password={senha}"
-            };
-            Con.Open();
+                Con = new OleDbConnection
+                {
+                    ConnectionString = @$"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={pastaBD}\{nomeBD}.accdb;Jet OLEDB:Database Password={senha}"
+                };
+                Con.Open();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+                //throw new Exception("Provedor Microsoft.ACE.OLEDB.12.0 não foi encontrado. Certifique-se de que o Microsoft Access esteja instalado e sua respectiva engine.");
+            }
+
+            
         }
     }
 }

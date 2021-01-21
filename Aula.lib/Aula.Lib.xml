@@ -715,5 +715,12 @@
             <param name="Opcoes">Array com as opções desejadas</param>
             <returns>Retorna um menu estruturado</returns>
         </member>
+        <member name="M:Aula.Lib.Tools.UI_CSNHelper.CriarMenu(System.String[])">
+            <summary>
+            Cria um menu
+            </summary>
+            <param name="Opcoes">Opções para criar o menu</param>
+            <returns>Retorna o menu criado</returns>
+        </member>
     </members>
 </doc>

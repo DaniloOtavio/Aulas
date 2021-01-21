@@ -51,5 +51,21 @@ namespace Aula.Lib.Tools
                 }
             }
         }
+
+        /// <summary>
+        /// Cria um menu
+        /// </summary>
+        /// <param name="Opcoes">Opções para criar o menu</param>
+        /// <returns>Retorna o menu criado</returns>
+        public static string CriarMenu(string [] Opcoes)
+        {
+            Console.Clear();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < Opcoes.Length; i++)
+            {
+                sb.Append($"{Opcoes[i]}\n");
+            }
+            return sb.ToString();
+        }
     }
 }

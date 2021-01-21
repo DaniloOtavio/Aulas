@@ -1,4 +1,5 @@
 ﻿using Aula.Lib.Aula09;
+using Aula.Lib.Tools;
 using System;
 
 namespace Aula.Lib.Aula08
@@ -26,19 +27,19 @@ namespace Aula.Lib.Aula08
         }
         private static void MenuEscolheDB()
         {
-            Console.Clear();
-            Console.WriteLine("Escolha o banco:");
-            Console.WriteLine("1 - Arquivo JSON (NoSQL)");
-            Console.WriteLine("2 - Banco de Dados SQLite");
-            Console.WriteLine("3 - M$ Access");
-            Console.WriteLine("4 - Sair");
+
+            var opcoes = UI_CSNHelper.CriarMenu(new string[] {"Selecione uma opção abaixo:",
+                                                              "1 - Arquivo JSON (NoSQL)",
+                                                              "2 - Banco de dados SQLite",
+                                                              "3 - M$ Access (Não Recomendável)",
+                                                              "4 - Sair do Sistema"});
+            Console.Write(opcoes);
 
             var escolha = Console.ReadLine();
 
             if (escolha == "1")
             {
                 produtoView = new ProdutoView_Arquivo();
-                //MenuPrincipal();
             }
             else if (escolha == "2")
             {
@@ -68,28 +69,27 @@ namespace Aula.Lib.Aula08
         }
         private static void MenuPrincipal()
         {
-            Console.Clear();
-            Console.WriteLine("Selecione uma opção:");
-            Console.WriteLine("1 - Cadastrar novo produto");
-            Console.WriteLine("2 - Listar Produtos");
-            Console.WriteLine("3 - Buscar Produto");
-            Console.WriteLine("4 - Sair do sistema");
+            var opcoes = UI_CSNHelper.CriarMenu(new string[] {"Selecione uma opção abaixo:",
+                                                              "1 - Cadastrar novo produto",
+                                                              "2 - Listar Produtos",
+                                                              "3 - Buscar Produto",
+                                                              "4 - Sair do sistema"});
 
-            string resultado = Console.ReadLine();
+            var escolha = Console.ReadLine();
 
-            if (resultado == "1")
+            if (escolha == "1")
             {
                 MenuCadastrarProduto();
             }
-            else if (resultado == "2")
+            else if (escolha == "2")
             {
                 MenuListarProdutos();
             }
-            else if (resultado == "3")
+            else if (escolha == "3")
             {
                 MenuBuscarProduto();
             }
-            else if (resultado == "4")
+            else if (escolha == "4")
             {
                 Console.WriteLine($"Saindo... {prosseguir}");
                 Console.ReadKey();
@@ -193,6 +193,15 @@ namespace Aula.Lib.Aula08
                     Console.WriteLine($"{i + 1} - {produtos[i].Nome}");
                 }
                 var opcao = Console.ReadLine();
+
+                if (!int.TryParse(opcao, out _))
+                {
+                    Console.WriteLine($"Valor digitado não é número!{prosseguir}");
+                    Console.ReadKey();
+                    MenuListarProdutos();
+                    return;
+                }
+
                 var key = int.Parse(opcao) - 1;
 
                 if (key + 1 > produtos.Length)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aula.Lib.Aula08;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,22 @@ namespace Aula.Lib.Aula11
     /// </summary>
     public static class ExtensaoProdutoCadastro
     {
+        /// <summary>
+        /// Buscar produto por parte do nome
+        /// </summary>
+        /// <param name="produtos">Produto</param>
+        /// <param name="parteNome">Parte do nome</param>
+        /// <returns>Retorna o produto com base no nome</returns>
+        public static IEnumerable<ProdutoCadastro> FiltroNome(this IEnumerable<ProdutoCadastro> produtos, string parteNome)
+        {
+            foreach (var prod in produtos)
+            {
+                if (prod.ToString().Contains(parteNome))
+                {
+                    yield return prod;
+                }
+
+            }
+        }
     }
 }

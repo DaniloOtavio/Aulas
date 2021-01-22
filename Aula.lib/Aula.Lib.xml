@@ -703,6 +703,19 @@
             <param name="nome">Parte do nome do produto a ser pesquisado</param>
             <returns>Retorna o produto</returns>
         </member>
+        <member name="T:Aula.Lib.Aula11.ExtensaoProdutoCadastro">
+            <summary>
+            Extensão da model ExtensaoProdutoCadastro
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula11.ExtensaoProdutoCadastro.FiltroNome(System.Collections.Generic.IEnumerable{Aula.Lib.Aula08.ProdutoCadastro},System.String)">
+            <summary>
+            Buscar produto por parte do nome
+            </summary>
+            <param name="produtos">Produto</param>
+            <param name="parteNome">Parte do nome</param>
+            <returns>Retorna o produto com base no nome</returns>
+        </member>
         <member name="T:Aula.Lib.Tools.UI_CSNHelper">
             <summary>
             Helper para as aulas

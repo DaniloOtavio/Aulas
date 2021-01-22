@@ -77,26 +77,20 @@ namespace Aula.Lib.Tools
             }
             return value; 
         }
+        //public static string ModoEdicao(int pos)
+        //{
+        //    var key = Console.ReadKey(true);
 
-        /// <summary>
-        /// Altera a cor do texto quando está em modo de edição
-        /// </summary>
-        /// <param name="Texto">Texto a ser digitado</param>
-        /// <returns>Retorna o texto</returns>
-        public static string ModoEdicao(int pos)
-        {
-            var key = Console.ReadKey(true);
+        //    switch (key.Key)
+        //    {
+        //        case ConsoleKey.F2:
+        //            if (pos == 1)
+        //            {
+        //                break;
+        //            }
+        //    }
 
-            switch (key.Key)
-            {
-                case ConsoleKey.F2:
-                    if (pos == 1)
-                    {
-                        break;
-                    }
-            }
-
-            return null;
-        }
+        //    return null;
+        //}
     }
 }

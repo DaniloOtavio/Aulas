@@ -12,7 +12,7 @@ namespace Aula.Lib.Aula08
     {
         static readonly string prosseguir = "Pressione qualquer tecla para prosseguir.";
         private static IProdutoViewExpandido produtoView;
-
+        
         //public static Core BD { get; private set; }
 
         /// <summary>

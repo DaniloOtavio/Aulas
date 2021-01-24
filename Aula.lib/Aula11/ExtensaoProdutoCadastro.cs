@@ -22,7 +22,7 @@ namespace Aula.Lib.Aula11
         {
             foreach (var prod in produtos)
             {
-                if (prod.ToString().Contains(parteNome))
+                if (prod.Nome.ToString().Contains(parteNome))
                 {
                     yield return prod;
                 }

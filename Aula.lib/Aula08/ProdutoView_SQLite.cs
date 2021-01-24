@@ -20,6 +20,10 @@ namespace Aula.Lib.Aula08
         {
             return ListarTodosOsProdutos().FiltroNome(nome);
 
+            //return ListarTodosOsProdutos().ProdutosAlternados();
+            
+            //return ListarTodosOsProdutos().ProdutosAlternados();
+
             /*
             nome = $"%{nome}%";
             var produtos = BD.ExecuteQuery<ProdutoCadastro>($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE @Nome ", new { nome });

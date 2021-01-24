@@ -712,9 +712,16 @@
             <summary>
             Buscar produto por parte do nome
             </summary>
-            <param name="produtos">Produto</param>
+            <param name="produtos">Produtos</param>
             <param name="parteNome">Parte do nome</param>
             <returns>Retorna o produto com base no nome</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula11.ExtensaoProdutoCadastro.ProdutosAlternados(System.Collections.Generic.IEnumerable{Aula.Lib.Aula08.ProdutoCadastro})">
+            <summary>
+            Função para consultar produtos intercalados
+            </summary>
+            <param name="produtos">Produtos</param>
+            <returns>Retorna os produtos de forma intercalada</returns>
         </member>
         <member name="T:Aula.Lib.Tools.UI_CSNHelper">
             <summary>

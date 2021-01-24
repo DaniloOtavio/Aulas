@@ -58,8 +58,6 @@ namespace Aula.Lib.Aula08
         /// <returns>Retorna o produto</returns>
         public IEnumerable<ProdutoCadastro> BuscarProdutoParteNomeIE(string nome)
         {
-
-
             return ListarTodosOsProdutos().FiltroNome(nome);
 
             //nome = $"'%{nome}%'";

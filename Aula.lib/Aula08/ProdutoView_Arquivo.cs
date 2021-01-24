@@ -1,4 +1,5 @@
 ﻿using Aula.Lib.Aula09;
+using Aula.Lib.Aula11;
 using Isaac.FileStorage;
 using System;
 using System.Collections.Generic;
@@ -87,8 +88,9 @@ namespace Aula.Lib.Aula08
         /// <returns>Retorna o produto</returns>
         IEnumerable<ProdutoCadastro> IProdutoViewExpandido.BuscarProdutoParteNome(string nome)
         {
-            return ListarTodosOsProdutos()
-                .Where(p => p.Nome.Contains(nome));
+            return ListarTodosOsProdutos().FiltroNome(nome);
+            //return ListarTodosOsProdutos()
+            //    .Where(p => p.Nome.Contains(nome));
         }
     }
 }

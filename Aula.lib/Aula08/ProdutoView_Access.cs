@@ -1,4 +1,5 @@
 ﻿using Aula.Lib.Aula09;
+using Aula.Lib.Aula11;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -57,24 +58,28 @@ namespace Aula.Lib.Aula08
         /// <returns>Retorna o produto</returns>
         public IEnumerable<ProdutoCadastro> BuscarProdutoParteNomeIE(string nome)
         {
-            nome = $"'%{nome}%'";
-            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE {nome}", Con);
 
-            Reader = CMD.ExecuteReader();
 
-            if (Reader.HasRows)
-            {
-                while (Reader.Read())
-                {
-                    yield return new ProdutoCadastro()
-                    {
-                        Nome = Reader["Nome"].ToString(),
-                        GUID = Guid.Parse(Reader["ID"].ToString()),
-                        LocalArmazenagem = Reader["LocalArmazenagem"].ToString(),
-                        Quantidade = Convert.ToDecimal(Reader["Quantidade"]),
-                    };
-                }
-            }
+            return ListarTodosOsProdutos().FiltroNome(nome);
+
+            //nome = $"'%{nome}%'";
+            //CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE {nome}", Con);
+
+            //Reader = CMD.ExecuteReader();
+
+            //if (Reader.HasRows)
+            //{
+            //    while (Reader.Read())
+            //    {
+            //        yield return new ProdutoCadastro()
+            //        {
+            //            Nome = Reader["Nome"].ToString(),
+            //            GUID = Guid.Parse(Reader["ID"].ToString()),
+            //            LocalArmazenagem = Reader["LocalArmazenagem"].ToString(),
+            //            Quantidade = Convert.ToDecimal(Reader["Quantidade"]),
+            //        };
+            //    }
+            //}
         }
         /// <summary>
         /// Busca o produto por parte do nome informado

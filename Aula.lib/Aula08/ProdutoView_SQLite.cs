@@ -1,4 +1,5 @@
 ﻿using Aula.Lib.Aula09;
+using Aula.Lib.Aula11;
 using Simple.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,13 @@ namespace Aula.Lib.Aula08
 
         public IEnumerable<ProdutoCadastro> BuscarProdutoParteNome(string nome)
         {
+            return ListarTodosOsProdutos().FiltroNome(nome);
+
+            /*
             nome = $"%{nome}%";
             var produtos = BD.ExecuteQuery<ProdutoCadastro>($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE @Nome ", new { nome });
             return produtos.ToArray();
+            */
         }
 
         public void CadastrarAlterarProduto(ProdutoCadastro Produto)

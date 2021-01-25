@@ -109,6 +109,8 @@ namespace Aula.Lib.Aula08
             if (!Reader.HasRows) SQL = "INSERT INTO ProdutoCadastro(Nome, ID, LocalArmazenagem, Quantidade) VALUES(@Nome, @ID, @LocalArmazenagem, @Quantidade)";
             else SQL = $"UPDATE ProdutoCadastro SET Nome='{Produto.Nome}', ID='{Produto.GUID}', LocalArmazenagem='{Produto.LocalArmazenagem}', Quantidade='{Produto.Quantidade}' WHERE ID='{Produto.GUID}' ";
 
+            Reader.Close();
+
             CMD.CommandText = SQL;
             CMD.Parameters.AddWithValue("@Nome", Produto.Nome);
             CMD.Parameters.AddWithValue("@ID", Produto.GUID.ToString());

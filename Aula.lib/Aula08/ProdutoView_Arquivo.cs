@@ -92,5 +92,14 @@ namespace Aula.Lib.Aula08
             //return ListarTodosOsProdutos()
             //    .Where(p => p.Nome.Contains(nome));
         }
+
+        /// <summary>
+        /// Função para listar os produtos de forma alternada
+        /// </summary>
+        /// <returns>Retorna produtos intercalados</returns>
+        public IEnumerable<ProdutoCadastro> ProdutosAlternados()
+        {
+            return ListarTodosOsProdutos().ProdutosAlternados();
+        }
     }
 }

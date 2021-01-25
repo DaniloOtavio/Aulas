@@ -40,6 +40,12 @@ namespace Aula.Lib.Aula08
             var produtos = BD.GetAll<ProdutoCadastro>();
             return produtos;
         }
+
+        public IEnumerable<ProdutoCadastro> ProdutosAlternados()
+        {
+            return ListarTodosOsProdutos().ProdutosAlternados();
+        }
+
         public void Setup()
         {
             BD = new SqliteDB("BDSistemaEstoque.db");

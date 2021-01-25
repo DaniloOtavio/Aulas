@@ -655,7 +655,7 @@
         <member name="T:Aula.Lib.Aula08.UI">
             <summary>
             Interface do Usuário
-            </summary>
+            </summary>di
         </member>
         <member name="M:Aula.Lib.Aula08.UI.Run">
             <summary>
@@ -703,6 +703,12 @@
             <param name="nome">Parte do nome do produto a ser pesquisado</param>
             <returns>Retorna o produto</returns>
         </member>
+        <member name="M:Aula.Lib.Aula09.IProdutoViewExpandido.ProdutosAlternados">
+            <summary>
+            Exibe produtos alternados
+            </summary>
+            <returns>Retorna os produtos de forma alternada (intercalados)</returns>
+        </member>
         <member name="T:Aula.Lib.Aula11.ExtensaoProdutoCadastro">
             <summary>
             Extensão da model ExtensaoProdutoCadastro
@@ -728,7 +734,7 @@
             Helper para as aulas
             </summary>
         </member>
-        <member name="M:Aula.Lib.Tools.UI_CSNHelper.ExibirMenu(System.String[])">
+        <member name="M:Aula.Lib.Tools.UI_CSNHelper.ExibirMenu(System.String[],System.Int32,System.Boolean)">
             <summary>
             Monta um menu
             </summary>

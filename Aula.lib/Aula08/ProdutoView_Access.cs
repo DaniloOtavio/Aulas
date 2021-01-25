@@ -33,7 +33,7 @@ namespace Aula.Lib.Aula08
         /// <returns>Retorna o produto</returns>
         public ProdutoCadastro BuscarProduto(string key)
         {
-            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE ID = '{key}'",Con);
+            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome = '{key}'",Con);
 
             Reader = CMD.ExecuteReader();
 
@@ -61,6 +61,12 @@ namespace Aula.Lib.Aula08
             //return ListarTodosOsProdutos().FiltroNome(nome);
 
             nome = $"'%{nome}%'";
+            nome = nome.Replace("%", "")
+                       .Replace("'", "")
+                       .Replace("\"", "")
+                       .Replace("=", "")
+                       .Replace("!", "");
+
             CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE {nome}", Con);
 
             Reader = CMD.ExecuteReader();
@@ -91,7 +97,19 @@ namespace Aula.Lib.Aula08
         /// <param name="Produto">Classe produtos a ser preenchida</param>
         public void CadastrarAlterarProduto(ProdutoCadastro Produto)
         {
-            CMD = new OleDbCommand("INSERT INTO ProdutoCadastro(Nome, ID, LocalArmazenagem, Quantidade) VALUES(@Nome, @ID, @LocalArmazenagem, @Quantidade)", Con);
+            string SQL = $"SELECT ID FROM ProdutoCadastro WHERE ID = '{Produto.GUID}'";
+            CMD = new OleDbCommand
+            {
+                CommandText = SQL,
+                Connection = Con,
+            };
+
+            Reader = CMD.ExecuteReader();
+
+            if (!Reader.HasRows) SQL = "INSERT INTO ProdutoCadastro(Nome, ID, LocalArmazenagem, Quantidade) VALUES(@Nome, @ID, @LocalArmazenagem, @Quantidade)";
+            else SQL = $"UPDATE ProdutoCadastro SET Nome='{Produto.Nome}', ID='{Produto.GUID}', LocalArmazenagem='{Produto.LocalArmazenagem}', Quantidade='{Produto.Quantidade}' WHERE ID='{Produto.GUID}' ";
+
+            CMD.CommandText = SQL;
             CMD.Parameters.AddWithValue("@Nome", Produto.Nome);
             CMD.Parameters.AddWithValue("@ID", Produto.GUID.ToString());
             CMD.Parameters.AddWithValue("@LocalArmazenagem", Produto.LocalArmazenagem);
@@ -127,6 +145,14 @@ namespace Aula.Lib.Aula08
                 throw new Exception(ex.ToString());
                 //throw new Exception("Provedor Microsoft.ACE.OLEDB.12.0 não foi encontrado. Certifique-se de que o Microsoft Access esteja instalado e sua respectiva engine.");
             }
+        }
+        /// <summary>
+        /// Função para listar os produtos de forma alternada
+        /// </summary>
+        /// <returns>Retorna produtos intercalados</returns>
+        public IEnumerable<ProdutoCadastro> ProdutosAlternados()
+        {
+            return ListarTodosOsProdutos().ProdutosAlternados();
         }
     }
 }

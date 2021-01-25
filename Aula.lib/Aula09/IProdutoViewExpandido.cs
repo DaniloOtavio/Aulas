@@ -15,5 +15,10 @@ namespace Aula.Lib.Aula09
         /// <returns>Retorna o produto</returns>
         IEnumerable<ProdutoCadastro> BuscarProdutoParteNome(string nome);
 
+        /// <summary>
+        /// Exibe produtos alternados
+        /// </summary>
+        /// <returns>Retorna os produtos de forma alternada (intercalados)</returns>
+        IEnumerable<ProdutoCadastro> ProdutosAlternados();
     }
 }

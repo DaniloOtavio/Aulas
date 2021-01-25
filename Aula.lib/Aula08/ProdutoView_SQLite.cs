@@ -1,15 +1,11 @@
-﻿using Aula.Lib.Aula09;
+﻿using System.Collections.Generic;
+using Aula.Lib.Aula09;
 using Aula.Lib.Aula11;
 using Simple.Sqlite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aula.Lib.Aula08
 {
-    class ProdutoView_SQLite : IProdutoViewExpandido
+    public class ProdutoView_SQLite : IProdutoViewExpandido
     {
         public SqliteDB BD { get; private set; }
 

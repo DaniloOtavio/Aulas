@@ -1,9 +1,6 @@
-﻿using Aula.Lib.Aula08;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Aula.Lib.Aula08;
 
 namespace Aula.Lib.Aula11
 {
@@ -12,6 +9,7 @@ namespace Aula.Lib.Aula11
     /// </summary>
     public static class ExtensaoProdutoCadastro
     {
+
         /// <summary>
         /// Buscar produto por parte do nome
         /// </summary>
@@ -29,6 +27,17 @@ namespace Aula.Lib.Aula11
 
             }
         }
+        public static IEnumerable<T> Filtro<T>(this IEnumerable<T> produtos, Func<T, bool> regra)
+        {
+            foreach (var prod in produtos)
+            {
+                if (!regra(prod)) continue;
+
+                yield return prod;
+            }
+        }
+
+
         /// <summary>
         /// Função para consultar produtos intercalados
         /// </summary>

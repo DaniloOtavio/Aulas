@@ -25,5 +25,6 @@ namespace Aula.Lib.Aula08
         /// Quantidade armazenada
         /// </summary>
         public decimal Quantidade { get; set; }
+
     }
 }

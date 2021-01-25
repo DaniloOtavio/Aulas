@@ -26,7 +26,7 @@ namespace Aula.Lib.Aula08
         public static void Run()
         {
         
-            //Console.WindowWidth = 120;
+            Console.WindowWidth = 120;
 
             MenuEscolheDB();
             produtoView.Setup();
@@ -217,32 +217,16 @@ namespace Aula.Lib.Aula08
         private static void MenuCarregaProduto(ProdutoCadastro produto)
         {
             Console.Clear();
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Nome do produto:");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
+            UI_CSNHelper.ExibirTexto("Nome do produto:", ConsoleColor.Yellow, ConsoleColor.DarkBlue, ConsoleColor.White, ConsoleColor.Black);
             Console.WriteLine($"{produto.Nome}");
 
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Identificador único:");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
+            UI_CSNHelper.ExibirTexto("Identificador único:", ConsoleColor.Yellow, ConsoleColor.DarkBlue, ConsoleColor.White, ConsoleColor.Black);
             Console.WriteLine($"{produto.GUID}");
 
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Local de armazenagem:");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
+            UI_CSNHelper.ExibirTexto("Local de armazenagem:", ConsoleColor.Yellow, ConsoleColor.DarkBlue, ConsoleColor.White, ConsoleColor.Black);
             Console.WriteLine($"{produto.LocalArmazenagem}");
 
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Quantidade:");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
+            UI_CSNHelper.ExibirTexto("Quantidade:", ConsoleColor.Yellow, ConsoleColor.DarkBlue, ConsoleColor.White, ConsoleColor.Black);
             Console.WriteLine($"{produto.Quantidade}");
 
             var opcao = UI_CSNHelper.ExibirMenu(new string[] { "Alterar nome do produto",

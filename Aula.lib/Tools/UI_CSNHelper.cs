@@ -175,39 +175,6 @@ namespace Aula.Lib.Tools
                 }
             }
         }
-
-        /// <summary>
-        /// Cria um menu
-        /// </summary>
-        /// <param name="Opcoes">Opções para criar o menu</param>
-        /// <returns>Retorna o menu criado</returns>
-        public static int CriarMenu(string [] Opcoes)
-        {
-            Console.Clear();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < Opcoes.Length; i++)
-            {
-                sb.AppendLine($"{new string(' ', 30)} {Opcoes[i]}");
-
-                //Console.SetCursorPosition(30, Console.CursorTop);
-                //Console.WriteLine(Opcoes[i].ToString());
-
-
-
-            }
-            Console.Write(sb.ToString());
-
-            var escolha = Console.ReadLine();
-
-            if (!int.TryParse(escolha, out int value))
-            {
-                Console.WriteLine("Apenas números são permitidos na seleção do menu! Pressione qualquer tecla para prosseguir.");
-                Console.ReadKey();
-                CriarMenu(Opcoes);
-            }
-            return value; 
-        }
-
         /// <summary>
         /// Muda a cor do fundo no modo de edição
         /// </summary>
@@ -237,6 +204,26 @@ namespace Aula.Lib.Tools
                                      .Replace("\"", "")
                                      .Replace("=", "")
                                      .Replace("!", "");
+        }
+
+
+        /// <summary>
+        /// Escreve um texto formatado com as cores padrão
+        /// </summary>
+        /// <param name="Escrita">Texto a ser formatado</param>
+        /// <param name="Fore1">Cor do texto inicial</param>
+        /// <param name="Back1">Cor do fundo inicial</param>
+        /// <param name="Fore2">Cor do texto ao término</param>
+        /// <param name="Back2">Cor do fundo ao término</param>
+        public static void ExibirTexto(string Escrita, ConsoleColor Fore1, ConsoleColor Back1, ConsoleColor Fore2, ConsoleColor Back2)
+        {
+            Console.BackgroundColor = Back1;
+            Console.ForegroundColor = Fore1;
+
+            Console.WriteLine(Escrita);
+
+            Console.BackgroundColor = Back2;
+            Console.ForegroundColor = Fore2;
         }
     }
 }

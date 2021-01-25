@@ -605,6 +605,12 @@
             Configuração do banco de dados
             </summary>
         </member>
+        <member name="M:Aula.Lib.Aula08.ProdutoView_Access.ProdutosAlternados">
+            <summary>
+            Função para listar os produtos de forma alternada
+            </summary>
+            <returns>Retorna produtos intercalados</returns>
+        </member>
         <member name="T:Aula.Lib.Aula08.ProdutoView_Arquivo">
             <summary>
             Classe contendo os métodos e funções do sistema
@@ -651,6 +657,12 @@
             </summary>
             <param name="nome">Parte do nome do produto a ser pesquisado</param>
             <returns>Retorna o produto</returns>
+        </member>
+        <member name="M:Aula.Lib.Aula08.ProdutoView_Arquivo.ProdutosAlternados">
+            <summary>
+            Função para listar os produtos de forma alternada
+            </summary>
+            <returns>Retorna produtos intercalados</returns>
         </member>
         <member name="T:Aula.Lib.Aula08.UI">
             <summary>
@@ -739,20 +751,25 @@
             Monta um menu
             </summary>
             <param name="Opcoes">Array com as opções desejadas</param>
+            <param name="TopCursor">Posição do cursor no topo</param>
+            <param name="Limpar">Limpar ou não o console</param>
             <returns>Retorna um menu estruturado</returns>
-        </member>
-        <member name="M:Aula.Lib.Tools.UI_CSNHelper.CriarMenu(System.String[])">
-            <summary>
-            Cria um menu
-            </summary>
-            <param name="Opcoes">Opções para criar o menu</param>
-            <returns>Retorna o menu criado</returns>
         </member>
         <member name="M:Aula.Lib.Tools.UI_CSNHelper.ModoEdicao">
             <summary>
             Muda a cor do fundo no modo de edição
             </summary>
             <returns>Retorna o texto</returns>
+        </member>
+        <member name="M:Aula.Lib.Tools.UI_CSNHelper.ExibirTexto(System.String,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            Escreve um texto formatado com as cores padrão
+            </summary>
+            <param name="Escrita">Texto a ser formatado</param>
+            <param name="Fore1">Cor do texto inicial</param>
+            <param name="Back1">Cor do fundo inicial</param>
+            <param name="Fore2">Cor do texto ao término</param>
+            <param name="Back2">Cor do fundo ao término</param>
         </member>
     </members>
 </doc>

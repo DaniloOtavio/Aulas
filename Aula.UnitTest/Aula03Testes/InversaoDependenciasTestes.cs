@@ -56,32 +56,33 @@ namespace Aula.UnitTest.Aula03Testes
         }
         class FakeDB : ICliente
         {
-            List<Lib.Aula02.Models_DB.ClienteDB> clientes;
+            readonly List<Lib.Aula02.Models_DB.ClienteDB> clientes;
 
             public FakeDB()
             {
-                clientes = new List<Lib.Aula02.Models_DB.ClienteDB>();
-
-                clientes.Add(new Lib.Aula02.Models_DB.ClienteDB()
+                clientes = new List<Lib.Aula02.Models_DB.ClienteDB>
                 {
-                    Codigo = 1,
-                    Nome = "Zé"
-                });
-                clientes.Add(new Lib.Aula02.Models_DB.ClienteDB()
-                {
-                    Codigo = 2,
-                    Nome = "Peter"
-                });
-                clientes.Add(new Lib.Aula02.Models_DB.ClienteDB()
-                {
-                    Codigo = 3,
-                    Nome = "Gertrudes"
-                });
-                clientes.Add(new Lib.Aula02.Models_DB.ClienteDB()
-                {
-                    Codigo = 4,
-                    Nome = "Jão"
-                });
+                    new Lib.Aula02.Models_DB.ClienteDB()
+                    {
+                        Codigo = 1,
+                        Nome = "Zé"
+                    },
+                    new Lib.Aula02.Models_DB.ClienteDB()
+                    {
+                        Codigo = 2,
+                        Nome = "Peter"
+                    },
+                    new Lib.Aula02.Models_DB.ClienteDB()
+                    {
+                        Codigo = 3,
+                        Nome = "Gertrudes"
+                    },
+                    new Lib.Aula02.Models_DB.ClienteDB()
+                    {
+                        Codigo = 4,
+                        Nome = "Jão"
+                    }
+                };
             }
 
             public Lib.Aula02.Models_DB.ClienteDB CarregaCliente(int CodigoCliente)

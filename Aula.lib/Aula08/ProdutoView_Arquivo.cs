@@ -23,7 +23,7 @@ namespace Aula.Lib.Aula08
         /// <param name="Produto">Classe produtos a ser preenchida</param>
         public void CadastrarAlterarProduto(ProdutoCadastro Produto)
         {
-            BD.Insert(Produto.GUID.ToString(),Produto);
+            BD.Insert(Produto.Nome.ToString(),Produto);
         }
 
         /// <summary>

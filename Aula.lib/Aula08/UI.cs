@@ -1,6 +1,7 @@
 ﻿using Aula.Lib.Aula09;
 using Aula.Lib.Tools;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Aula.Lib.Aula08
@@ -12,7 +13,7 @@ namespace Aula.Lib.Aula08
     {
         static readonly string prosseguir = "Pressione qualquer tecla para prosseguir.";
         private static IProdutoViewExpandido produtoView;
-        
+
         //public static Core BD { get; private set; }
 
         /// <summary>
@@ -20,6 +21,8 @@ namespace Aula.Lib.Aula08
         /// </summary>
         public static void Run()
         {
+            Console.WindowWidth = 100;
+
             MenuEscolheDB();
 
             Console.WriteLine("Inicializando...");
@@ -29,17 +32,16 @@ namespace Aula.Lib.Aula08
         private static void MenuEscolheDB()
         {
 
-            var opcoes = UI_CSNHelper.CriarMenu(new string[] {"Selecione uma opção abaixo:",
-                                                              "1 - Arquivo JSON (NoSQL)",
-                                                              "2 - Banco de dados SQLite",
-                                                              "3 - M$ Access (Não Recomendável)",
-                                                              "4 - Sair do Sistema"});
+            var opcoes = UI_CSNHelper.ExibirMenu(new string[] {"Arquivo JSON (NoSQL)",
+                                                              "Banco de dados SQLite",
+                                                              "Microsoft Access",
+                                                              "Sair do Sistema"});
 
-            if (opcoes == 1)
+            if (opcoes == 0)
             {
                 produtoView = new ProdutoView_Arquivo();
             }
-            else if (opcoes == 2)
+            else if (opcoes == 1)
             {
                 //Console.WriteLine($"Essa opção está temporariamente indisponível! {prosseguir}");
                 //Console.ReadKey();
@@ -48,11 +50,11 @@ namespace Aula.Lib.Aula08
                 produtoView = new ProdutoView_SQLite();
                 //MenuPrincipal();
             }
-            else if (opcoes == 3)
+            else if (opcoes == 2)
             {
                 produtoView = new ProdutoView_Access();
             }
-            else if (opcoes == 4)
+            else if (opcoes == 3)
             {
                 Console.Write($"Saindo... {prosseguir}");
                 Console.ReadKey();
@@ -67,25 +69,24 @@ namespace Aula.Lib.Aula08
         }
         private static void MenuPrincipal()
         {
-            var opcoes = UI_CSNHelper.CriarMenu(new string[] {"Selecione uma opção abaixo:",
-                                                              "1 - Cadastrar novo produto",
-                                                              "2 - Listar Produtos",
-                                                              "3 - Buscar Produto",
-                                                              "4 - Sair do sistema"});
+            var opcoes = UI_CSNHelper.ExibirMenu(new string[] {"Cadastrar novo produto",
+                                                               "Listar Produtos",
+                                                               "Buscar Produto",
+                                                               "Sair do sistema"});
 
-            if (opcoes == 1)
+            if (opcoes == 0)
             {
                 MenuCadastrarProduto();
             }
-            else if (opcoes == 2)
+            else if (opcoes == 1)
             {
                 MenuListarProdutos();
             }
-            else if (opcoes == 3)
+            else if (opcoes == 2)
             {
                 MenuBuscarProduto();
             }
-            else if (opcoes == 4)
+            else if (opcoes == 3)
             {
                 Console.WriteLine($"Saindo... {prosseguir}");
                 Console.ReadKey();
@@ -100,8 +101,16 @@ namespace Aula.Lib.Aula08
         private static void MenuBuscarProduto()
         {
             Console.Clear();
-            Console.WriteLine("Digite o nome (ou parte do nome) do produto a ser pesquisado e pressione [ENTER].\nPara retornar ao menu principal deixe o nome em branco e pressione [ENTER].");
-            string nome = Console.ReadLine().ToUpper();
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Digite o nome (ou parte do nome) do produto a ser pesquisado e pressione [ENTER].\n" +
+                              "Para retornar ao menu principal deixe o nome em branco e pressione [ENTER].");
+
+            Console.ResetColor();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            string nome = UI_CSNHelper.ModoEdicao();
 
             if (nome != "")
             {
@@ -109,7 +118,7 @@ namespace Aula.Lib.Aula08
 
                 if (produtos.Length == 0)
                 {
-                    Console.WriteLine($"Nenhum produto encontrado com essa informação! {prosseguir}");
+                    Console.WriteLine($"Nenhum produto encontrado com essa descrição! {prosseguir}");
                     Console.ReadKey();
                     MenuBuscarProduto();
                     return;
@@ -127,36 +136,23 @@ namespace Aula.Lib.Aula08
                 }
                 else if (produtos.Length > 1)
                 {
-                    Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
-                    Console.WriteLine("Escolha uma opção abaixo e pressione [ENTER].");
-                    Console.ResetColor();
+                    List<string> opcoes = new List<string>();
 
-                    Console.WriteLine($"Produtos encontrados: ({produtos.Length})\n");
+                    foreach (var p in produtos) opcoes.Add(p.Nome);
 
-                    for (int i = 0; i < produtos.Length; i++)
+                    var opcao = UI_CSNHelper.ExibirMenu(opcoes.ToArray());
+
+                    var key = opcao;
+
+                    if (key > produtos.Length)
                     {
-                        Console.WriteLine($"{i + 1} - {produtos[i].Nome}");
-                    }
-                    var opcao = Console.ReadLine();
-                    var key = int.Parse(opcao) - 1;
-
-                    if (key + 1 > produtos.Length)
-                    {
-                        Console.WriteLine($"Opção inválida! Retornando ao menu anterior. {prosseguir}");
+                        Console.WriteLine($"Opção inválida! Selecione uma das opções disponíveis. {prosseguir}");
                         Console.ReadKey();
-                        MenuBuscarProduto();
+                        MenuListarProdutos();
                         return;
                     }
-
-                    var prod1 = produtoView.BuscarProdutoParteNome(produtos[key].Nome).ToArray();
-                    ProdutoCadastro prod2 = new ProdutoCadastro()
-                    {
-                        GUID = prod1[0].GUID,
-                        Nome = prod1[0].Nome,
-                        LocalArmazenagem = prod1[0].LocalArmazenagem,
-                        Quantidade = prod1[0].Quantidade,
-                    };
-                    MenuCarregaProduto(prod2);
+                    var produto = produtoView.BuscarProduto(produtos[key].GUID.ToString());
+                    MenuCarregaProduto(produto);
                 }
             }
             else
@@ -178,36 +174,22 @@ namespace Aula.Lib.Aula08
             }
             else
             {
-                Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("Escolha uma opção abaixo e pressione [ENTER].");
-                Console.ResetColor();
+                List<string> opcoes = new List<string>();
 
-                Console.WriteLine($"Produtos encontrados: ({produtos.Length})\n");
+                foreach (var p in produtos) opcoes.Add(p.Nome);
 
-                for (int i = 0; i < produtos.Length; i++)
-                {
-                    Console.WriteLine($"{i + 1} - {produtos[i].Nome}");
-                }
-                var opcao = Console.ReadLine();
+                var opcao = UI_CSNHelper.ExibirMenu(opcoes.ToArray());
 
-                if (!int.TryParse(opcao, out _))
-                {
-                    Console.WriteLine($"Valor digitado não é número!{prosseguir}");
-                    Console.ReadKey();
-                    MenuListarProdutos();
-                    return;
-                }
+                var key = opcao;
 
-                var key = int.Parse(opcao) - 1;
-
-                if (key + 1 > produtos.Length)
+                if (key > produtos.Length)
                 {
                     Console.WriteLine($"Opção inválida! Selecione uma das opções disponíveis. {prosseguir}");
                     Console.ReadKey();
                     MenuListarProdutos();
                     return;
                 }
-                var produto = produtoView.BuscarProduto(produtos[key].Nome);
+                var produto = produtoView.BuscarProduto(produtos[key].Nome.ToString());
                 MenuCarregaProduto(produto);
             }
         }
@@ -288,30 +270,27 @@ namespace Aula.Lib.Aula08
         {
             Console.Clear();
 
-            Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("Cadastrando novo produto... (Pressione ESC para sair.)");
-            Console.ResetColor();
-
-            Console.SetCursorPosition(0, 2);
+            Console.BackgroundColor = ConsoleColor.DarkBlue; Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Nome do produto:");
 
-            Console.SetCursorPosition(0, 4);
+            Console.SetCursorPosition(0, 2);
             Console.WriteLine("ID do produto (Será atribuído automaticamente pelo sistema): ");
 
-            Console.SetCursorPosition(0, 6);
+            Console.SetCursorPosition(0, 4);
             Console.WriteLine("Local de armazenagem: ");
 
-            Console.SetCursorPosition(0, 8);
+            Console.SetCursorPosition(0, 6);
             Console.WriteLine("Quantidade: ");
 
             Console.SetCursorPosition(0, 15);
             Console.BackgroundColor = ConsoleColor.Yellow; Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("Pressione [F2] para liberar a digitação e [ENTER] para confirmar!");
             Console.WriteLine("Pressione [F5] para salvar!");
-            Console.WriteLine("Use as setas para cima ↑ e para baixo ↓ para navegar entre os campos!");
+            Console.WriteLine("Pressione ESC para sair!");
+            Console.WriteLine("Use as setas para cima e para baixo para navegar entre os campos!");
             Console.ResetColor();
 
-            Console.SetCursorPosition(0, 3);
+            Console.SetCursorPosition(0, 1);
 
             string nomeProduto = "";
             string localArmazenagem = "";
@@ -320,11 +299,10 @@ namespace Aula.Lib.Aula08
             int pos = 1;
             while (true)
             {
-
-                if (pos == 1) Console.SetCursorPosition(0, 3);
-                if (pos == 2) Console.SetCursorPosition(0, 5);
-                if (pos == 3) Console.SetCursorPosition(0, 7);
-                if (pos == 4) Console.SetCursorPosition(0, 9);
+                if (pos == 1) Console.SetCursorPosition(0, 1);
+                if (pos == 2) Console.SetCursorPosition(0, 3);
+                if (pos == 3) Console.SetCursorPosition(0, 5);
+                if (pos == 4) Console.SetCursorPosition(0, 7);
 
                 var key = Console.ReadKey(true);
 
@@ -341,29 +319,24 @@ namespace Aula.Lib.Aula08
                 {
                     if (pos == 1)
                     {
-                        Console.Write(new string(' ', Console.WindowWidth));
-                        Console.SetCursorPosition(0, 3);
-                        nomeProduto = Console.ReadLine();
+                        nomeProduto = UI_CSNHelper.ModoEdicao();
                         pos++;
                     }
                     else if (pos == 3)
                     {
-                        Console.Write(new string(' ', Console.WindowWidth));
-                        Console.SetCursorPosition(0, 7);
-                        localArmazenagem = Console.ReadLine();
+                        localArmazenagem = UI_CSNHelper.ModoEdicao();
                         pos++;
                     }
                     else if (pos == 4)
                     {
-                        Console.Write(new string(' ', Console.WindowWidth));
-                        Console.SetCursorPosition(0, 9);
-                        qtdeEstoque = Console.ReadLine();
+                        qtdeEstoque = UI_CSNHelper.ModoEdicao();
+
                         if (!decimal.TryParse(qtdeEstoque, out _))
                         {
-                            Console.SetCursorPosition(0, 9);
+                            Console.SetCursorPosition(0, 7);
                             Console.Write("Valor digitado não é número!");
                             qtdeEstoque = "";
-                            Console.SetCursorPosition(0, 9);
+                            Console.SetCursorPosition(0, 7);
                         }
                     }
                 }
@@ -372,7 +345,7 @@ namespace Aula.Lib.Aula08
                 {
                     if (nomeProduto == "")
                     {
-                        Console.SetCursorPosition(0, 3);
+                        Console.SetCursorPosition(0, 1);
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.ForegroundColor = ConsoleColor.Black;
                         Console.Write("Campo obrigatório!");
@@ -380,7 +353,7 @@ namespace Aula.Lib.Aula08
                     }
                     if (localArmazenagem == "")
                     {
-                        Console.SetCursorPosition(0, 7);
+                        Console.SetCursorPosition(0, 5);
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.ForegroundColor = ConsoleColor.Black;
                         Console.Write("Campo obrigatório!");
@@ -388,11 +361,11 @@ namespace Aula.Lib.Aula08
                     }
                     if (qtdeEstoque == "")
                     {
-                        Console.SetCursorPosition(0, 9);
+                        Console.SetCursorPosition(0, 7);
                         Console.Write(new string(' ', Console.WindowWidth));
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.ForegroundColor = ConsoleColor.Black;
-                        Console.SetCursorPosition(0, 9);
+                        Console.SetCursorPosition(0, 7);
                         Console.Write("Campo obrigatório!");
                         Console.ResetColor();
                     }
@@ -406,7 +379,7 @@ namespace Aula.Lib.Aula08
                             Quantidade = Convert.ToDecimal(qtdeEstoque),
                         };
                         produtoView.CadastrarAlterarProduto(produto);
-                        Console.SetCursorPosition(0, 5);
+                        Console.SetCursorPosition(0, 3);
                         Console.Write(produto.GUID);
 
                         Console.SetCursorPosition(0, 14);

@@ -742,5 +742,11 @@
             <param name="Opcoes">Opções para criar o menu</param>
             <returns>Retorna o menu criado</returns>
         </member>
+        <member name="M:Aula.Lib.Tools.UI_CSNHelper.ModoEdicao">
+            <summary>
+            Muda a cor do fundo no modo de edição
+            </summary>
+            <returns>Retorna o texto</returns>
+        </member>
     </members>
 </doc>

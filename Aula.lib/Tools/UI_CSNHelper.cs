@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aula.Lib.Aula08;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,20 +21,46 @@ namespace Aula.Lib.Tools
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
                 Console.Clear();
+
+                Console.SetCursorPosition(30, Console.CursorTop);
+                Console.Write("┌");
+                Console.Write(new string('─',60));
+                Console.WriteLine("┐");
+                Console.SetCursorPosition(30, Console.CursorTop);
+                Console.WriteLine($"|Selecione uma opção abaixo:{new string(' ',33)}|");
                 for (int i = 0; i < Opcoes.Length; i++)
                 {
-                    if (selecionado == i) Console.ForegroundColor = ConsoleColor.Green;
-                    else Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(30, Console.CursorTop);
+                    Console.Write("|");
+                    if (selecionado == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    }
 
-                    Console.WriteLine(Opcoes[i]);
+                    Console.SetCursorPosition(31, Console.CursorTop);
+
+                    if (Opcoes.Length <= 9) Console.Write($"{i+1}-{Opcoes[i]} {new string(' ', 60 - Opcoes[i].Length - 3)}");
+                    else Console.Write($"{Opcoes[i]} {new string(' ', 60 - Opcoes[i].Length - 1)}");
+
+                    Console.ResetColor();
+                    Console.WriteLine("|");
                 }
-
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.SetCursorPosition(30, Console.CursorTop);
+                Console.Write("└");
+                Console.Write(new string('─', 60));
+                Console.WriteLine("┘");
+                
                 var key = Console.ReadKey();
                 switch (key.Key)
                 {
                     case ConsoleKey.UpArrow:
                         if (selecionado > 0) selecionado--;
+                        else if (selecionado == 1) break;
                         break;
                     case ConsoleKey.DownArrow:
                         if (selecionado < Opcoes.Length - 1) selecionado++;
@@ -63,7 +90,13 @@ namespace Aula.Lib.Tools
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < Opcoes.Length; i++)
             {
-                sb.AppendLine($"{Opcoes[i]}");
+                sb.AppendLine($"{new string(' ', 30)} {Opcoes[i]}");
+
+                //Console.SetCursorPosition(30, Console.CursorTop);
+                //Console.WriteLine(Opcoes[i].ToString());
+
+
+
             }
             Console.Write(sb.ToString());
 
@@ -77,20 +110,32 @@ namespace Aula.Lib.Tools
             }
             return value; 
         }
-        //public static string ModoEdicao(int pos)
-        //{
-        //    var key = Console.ReadKey(true);
 
-        //    switch (key.Key)
-        //    {
-        //        case ConsoleKey.F2:
-        //            if (pos == 1)
-        //            {
-        //                break;
-        //            }
-        //    }
+        /// <summary>
+        /// Muda a cor do fundo no modo de edição
+        /// </summary>
+        /// <returns>Retorna o texto</returns>
+        public static string ModoEdicao()
+        {
+            string conteudo;
 
-        //    return null;
-        //}
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, Console.CursorTop);
+
+            conteudo = Console.ReadLine();
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(conteudo);
+
+            return conteudo.ToUpper();
+        }
     }
 }

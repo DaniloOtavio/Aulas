@@ -33,7 +33,7 @@ namespace Aula.Lib.Aula08
         /// <returns>Retorna o produto</returns>
         public ProdutoCadastro BuscarProduto(string key)
         {
-            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome = '{key}'",Con);
+            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE ID = '{key}'",Con);
 
             Reader = CMD.ExecuteReader();
 
@@ -58,26 +58,26 @@ namespace Aula.Lib.Aula08
         /// <returns>Retorna o produto</returns>
         public IEnumerable<ProdutoCadastro> BuscarProdutoParteNomeIE(string nome)
         {
-            return ListarTodosOsProdutos().FiltroNome(nome);
+            //return ListarTodosOsProdutos().FiltroNome(nome);
 
-            //nome = $"'%{nome}%'";
-            //CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE {nome}", Con);
+            nome = $"'%{nome}%'";
+            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE {nome}", Con);
 
-            //Reader = CMD.ExecuteReader();
+            Reader = CMD.ExecuteReader();
 
-            //if (Reader.HasRows)
-            //{
-            //    while (Reader.Read())
-            //    {
-            //        yield return new ProdutoCadastro()
-            //        {
-            //            Nome = Reader["Nome"].ToString(),
-            //            GUID = Guid.Parse(Reader["ID"].ToString()),
-            //            LocalArmazenagem = Reader["LocalArmazenagem"].ToString(),
-            //            Quantidade = Convert.ToDecimal(Reader["Quantidade"]),
-            //        };
-            //    }
-            //}
+            if (Reader.HasRows)
+            {
+                while (Reader.Read())
+                {
+                    yield return new ProdutoCadastro()
+                    {
+                        Nome = Reader["Nome"].ToString(),
+                        GUID = Guid.Parse(Reader["ID"].ToString()),
+                        LocalArmazenagem = Reader["LocalArmazenagem"].ToString(),
+                        Quantidade = Convert.ToDecimal(Reader["Quantidade"]),
+                    };
+                }
+            }
         }
         /// <summary>
         /// Busca o produto por parte do nome informado

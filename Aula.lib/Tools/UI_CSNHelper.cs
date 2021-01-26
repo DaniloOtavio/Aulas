@@ -23,7 +23,11 @@ namespace Aula.Lib.Tools
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.Black;
 
-                if (Limpar == true) Console.Clear();
+                if (Limpar == true)
+                {
+                    Console.Clear();
+                    Limpar = false;
+                }
                 else
                 {
                     Console.SetCursorPosition(0, TopCursor);
@@ -35,16 +39,16 @@ namespace Aula.Lib.Tools
                 }
                 
                 Console.SetCursorPosition(30, Console.CursorTop);
-                Console.Write("┌");
-                Console.Write(new string('─',60));
-                Console.WriteLine("┐");
+                Console.Write("╔");
+                Console.Write(new string('═', 58));
+                Console.WriteLine("╗");
                 Console.SetCursorPosition(30, Console.CursorTop);
-                Console.WriteLine($"|Selecione uma opção abaixo:{new string(' ',33)}|");
+                Console.WriteLine($"║Selecione uma opção abaixo:{new string(' ',31)}║");
 
                 for (int i = 0; i < Opcoes.Length; i++)
                 {
                     Console.SetCursorPosition(30, Console.CursorTop);
-                    Console.Write("|");
+                    Console.Write("║");
                     if (selecionado == i)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
@@ -58,13 +62,13 @@ namespace Aula.Lib.Tools
                         if (Opcoes.Length <= 9)
                         {
                             Console.Write($"{i + 1}-{Opcoes[i].Substring(0,30)}\n");
-                            Console.SetCursorPosition(91, Console.CursorTop-1);
+                            Console.SetCursorPosition(89, Console.CursorTop-1);
                             
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.BackgroundColor = ConsoleColor.Black;
-                            Console.Write("|");
+                            Console.Write("║");
                             Console.SetCursorPosition(30, Console.CursorTop + 1);
-                            Console.Write("|");
+                            Console.Write("║");
 
                             if (selecionado == i)
                             {
@@ -82,20 +86,19 @@ namespace Aula.Lib.Tools
                     }
                     else
                     {
-                        if (Opcoes.Length <= 9) Console.Write($"{i + 1}-{Opcoes[i]} {new string(' ', 60 - Opcoes[i].Length - 3)}");
-                        else Console.Write($"{Opcoes[i]} {new string(' ', 60 - Opcoes[i].Length - 1)}");
+                        if (Opcoes.Length <= 9) Console.Write($"{i + 1}-{Opcoes[i]} {new string(' ', 58 - Opcoes[i].Length - 3)}");
+                        else Console.Write($"{Opcoes[i]} {new string(' ', 58 - Opcoes[i].Length - 1)}");
 
                     }
-
                     Console.ResetColor();
-                    Console.WriteLine("|");
+                    Console.WriteLine("║");
                 }
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.SetCursorPosition(30, Console.CursorTop);
-                Console.Write("└");
-                Console.Write(new string('─', 60));
-                Console.WriteLine("┘");
+                Console.Write("╚");
+                Console.Write(new string('═', 58));
+                Console.WriteLine("╝");
                 
                 var key = Console.ReadKey();
                 switch (key.Key)
@@ -205,25 +208,19 @@ namespace Aula.Lib.Tools
                                      .Replace("=", "")
                                      .Replace("!", "");
         }
-
-
         /// <summary>
         /// Escreve um texto formatado com as cores padrão
         /// </summary>
         /// <param name="Escrita">Texto a ser formatado</param>
-        /// <param name="Fore1">Cor do texto inicial</param>
-        /// <param name="Back1">Cor do fundo inicial</param>
-        /// <param name="Fore2">Cor do texto ao término</param>
-        /// <param name="Back2">Cor do fundo ao término</param>
-        public static void ExibirTexto(string Escrita, ConsoleColor Fore1, ConsoleColor Back1, ConsoleColor Fore2, ConsoleColor Back2)
+        public static void ExibirTexto(string Escrita)
         {
-            Console.BackgroundColor = Back1;
-            Console.ForegroundColor = Fore1;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
 
             Console.WriteLine(Escrita);
 
-            Console.BackgroundColor = Back2;
-            Console.ForegroundColor = Fore2;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

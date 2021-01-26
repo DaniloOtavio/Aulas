@@ -35,7 +35,7 @@ namespace Aula.Bedelho
             foreach (var t in textos)
             {
                 var novo = regra(t);
-                Console.WriteLine(novo);
+                //Console.WriteLine(novo);
             }
         }
 

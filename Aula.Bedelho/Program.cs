@@ -21,6 +21,8 @@ namespace Aula.Bedelho
             //Aula.Lib.Aula06.E1.UI.Inicializar();
 
             //DemoAula9.ExemploUI2();
+
+            //AULA 13
             DemoAula13.fuck();
 
             //string[] itens = { "Maçã", "Banana", "Laranja", "Abacaxi" };
@@ -34,12 +36,12 @@ namespace Aula.Bedelho
             //    Console.WriteLine(itens[opcao]);
             //}
 
-            //Lib.Aula08.UI.Run();
+            Lib.Aula08.UI.Run();
 
-
-            var pv = new Lib.Aula08.ProdutoView_SQLite();
-
-            var favoritos = pv.ListarTodosOsProdutos().Filtro(p => p.LocalArmazenagem == "C");
+            //AULA 13
+            //var pv = new Lib.Aula08.ProdutoView_SQLite();
+            //
+            //var favoritos = pv.ListarTodosOsProdutos().Filtro(p => p.LocalArmazenagem == "C");
 
 
 

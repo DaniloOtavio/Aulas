@@ -761,7 +761,7 @@
             </summary>
             <returns>Retorna o texto</returns>
         </member>
-        <member name="M:Aula.Lib.Tools.UI_CSNHelper.ExibirTexto(System.String,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor)">
+        <member name="M:Aula.Lib.Tools.UI_CSNHelper.ExibirTexto(System.String)">
             <summary>
             Escreve um texto formatado com as cores padrão
             </summary>

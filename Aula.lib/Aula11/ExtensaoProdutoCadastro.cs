@@ -24,7 +24,6 @@ namespace Aula.Lib.Aula11
                 {
                     yield return prod;
                 }
-
             }
         }
         public static IEnumerable<T> Filtro<T>(this IEnumerable<T> produtos, Func<T, bool> regra)
@@ -36,8 +35,6 @@ namespace Aula.Lib.Aula11
                 yield return prod;
             }
         }
-
-
         /// <summary>
         /// Função para consultar produtos intercalados
         /// </summary>

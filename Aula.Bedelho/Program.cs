@@ -36,7 +36,7 @@ namespace Aula.Bedelho
             //    Console.WriteLine(itens[opcao]);
             //}
 
-            Lib.Aula08.UI.Run();
+            //UI.Run();
 
             //AULA 13
             //var pv = new Lib.Aula08.ProdutoView_SQLite();

@@ -741,6 +741,20 @@
             <param name="produtos">Produtos</param>
             <returns>Retorna os produtos de forma intercalada</returns>
         </member>
+        <member name="T:Aula.Lib.Aula13.Extensions">
+            <summary>
+            Classe de extensões genéricas
+            </summary>
+        </member>
+        <member name="M:Aula.Lib.Aula13.Extensions.Filtrar``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Filtro genérico
+            </summary>
+            <typeparam name="T">Tipo do objeto</typeparam>
+            <param name="itens">Itens a serem filtrados</param>
+            <param name="regra">Regra</param>
+            <returns>Retorna itens</returns>
+        </member>
         <member name="T:Aula.Lib.Tools.UI_CSNHelper">
             <summary>
             Helper para as aulas
@@ -766,10 +780,6 @@
             Escreve um texto formatado com as cores padrão
             </summary>
             <param name="Escrita">Texto a ser formatado</param>
-            <param name="Fore1">Cor do texto inicial</param>
-            <param name="Back1">Cor do fundo inicial</param>
-            <param name="Fore2">Cor do texto ao término</param>
-            <param name="Back2">Cor do fundo ao término</param>
         </member>
     </members>
 </doc>

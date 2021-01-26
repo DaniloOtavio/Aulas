@@ -15,8 +15,6 @@ namespace Aula.Bedelho
                 "My fucks are running dry",
                 "My fucks have gone away "
             };
-
-
             ProdutoCadastro[] itens = new ProdutoCadastro[0];
             var ordenado = itens.OrderBy(p => p.Nome);
 
@@ -35,7 +33,7 @@ namespace Aula.Bedelho
             foreach (var t in textos)
             {
                 var novo = regra(t);
-                //Console.WriteLine(novo);
+                Console.WriteLine(novo);
             }
         }
 

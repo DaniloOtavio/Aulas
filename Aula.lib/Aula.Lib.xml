@@ -755,6 +755,15 @@
             <param name="regra">Regra</param>
             <returns>Retorna itens</returns>
         </member>
+        <member name="M:Aula.Lib.Aula13.Extensions.PrimeirosX``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Filtrar pelos primeiros X
+            </summary>
+            <typeparam name="T">Tipo do objeto</typeparam>
+            <param name="itens">Itens a serem filtrados</param>
+            <param name="regra">Regra</param>
+            <returns>Retorna os X primeiros itens</returns>
+        </member>
         <member name="T:Aula.Lib.Tools.UI_CSNHelper">
             <summary>
             Helper para as aulas

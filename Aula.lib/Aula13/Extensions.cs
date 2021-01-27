@@ -24,5 +24,22 @@ namespace Aula.Lib.Aula13
                 yield return item;
             }
         }
+
+        /// <summary>
+        /// Filtrar pelos primeiros X
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto</typeparam>
+        /// <param name="itens">Itens a serem filtrados</param>
+        /// <param name="regra">Regra</param>
+        /// <returns>Retorna os X primeiros itens</returns>
+        public static IEnumerable<T> PrimeirosX<T>(this IEnumerable<T> itens, int regra)
+        {
+            int i = 1;
+            foreach (var item in itens)
+            {
+                if (i <= regra) yield return item;
+                i++;
+            }
+        }
     }
 }

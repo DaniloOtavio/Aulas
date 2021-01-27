@@ -37,7 +37,18 @@ namespace Aula.Bedelho
 
             //ExibeTextoDelega(text, str => str.ToUpper());
 
-            var resultado = Extensions.Filtrar<string>(text, parte => parte.Contains("is"));
+            //FILTRO GENÉRICO
+
+            //var resultado = Extensions.Filtrar<string>(text, parte => parte.Contains("is"));
+
+            //foreach (var r in resultado)
+            //{
+            //    Console.WriteLine(r);
+            //}
+            //Console.ReadKey();
+
+            //RETORNAR OS X PRIMEIROS
+            var resultado = Extensions.PrimeirosX<string>(text, 5);
 
             foreach (var r in resultado)
             {

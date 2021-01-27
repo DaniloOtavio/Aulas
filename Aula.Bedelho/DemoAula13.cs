@@ -38,19 +38,32 @@ namespace Aula.Bedelho
             //ExibeTextoDelega(text, str => str.ToUpper());
 
             //FILTRO GENÉRICO
+            Console.WriteLine("FILTRANDO PELO CONTEÚDO 'IS'");
+            var resultado1 = Extensions.Filtrar<string>(text, parte => parte.Contains("is"));
 
-            //var resultado = Extensions.Filtrar<string>(text, parte => parte.Contains("is"));
+            foreach (var r in resultado1)
+            {
+                Console.WriteLine(r);
+            }
 
-            //foreach (var r in resultado)
-            //{
-            //    Console.WriteLine(r);
-            //}
-            //Console.ReadKey();
+            Console.WriteLine("----------------------------------------------");
 
+            Console.WriteLine("RETORNANDO OS 5 PRIMEIROS ITENS");
             //RETORNAR OS X PRIMEIROS
-            var resultado = Extensions.PrimeirosX<string>(text, 5);
+            var resultado2 = Extensions.PrimeirosX<string>(text, 5);
 
-            foreach (var r in resultado)
+            foreach (var r in resultado2)
+            {
+                Console.WriteLine(r);
+            }
+
+            Console.WriteLine("----------------------------------------------");
+
+            Console.WriteLine("RETORNANDO OS 5 ÚLTIMOS ITENS");
+            //PULA OS X PRIMEIROS
+            var resultado3 = Extensions.PulaOsPrimeirosX<string>(text, 5);
+
+            foreach (var r in resultado3)
             {
                 Console.WriteLine(r);
             }

@@ -41,5 +41,15 @@ namespace Aula.Lib.Aula13
                 i++;
             }
         }
+        public static IEnumerable<T> PulaOsPrimeirosX<T>(this IEnumerable<T> itens, int regra)
+        {
+            int i = 1;
+            foreach (var item in itens)
+            {
+                if (i > regra) yield return item;
+                i++;
+            }
+        }
+
     }
 }

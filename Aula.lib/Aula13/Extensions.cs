@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aula.Lib.Aula08;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -48,6 +49,14 @@ namespace Aula.Lib.Aula13
             {
                 if (i > regra) yield return item;
                 i++;
+            }
+        }
+
+        public static IEnumerable<T> Empacotar<T>(this IEnumerable<T> itens, Func<T, IEnumerable<T>> R)
+        {
+            foreach (var item in itens)
+            {
+                yield return (T)R(item);
             }
         }
 

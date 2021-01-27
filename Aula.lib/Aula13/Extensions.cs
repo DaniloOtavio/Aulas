@@ -1,7 +1,5 @@
-﻿using Aula.Lib.Aula08;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Aula.Lib.Aula13
 {
@@ -52,11 +50,11 @@ namespace Aula.Lib.Aula13
             }
         }
 
-        public static IEnumerable<T> Empacotar<T>(this IEnumerable<T> itens, Func<T, IEnumerable<T>> R)
+        public static IEnumerable<TOut> Empacotar<TIn, TOut>(this IEnumerable<TIn> itens, Func<TIn, TOut> regra)
         {
-            foreach (var item in itens)
+            foreach (TIn item in itens)
             {
-                yield return (T)R(item);
+                yield return regra(item);
             }
         }
 

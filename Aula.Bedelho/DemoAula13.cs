@@ -12,7 +12,7 @@ namespace Aula.Bedelho
 
         public static void fuck()
         {
-            string[] text = 
+            string[] texts = 
             { 
                 "I have no more fucks to give",
                 "My fucks are running dry",
@@ -29,8 +29,7 @@ namespace Aula.Bedelho
             var ordenado = itens.OrderBy(p => p.Nome);
 
 
-
-            text.OrderBy(o => o);
+            texts.OrderBy(o => o);
 
             // Ordena e exibe na tela
             //ExibeMaiusculo(text);
@@ -39,7 +38,8 @@ namespace Aula.Bedelho
 
             //FILTRO GENÉRICO
             Console.WriteLine("FILTRANDO PELO CONTEÚDO 'IS'");
-            var resultado1 = Extensions.Filtrar<string>(text, parte => parte.Contains("is"));
+            var resultado1 = texts.Filtrar<string>(parte => parte.Contains("is"));
+            var resultado1A = texts.Where(parte => parte.Contains("is"));
 
             foreach (var r in resultado1)
             {
@@ -50,7 +50,8 @@ namespace Aula.Bedelho
 
             Console.WriteLine("RETORNANDO OS 5 PRIMEIROS ITENS");
             //RETORNAR OS X PRIMEIROS
-            var resultado2 = Extensions.PrimeirosX<string>(text, 5);
+            var resultado2 = texts.PrimeirosX<string>(5);
+            var resultado2A = texts.Take<string>(5);
 
             foreach (var r in resultado2)
             {
@@ -61,13 +62,22 @@ namespace Aula.Bedelho
 
             Console.WriteLine("RETORNANDO OS 5 ÚLTIMOS ITENS");
             //PULA OS X PRIMEIROS
-            var resultado3 = Extensions.PulaOsPrimeirosX<string>(text, 5);
+            var resultado3 = texts.PulaOsPrimeirosX<string>(5);
+            var resultado3A = texts.Skip<string>(5);
 
             foreach (var r in resultado3)
             {
                 Console.WriteLine(r);
             }
             Console.ReadKey();
+
+            var resultado4 = texts.Empacotar<string, int>(str => str.Length).ToArray();
+            var resultado4A = texts.Select<string, int>(str => str.Length).ToArray();
+
+            foreach (var r in resultado4)
+            {
+                Console.WriteLine(r);
+            }
 
         }
 

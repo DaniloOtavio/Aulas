@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Aula.Lib.Aula13
 {
@@ -17,10 +18,10 @@ namespace Aula.Lib.Aula13
         /// <returns>Retorna itens</returns>
         public static IEnumerable<T> Filtrar<T>(this IEnumerable<T> itens, Func<T,bool> regra)
         {
-            foreach (var it in itens)
+            foreach (var item in itens)
             {
-                if (!regra(it)) continue;
-                yield return it;
+                if (!regra(item)) continue;
+                yield return item;
             }
         }
     }

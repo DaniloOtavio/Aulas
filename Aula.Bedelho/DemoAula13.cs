@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Aula.Lib.Aula08;
+using Aula.Lib.Aula11;
+using Aula.Lib.Aula13;
 
 namespace Aula.Bedelho
 {
@@ -10,10 +12,18 @@ namespace Aula.Bedelho
 
         public static void fuck()
         {
-            string[] text = { 
+            string[] text = 
+            { 
                 "I have no more fucks to give",
                 "My fucks are running dry",
-                "My fucks have gone away "
+                "My fucks have gone away ",
+                "This shit is a fuck",
+                "Fuck is fuck",
+                "Fuck not fuck",
+                "Should stop saying fuck",
+                "Not stop saying fuck",
+                "Fuck!",
+                "Don't care this fuck"
             };
             ProdutoCadastro[] itens = new ProdutoCadastro[0];
             var ordenado = itens.OrderBy(p => p.Nome);
@@ -25,7 +35,16 @@ namespace Aula.Bedelho
             // Ordena e exibe na tela
             //ExibeMaiusculo(text);
 
-            ExibeTextoDelega(text, str => str.ToUpper());
+            //ExibeTextoDelega(text, str => str.ToUpper());
+
+            var resultado = Extensions.Filtrar<string>(text, parte => parte.Contains("is"));
+
+            foreach (var r in resultado)
+            {
+                Console.WriteLine(r);
+            }
+            Console.ReadKey();
+
         }
 
         static void ExibeTextoDelega(string[] textos, dOqueEnfiaNoMeioDaString regra)

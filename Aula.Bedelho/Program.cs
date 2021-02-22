@@ -1,8 +1,4 @@
-﻿using Aula.Lib.Aula08;
-using Aula.Lib.Aula11;
-using Aula.Lib.Aula13;
-
-namespace Aula.Bedelho
+﻿namespace Aula.Bedelho
 {
     class Program
     {
@@ -24,7 +20,7 @@ namespace Aula.Bedelho
             //DemoAula9.ExemploUI2();
 
             //AULA 13
-            DemoAula13.fuck();
+            //DemoAula13.fuck();
 
             //string[] itens = { "Maçã", "Banana", "Laranja", "Abacaxi" };
             //int opcao = Lib.Tools.UI_CSNHelper.ExibirMenu(itens);
@@ -44,7 +40,7 @@ namespace Aula.Bedelho
             //
             //var favoritos = pv.ListarTodosOsProdutos().Filtro(p => p.LocalArmazenagem == "C");
 
-
+            Lib.Aula08.UI.Run();
 
         }
 

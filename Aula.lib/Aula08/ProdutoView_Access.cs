@@ -61,13 +61,12 @@ namespace Aula.Lib.Aula08
             //return ListarTodosOsProdutos().FiltroNome(nome);
 
             nome = $"'%{nome}%'";
-            nome = nome.Replace("%", "")
-                       .Replace("'", "")
+            nome = nome.Replace("'", "")
                        .Replace("\"", "")
                        .Replace("=", "")
                        .Replace("!", "");
 
-            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE {nome}", Con);
+            CMD = new OleDbCommand($"SELECT * FROM ProdutoCadastro WHERE Nome LIKE '{nome}'", Con);
 
             Reader = CMD.ExecuteReader();
 

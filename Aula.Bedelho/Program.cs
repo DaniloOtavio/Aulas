@@ -39,8 +39,11 @@
             //var pv = new Lib.Aula08.ProdutoView_SQLite();
             //
             //var favoritos = pv.ListarTodosOsProdutos().Filtro(p => p.LocalArmazenagem == "C");
+            //DemoRequest.run();
 
-            Lib.Aula08.UI.Run();
+            Calisthenics.Regra3.Run();
+
+            //Lib.Aula08.UI.Run();
 
         }
 
